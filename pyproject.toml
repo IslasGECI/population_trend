@@ -11,6 +11,6 @@ home-page = "https://github.com/IslasGECI/population_trend"
 module = "population_trend"
 requires = [
 	"bootstrapping-tools==0.5.7",
-    "geci_plots @ git+https://github.com/IslasGECI/geci_plots",
+	"geci-plots",
 ]
 requires-python=">=3.9"
