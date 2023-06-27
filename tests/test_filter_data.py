@@ -1,13 +1,23 @@
-from population_trend import filter_by_species, filter_by_species_and_island
+from population_trend import (
+    filter_by_species,
+    filter_by_species_and_island,
+    write_burrows_by_species_and_island,
+)
 import pandas as pd
 
 
-data = pd.read_csv("tests/data/dcco_laal_gumu_burrows_data.csv")
+data_path = "tests/data/dcco_laal_gumu_burrows_data.csv"
+data = pd.read_csv(data_path)
 species = "Laysan Albatross"
+island = "Guadalupe"
+
+
+def test_write_burrows_by_species_and_island():
+    output_path = "tests/data/laal_guadalupe.csv"
+    write_burrows_by_species_and_island(data_path, species, island, output_path)
 
 
 def test_filter_by_species_and_island():
-    island = "Guadalupe"
     obtained_df = filter_by_species_and_island(data, species, island)
     obtained_len = len(obtained_df)
     expected_len = 15
