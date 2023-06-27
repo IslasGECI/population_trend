@@ -4,6 +4,7 @@ import pandas as pd
 def write_burrows_by_species_and_island(data_path, species, island, output_path):
     data = pd.read_csv(data_path)
     filtered = filter_by_species_and_island(data, species, island)
+    filtered.to_csv(output_path, index=False)
 
 
 def filter_by_species_and_island(data: pd.DataFrame, species: str, island: str):
