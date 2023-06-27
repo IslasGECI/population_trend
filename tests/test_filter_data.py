@@ -8,7 +8,10 @@ species = "Laysan Albatross"
 
 def test_filter_by_species_and_island():
     island = "Guadalupe"
-    filter_by_species_and_island(data, species, island)
+    obtained_df = filter_by_species_and_island(data, species, island)
+    obtained_len = len(obtained_df)
+    expected_len = 15
+    assert obtained_len == expected_len
 
 
 def test_filter_by_species():
