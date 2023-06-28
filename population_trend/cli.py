@@ -43,4 +43,4 @@ def plot_population_trend(data_path, intervals_path, output_path):
     Graficador.set_ticks(Modelo_Tendencia_Poblacional)
     Graficador.draw()
     Graficador.plot_growth_rate_interval(legend_mpl_object, lambda_latex)
-    Graficador.savefig(islet)
+    Graficador.savefig(islet, output_path)
