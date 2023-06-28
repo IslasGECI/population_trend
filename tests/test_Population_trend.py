@@ -44,6 +44,11 @@ class Tests_Plotter_Population_Trend_Model:
     def tests_savefig(self):
         islet = "morro"
         default_path = f"reports/figures/cormorant_population_trend_{islet}.png"
+        default_folder = "reports/figures/"
+        if not os.path.exists(default_folder):
+            os.makedirs(default_folder)
+        if os.path.exists(default_path):
+            os.remove(default_path)
         if os.path.exists(default_path):
             os.remove(default_path)
         Plotter.savefig(islet)
