@@ -113,11 +113,19 @@ class Plotter_Population_Trend_Model:
         plt.gcf().subplots_adjust(bottom=0.2)
         plt.draw()
 
-    def savefig(self, islet):
-        plt.savefig(
-            "reports/figures/cormorant_population_trend_{}".format(islet.replace(" ", "_").lower()),
-            dpi=300,
-        )
+    def savefig(self, islet, output_path=None):
+        if output_path is None:
+            plt.savefig(
+                "reports/figures/cormorant_population_trend_{}".format(
+                    islet.replace(" ", "_").lower()
+                ),
+                dpi=300,
+            )
+        else:
+            plt.savefig(
+                output_path,
+                dpi=300,
+            )
 
     def set_legend_location(self, islet):
         legend_mpl_object = plt.legend(loc="best")
