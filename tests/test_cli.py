@@ -1,4 +1,5 @@
 from population_trend import (
+    plot_population_trend,
     write_burrows_by_species_and_island,
 )
 import pandas as pd
@@ -17,3 +18,10 @@ def test_write_burrows_by_species_and_island():
     obtained_columns = len(obtained_csv.columns)
     expected_columns = 12
     assert obtained_columns == expected_columns
+
+
+def test_plot_population_trend():
+    gumu_data_path = "tests/data/gumu_guadalupe_data.csv"
+    intervals_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
+    output_path = "tests/data/gumu_guadalupe_population_trend.png"
+    plot_population_trend(gumu_data_path, intervals_path, output_path)
