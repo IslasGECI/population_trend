@@ -22,6 +22,7 @@ def write_burrows_by_species_and_island(
     filtered.to_csv(output_path, index=False)
 
 
+@app.command(help="Plot population trend")
 def plot_population_trend(data_path, intervals_path, output_path):
     fit_data = pd.read_csv(data_path)
     with open(intervals_path, "r") as read_file:

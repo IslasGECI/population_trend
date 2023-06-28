@@ -1,6 +1,6 @@
 import numpy as np
 from geci_plots import geci_plot, roundup, ticks_positions_array, order_magnitude
-from bootstrapping_tools import lambda_calculator, power_law
+from bootstrapping_tools import power_law
 import matplotlib.pyplot as plt
 
 
@@ -27,19 +27,19 @@ class Population_Trend_Model:
         self.time_to_model = np.linspace(
             self.ticks_positions.min(), self.ticks_positions.max(), 100
         )
-        self.parameters = fit_data[interest_variable].iloc[0]
+        self.initial_population = fit_data[interest_variable].iloc[0]
 
     @property
     def model_min(self):
-        return power_law(self.time_to_model, self.intervals[0], self.parameters)
+        return power_law(self.time_to_model, self.intervals[0], self.initial_population)
 
     @property
     def model_med(self):
-        return power_law(self.time_to_model, self.intervals[1], self.parameters)
+        return power_law(self.time_to_model, self.intervals[1], self.initial_population)
 
     @property
     def model_max(self):
-        return power_law(self.time_to_model, self.intervals[2], self.parameters)
+        return power_law(self.time_to_model, self.intervals[2], self.initial_population)
 
 
 class Plotter_Population_Trend_Model:
