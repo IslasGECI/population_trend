@@ -15,9 +15,23 @@ data = pd.read_csv(data_path)
 species = "Laysan Albatross"
 island = "Guadalupe"
 output_path = "tests/data/laal_guadalupe.csv"
+intervals_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
 
 
 def test_app():
+    result = runner.invoke(
+        app,
+        [
+            "plot-population-trend",
+            "--data-path",
+            data_path,
+            "--intervals-path",
+            intervals_path,
+            "--output-path",
+            output_path,
+        ],
+    )
+    assert result.exit_code == 0
     result = runner.invoke(
         app,
         [
@@ -45,7 +59,6 @@ def test_write_burrows_by_species_and_island():
 
 def test_plot_population_trend():
     data_path = "tests/data/gumu_guadalupe_data.csv"
-    intervals_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
     output_path = "tests/data/gumu_guadalupe_population_trend.png"
     if os.path.exists(output_path):
         os.remove(output_path)
