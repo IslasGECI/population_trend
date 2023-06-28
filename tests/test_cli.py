@@ -21,6 +21,7 @@ def test_app():
     result = runner.invoke(
         app,
         [
+            "write-burrows-by-species-and-island",
             "--data-path",
             data_path,
             "--species",
