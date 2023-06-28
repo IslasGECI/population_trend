@@ -48,6 +48,11 @@ class Tests_Plotter_Population_Trend_Model:
             os.remove(default_path)
         Plotter.savefig(islet)
         assert os.path.exists(default_path)
+        output_path = "tests/data/prueba.png"
+        if os.path.exists(output_path):
+            os.remove(output_path)
+        Plotter.savefig(islet, output_path)
+        assert os.path.exists(output_path)
 
 
 Model = Population_Trend_Model(cormorant_data, [1, 2, 3], "Temporada")
