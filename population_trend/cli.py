@@ -1,6 +1,11 @@
 from population_trend.filter_data import filter_by_species_and_island
+from population_trend.population_growth_model import (
+    Population_Trend_Model,
+    Plotter_Population_Trend_Model,
+)
 import pandas as pd
 import typer
+import json
 
 app = typer.Typer(help="Write filtered burrows data by species and island")
 
@@ -18,4 +23,24 @@ def write_burrows_by_species_and_island(
 
 
 def plot_population_trend(data_path, intervals_path, output_path):
-    pass
+    fit_data = pd.read_csv(data_path)
+    with open(intervals_path, "r") as read_file:
+        intervals_json = json.load(read_file)
+    intervals = intervals_json["intervals"]
+    lambda_latex = intervals_json["lambda_latex_interval"]
+    interest_variable = "Maxima_cantidad_nidos"
+    islet = "Guadalupe"
+
+    Modelo_Tendencia_Poblacional = Population_Trend_Model(fit_data, intervals, interest_variable)
+    Graficador = Plotter_Population_Trend_Model()
+    Graficador.plot_smooth(Modelo_Tendencia_Poblacional)
+    Graficador.plot_model(Modelo_Tendencia_Poblacional)
+    Graficador.plot_data(Modelo_Tendencia_Poblacional, fit_data[interest_variable])
+    legend_mpl_object = Graficador.set_legend_location(islet)
+    Graficador.set_x_lim(Modelo_Tendencia_Poblacional)
+    Graficador.set_y_lim(fit_data[interest_variable])
+    Graficador.set_labels()
+    Graficador.set_ticks(Modelo_Tendencia_Poblacional)
+    Graficador.draw()
+    Graficador.plot_growth_rate_interval(legend_mpl_object, lambda_latex)
+    Graficador.savefig(islet)
