@@ -21,7 +21,7 @@ def test_write_burrows_by_species_and_island():
 
 
 def test_plot_population_trend():
-    gumu_data_path = "tests/data/gumu_guadalupe_data.csv"
+    data_path = "tests/data/gumu_guadalupe_data.csv"
     intervals_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
     output_path = "tests/data/gumu_guadalupe_population_trend.png"
-    plot_population_trend(gumu_data_path, intervals_path, output_path)
+    plot_population_trend(data_path, intervals_path, output_path)

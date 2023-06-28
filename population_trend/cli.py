@@ -15,3 +15,7 @@ def write_burrows_by_species_and_island(
     data = pd.read_csv(data_path)
     filtered = filter_by_species_and_island(data, species, island)
     filtered.to_csv(output_path, index=False)
+
+
+def plot_population_trend(data_path, intervals_path, output_path):
+    pass
