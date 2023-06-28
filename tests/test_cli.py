@@ -1,19 +1,40 @@
 from population_trend import (
+    app,
     plot_population_trend,
     write_burrows_by_species_and_island,
 )
 import os
 import pandas as pd
+from typer.testing import CliRunner
 
+
+runner = CliRunner()
 
 data_path = "tests/data/dcco_laal_gumu_burrows_data.csv"
 data = pd.read_csv(data_path)
 species = "Laysan Albatross"
 island = "Guadalupe"
+output_path = "tests/data/laal_guadalupe.csv"
+
+
+def test_app():
+    result = runner.invoke(
+        app,
+        [
+            "--data-path",
+            data_path,
+            "--species",
+            species,
+            "--island",
+            island,
+            "--output-path",
+            output_path,
+        ],
+    )
+    assert result.exit_code == 0
 
 
 def test_write_burrows_by_species_and_island():
-    output_path = "tests/data/laal_guadalupe.csv"
     write_burrows_by_species_and_island(data_path, species, island, output_path)
     obtained_csv = pd.read_csv(output_path)
     obtained_columns = len(obtained_csv.columns)
