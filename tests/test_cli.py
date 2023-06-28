@@ -25,7 +25,9 @@ def test_plot_population_trend():
     data_path = "tests/data/gumu_guadalupe_data.csv"
     intervals_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
     output_path = "tests/data/gumu_guadalupe_population_trend.png"
-    os.mkdir("reports/figures/")
+    default_folder = "reports/figures/"
+    if not os.path.exists(default_folder):
+        os.mkdirs(default_folder)
     default_path = "reports/figures/cormorant_population_trend_guadalupe.png"
     if os.path.exists(default_path):
         os.remove(default_path)
