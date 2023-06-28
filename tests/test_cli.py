@@ -2,6 +2,7 @@ from population_trend import (
     plot_population_trend,
     write_burrows_by_species_and_island,
 )
+import os
 import pandas as pd
 
 
