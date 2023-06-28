@@ -28,7 +28,7 @@ def plot_population_trend(
     intervals_path: str = "",
     island: str = "Guadalupe",
     variable_of_interest: str = "Maxima_cantidad_nidos",
-    output_path: str = None,
+    output_path=None,
 ):
     fit_data = pd.read_csv(data_path)
     with open(intervals_path, "r") as read_file:
