@@ -16,6 +16,7 @@ species = "Laysan Albatross"
 island = "Guadalupe"
 output_path = "tests/data/laal_guadalupe.csv"
 intervals_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
+output_figure = "tests/data/figure.png"
 
 
 def test_app():
@@ -28,7 +29,7 @@ def test_app():
             "--intervals-path",
             intervals_path,
             "--output-path",
-            output_path,
+            output_figure,
         ],
     )
     assert result.exit_code == 0

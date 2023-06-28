@@ -23,7 +23,7 @@ def write_burrows_by_species_and_island(
 
 
 @app.command(help="Plot population trend")
-def plot_population_trend(data_path, intervals_path, output_path):
+def plot_population_trend(data_path: str = "", intervals_path: str = "", output_path: str = ""):
     fit_data = pd.read_csv(data_path)
     with open(intervals_path, "r") as read_file:
         intervals_json = json.load(read_file)
