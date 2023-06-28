@@ -6,6 +6,7 @@ from population_trend import (
     calculate_upper_limit,
 )
 from geci_plots import geci_plot
+import os
 import pandas as pd
 import numpy as np
 from pandas._testing import assert_frame_equal
@@ -39,6 +40,14 @@ class Tests_Plotter_Population_Trend_Model:
     def tests_init_(self):
         fig, ax = geci_plot()
         assert type(fig) == type(Plotter.fig)  # noqa
+
+    def tests_savefig(self):
+        islet = "morro"
+        default_path = f"reports/figures/cormorant_population_trend_{islet}.png"
+        if os.path.exists(default_path):
+            os.remove(default_path)
+        Plotter.savefig(islet)
+        assert os.path.exists(default_path)
 
 
 Model = Population_Trend_Model(cormorant_data, [1, 2, 3], "Temporada")
