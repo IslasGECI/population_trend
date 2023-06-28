@@ -26,8 +26,8 @@ def write_burrows_by_species_and_island(
 def plot_population_trend(
     data_path: str = "",
     intervals_path: str = "",
-    island: str = "",
-    variable_of_interest: str = "",
+    island: str = "Guadalupe",
+    variable_of_interest: str = "Maxima_cantidad_nidos",
     output_path: str = "",
 ):
     fit_data = pd.read_csv(data_path)
@@ -35,19 +35,17 @@ def plot_population_trend(
         intervals_json = json.load(read_file)
     intervals = intervals_json["intervals"]
     lambda_latex = intervals_json["lambda_latex_interval"]
-    interest_variable = "Maxima_cantidad_nidos"
-    islet = "Guadalupe"
 
-    Modelo_Tendencia_Poblacional = Population_Trend_Model(fit_data, intervals, interest_variable)
+    Modelo_Tendencia_Poblacional = Population_Trend_Model(fit_data, intervals, variable_of_interest)
     Graficador = Plotter_Population_Trend_Model()
     Graficador.plot_smooth(Modelo_Tendencia_Poblacional)
     Graficador.plot_model(Modelo_Tendencia_Poblacional)
-    Graficador.plot_data(Modelo_Tendencia_Poblacional, fit_data[interest_variable])
-    legend_mpl_object = Graficador.set_legend_location(islet)
+    Graficador.plot_data(Modelo_Tendencia_Poblacional, fit_data[variable_of_interest])
+    legend_mpl_object = Graficador.set_legend_location(island)
     Graficador.set_x_lim(Modelo_Tendencia_Poblacional)
-    Graficador.set_y_lim(fit_data[interest_variable])
+    Graficador.set_y_lim(fit_data[variable_of_interest])
     Graficador.set_labels()
     Graficador.set_ticks(Modelo_Tendencia_Poblacional)
     Graficador.draw()
     Graficador.plot_growth_rate_interval(legend_mpl_object, lambda_latex)
-    Graficador.savefig(islet, output_path)
+    Graficador.savefig(island, output_path)
