@@ -27,7 +27,6 @@ class Population_Trend_Model:
         self.time_to_model = np.linspace(
             self.ticks_positions.min(), self.ticks_positions.max(), 100
         )
-        self.parameters = lambda_calculator(fit_data["Temporada"], fit_data[interest_variable])[1]
         self.parameters = fit_data[interest_variable].iloc[0]
 
     @property
