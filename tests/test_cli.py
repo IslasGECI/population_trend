@@ -22,6 +22,13 @@ output_figure = "tests/data/figure.png"
 def test_app():
     result = runner.invoke(
         app,
+        ["plot-population-trend", "--help"],
+    )
+    assert "XX" not in result.stdout
+    assert "[default: Guadalupe]" in result.stdout
+    assert "[default: Maxima_cantidad_nidos]" in result.stdout
+    result = runner.invoke(
+        app,
         [
             "plot-population-trend",
             "--data-path",
@@ -39,6 +46,14 @@ def test_app():
     assert result.exit_code == 0
     result = runner.invoke(
         app,
+        ["write-burrows-by-species-and-island", "--help"],
+    )
+    assert "[default: data/processed/subset_burrows_data.csv]" in result.stdout
+    assert "[default: Guadalupe Murrelet]" in result.stdout
+    assert "[default: Guadalupe]" in result.stdout
+    assert "[default: data/processed/gumu_guadalupe_burrows.csv]" in result.stdout
+    result = runner.invoke(
+        app,
         [
             "write-burrows-by-species-and-island",
             "--data-path",
@@ -52,6 +67,11 @@ def test_app():
         ],
     )
     assert result.exit_code == 0
+    result = runner.invoke(
+        app,
+        ["--help"],
+    )
+    assert "XX" not in result.stdout
 
 
 def test_write_burrows_by_species_and_island():
