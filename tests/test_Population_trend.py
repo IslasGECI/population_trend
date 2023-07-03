@@ -58,6 +58,13 @@ class Tests_Plotter_Population_Trend_Model:
         assert type(fig) == type(Plotter.fig)  # noqa
         assert Plotter.data is not None
 
+    def tests_time_to_model(self):
+        obtained = Plotter.time_to_model
+        expected_first_point = 1
+        assert obtained[0] == expected_first_point
+        expected_last_point = 2.05
+        assert obtained[-1] == expected_last_point
+
     def tests_savefig(self):
         islet = "morro"
         default_path = f"reports/figures/cormorant_population_trend_{islet}.png"
