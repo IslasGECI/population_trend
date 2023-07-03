@@ -49,13 +49,14 @@ def tests_calculate_upper_limit():
     assert expected_limit == obtained_limit
 
 
-Plotter = Plotter_Population_Trend_Model()
+Plotter = Plotter_Population_Trend_Model(cormorant_data)
 
 
 class Tests_Plotter_Population_Trend_Model:
     def tests_init_(self):
         fig, ax = geci_plot()
         assert type(fig) == type(Plotter.fig)  # noqa
+        assert Plotter.data is not None
 
     def tests_savefig(self):
         islet = "morro"
