@@ -51,8 +51,9 @@ class Population_Trend_Model:
 
 
 class Plotter_Population_Trend_Model:
-    def __init__(self):
+    def __init__(self, data):
         self.fig, self.ax = geci_plot()
+        self.data = data
 
     def plot_smooth(self, Population_Trend_Model):
         self.ax.fill_between(

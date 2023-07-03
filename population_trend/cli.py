@@ -37,7 +37,7 @@ def plot_population_trend(
     lambda_latex = intervals_json["lambda_latex_interval"]
 
     Modelo_Tendencia_Poblacional = Population_Trend_Model(fit_data, intervals, variable_of_interest)
-    Graficador = Plotter_Population_Trend_Model()
+    Graficador = Plotter_Population_Trend_Model(fit_data)
     Graficador.plot_smooth(Modelo_Tendencia_Poblacional)
     Graficador.plot_model(Modelo_Tendencia_Poblacional)
     Graficador.plot_data(Modelo_Tendencia_Poblacional, fit_data[variable_of_interest])
