@@ -10,6 +10,10 @@ def normalize_seasons(df):
     return np.linspace(first_season, last_season, last_season - first_season + 1).astype(int)
 
 
+def calculate_model_domain(data):
+    return np.linspace(data.Temporada.min(), data.Temporada.max(), 100)
+
+
 def calculate_upper_limit(data_interest_variable):
     upper_limit = roundup(
         data_interest_variable.max() * 1.2,
