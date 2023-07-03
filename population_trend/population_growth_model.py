@@ -26,11 +26,6 @@ def calculate_upper_limit(data_interest_variable):
 class Population_Trend_Model:
     def __init__(self, fit_data, intervals, interest_variable):
         self.intervals = intervals
-        self.ticks_text = normalize_seasons(fit_data)
-        self.ticks_positions = ticks_positions_array(self.ticks_text)
-        self.time_to_model = np.linspace(
-            self.ticks_positions.min(), self.ticks_positions.max(), 100
-        )
         self.xxtime_to_model = calculate_model_domain(fit_data)
         self.initial_population = lambda_calculator(
             fit_data["Temporada"], fit_data[interest_variable]

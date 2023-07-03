@@ -73,11 +73,3 @@ class Tests_Plotter_Population_Trend_Model:
             os.remove(output_path)
         Plotter.savefig(islet, output_path)
         assert os.path.exists(output_path)
-
-
-Model = Population_Trend_Model(cormorant_data, [1, 2, 3], "Temporada")
-
-
-class Test_Population_Trend_Model:
-    def test_ticks_text(self):
-        assert (Model.ticks_text == np.array([2020, 2021])).all()
