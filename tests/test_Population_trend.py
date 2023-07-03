@@ -90,6 +90,7 @@ class Test_Population_Trend_Model:
     with open(intervals_path, "r") as read_file:
         intervals_json = json.load(read_file)
     intervals = intervals_json["intervals"]
+    variable_of_interest = "Maxima_cantidad_nidos"
     pop_model = Population_Trend_Model(fit_data, intervals, variable_of_interest)
 
     def tests_model_med(self):
