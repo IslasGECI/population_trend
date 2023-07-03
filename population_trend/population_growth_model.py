@@ -26,7 +26,6 @@ def calculate_upper_limit(data_interest_variable):
 class Population_Trend_Model:
     def __init__(self, fit_data, intervals, interest_variable):
         self.intervals = intervals
-        self.plot_seasons = fit_data["Temporada"][:] - fit_data["Temporada"].iloc[0] + 1
         self.ticks_text = normalize_seasons(fit_data)
         self.ticks_positions = ticks_positions_array(self.ticks_text)
         self.time_to_model = np.linspace(
@@ -54,6 +53,7 @@ class Plotter_Population_Trend_Model:
     def __init__(self, data):
         self.fig, self.ax = geci_plot()
         self.data = data
+        self.plot_seasons = self.data["Temporada"][:] - self.data["Temporada"].iloc[0] + 1
 
     def plot_smooth(self, Population_Trend_Model):
         self.ax.fill_between(
@@ -76,7 +76,7 @@ class Plotter_Population_Trend_Model:
 
     def plot_data(self, Population_Trend_Model, fit_data):
         plt.plot(
-            Population_Trend_Model.plot_seasons,
+            self.plot_seasons,
             fit_data,
             "-Dk",
             label="Active Nests",
