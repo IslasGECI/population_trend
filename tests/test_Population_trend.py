@@ -2,7 +2,7 @@ from population_trend import (
     Population_Trend_Model,
     Plotter_Population_Trend_Model,
     filter_data_by_islet,
-    resample_seasons,
+    normalize_seasons,
     calculate_upper_limit,
 )
 from geci_plots import geci_plot
@@ -23,7 +23,7 @@ def test_filter_data_by_islet():
 
 def test_resample_seasons():
     expected_date = np.array([2020, 2021])
-    obtained_date = resample_seasons(cormorant_data)
+    obtained_date = normalize_seasons(cormorant_data)
     np.testing.assert_array_equal(expected_date, obtained_date)
 
 
