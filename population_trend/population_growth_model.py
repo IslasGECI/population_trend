@@ -101,7 +101,7 @@ class Plotter_Population_Trend_Model:
             calculate_upper_limit(fit_data),
         )
 
-    def set_x_lim(self, Population_Trend_Model):
+    def set_x_lim(self):
         plt.xlim(
             self.ticks_positions.min() - 0.2,
             self.ticks_positions.max(),
@@ -111,7 +111,7 @@ class Plotter_Population_Trend_Model:
         plt.ylabel("Number of breeding pairs", size=20)
         plt.xlabel("Seasons", size=20)
 
-    def set_ticks(self, Population_Trend_Model):
+    def set_ticks(self):
         plt.xticks(
             self.ticks_positions,
             self.ticks_text,
