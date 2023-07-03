@@ -97,3 +97,5 @@ class Test_Population_Trend_Model:
     def tests_model_med(self):
         obtained = pop_model.model_med
         assert type(obtained) == np.ndarray
+        expected_first_value = 24.75
+        np.testing.assert_almost_equal(obtained[0], expected_first_value, decimal=2)
