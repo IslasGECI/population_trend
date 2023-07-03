@@ -7,6 +7,7 @@ from population_trend import (
     Population_Trend_Model,
 )
 from geci_plots import geci_plot
+import json
 import os
 import pandas as pd
 import numpy as np
