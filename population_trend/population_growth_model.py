@@ -26,22 +26,22 @@ def calculate_upper_limit(data_interest_variable):
 class Population_Trend_Model:
     def __init__(self, fit_data, intervals, interest_variable):
         self.intervals = intervals
-        self.xxtime_to_model = calculate_model_domain(fit_data)
+        self.model_domain = calculate_model_domain(fit_data)
         self.initial_population = lambda_calculator(
             fit_data["Temporada"], fit_data[interest_variable]
         )[1]
 
     @property
     def model_min(self):
-        return power_law(self.xxtime_to_model, self.intervals[0], self.initial_population)
+        return power_law(self.model_domain, self.intervals[0], self.initial_population)
 
     @property
     def model_med(self):
-        return power_law(self.xxtime_to_model, self.intervals[1], self.initial_population)
+        return power_law(self.model_domain, self.intervals[1], self.initial_population)
 
     @property
     def model_max(self):
-        return power_law(self.xxtime_to_model, self.intervals[2], self.initial_population)
+        return power_law(self.model_domain, self.intervals[2], self.initial_population)
 
 
 class Plotter_Population_Trend_Model:
