@@ -38,6 +38,10 @@ def test_calculate_model_domain():
     expected_t0 = 0
     assert obtained_t0 == expected_t0
 
+    obtained_t0 = obtained[-1]
+    expected_t0 = 1
+    assert obtained_t0 == expected_t0
+
 
 def tests_calculate_upper_limit():
     expected_limit = calculate_upper_limit(cormorant_data["Temporada"])
