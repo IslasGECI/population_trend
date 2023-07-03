@@ -82,7 +82,7 @@ class Tests_Plotter_Population_Trend_Model:
         assert os.path.exists(output_path)
 
 
-def Test_Population_Trend_Model():
+class Test_Population_Trend_Model:
     data_path = "tests/data/gumu_guadalupe_data.csv"
     fit_data = pd.read_csv(data_path)
     intervals_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
@@ -91,7 +91,6 @@ def Test_Population_Trend_Model():
     intervals = intervals_json["intervals"]
     pop_model = Population_Trend_Model(fit_data, intervals, variable_of_interest)
 
-
-def tests_model_med():
-    obtained = pop_model.model_med()
-    assert typeof(obtained) == "Array"
+    def tests_model_med(self):
+        obtained = pop_model.model_med()
+        assert typeof(obtained) == "Array"
