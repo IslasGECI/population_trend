@@ -54,6 +54,7 @@ class Plotter_Population_Trend_Model:
         self.fig, self.ax = geci_plot()
         self.data = data
         self.plot_seasons = self.data["Temporada"][:] - self.data["Temporada"].iloc[0] + 1
+        self.ticks_text = normalize_seasons(self.data)
 
     def plot_smooth(self, Population_Trend_Model):
         self.ax.fill_between(
@@ -112,7 +113,7 @@ class Plotter_Population_Trend_Model:
     def set_ticks(self, Population_Trend_Model):
         plt.xticks(
             Population_Trend_Model.ticks_positions,
-            Population_Trend_Model.ticks_text,
+            self.ticks_text,
             rotation=90,
             size=20,
         )
