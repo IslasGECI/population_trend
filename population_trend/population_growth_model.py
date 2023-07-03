@@ -32,21 +32,22 @@ class Population_Trend_Model:
         self.time_to_model = np.linspace(
             self.ticks_positions.min(), self.ticks_positions.max(), 100
         )
+        self.xxtime_to_model = calculate_model_domain(fit_data)
         self.initial_population = lambda_calculator(
             fit_data["Temporada"], fit_data[interest_variable]
         )[1]
 
     @property
     def model_min(self):
-        return power_law(self.time_to_model, self.intervals[0], self.initial_population)
+        return power_law(self.xxtime_to_model, self.intervals[0], self.initial_population)
 
     @property
     def model_med(self):
-        return power_law(self.time_to_model, self.intervals[1], self.initial_population)
+        return power_law(self.xxtime_to_model, self.intervals[1], self.initial_population)
 
     @property
     def model_max(self):
-        return power_law(self.time_to_model, self.intervals[2], self.initial_population)
+        return power_law(self.xxtime_to_model, self.intervals[2], self.initial_population)
 
 
 class Plotter_Population_Trend_Model:
