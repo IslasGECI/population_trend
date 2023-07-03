@@ -1,9 +1,10 @@
 from population_trend import (
-    Population_Trend_Model,
-    Plotter_Population_Trend_Model,
+    calculate_model_domain,
+    calculate_upper_limit,
     filter_data_by_islet,
     normalize_seasons,
-    calculate_upper_limit,
+    Plotter_Population_Trend_Model,
+    Population_Trend_Model,
 )
 from geci_plots import geci_plot
 import os
@@ -21,10 +22,17 @@ def test_filter_data_by_islet():
     assert_frame_equal(expected_data, obtained_data)
 
 
-def test_resample_seasons():
+def test_normalize_seasons():
     expected_date = np.array([2020, 2021])
     obtained_date = normalize_seasons(cormorant_data)
     np.testing.assert_array_equal(expected_date, obtained_date)
+
+
+def test_calculate_model_domain():
+    obtained = calculate_model_domain(cormorant_data)
+    obtained_length = len(obtained)
+    expected_length = 100
+    assert obtained_length == expected_length
 
 
 def tests_calculate_upper_limit():
