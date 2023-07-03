@@ -51,13 +51,11 @@ class Plotter_Population_Trend_Model:
         self.plot_seasons = self.data["Temporada"][:] - self.data["Temporada"].iloc[0] + 1
         self.ticks_text = normalize_seasons(self.data)
         self.ticks_positions = ticks_positions_array(self.ticks_text)
-        self.time_to_model = np.linspace(
-            self.ticks_positions.min(), self.ticks_positions.max(), 100
-        )
+        self.plot_domain = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
 
     def plot_smooth(self, Population_Trend_Model):
         self.ax.fill_between(
-            self.time_to_model,
+            self.plot_domain,
             Population_Trend_Model.model_min,
             Population_Trend_Model.model_max,
             alpha=0.2,
@@ -67,7 +65,7 @@ class Plotter_Population_Trend_Model:
 
     def plot_model(self, Population_Trend_Model):
         plt.plot(
-            self.time_to_model,
+            self.plot_domain,
             Population_Trend_Model.model_med,
             label="Population growth model",
             color="b",

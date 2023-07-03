@@ -60,7 +60,7 @@ class Tests_Plotter_Population_Trend_Model:
         assert Plotter.data is not None
 
     def tests_time_to_model(self):
-        obtained = Plotter.time_to_model
+        obtained = Plotter.plot_domain
         expected_first_point = 1
         assert obtained[0] == expected_first_point
         expected_last_point = 2.05
