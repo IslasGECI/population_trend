@@ -11,7 +11,8 @@ def normalize_seasons(df):
 
 
 def calculate_model_domain(data):
-    return np.linspace(0, data.Temporada.max(), 100)
+    last_value = data.Temporada.max() - data.Temporada.min()
+    return np.linspace(0, last_value, 100)
 
 
 def calculate_upper_limit(data_interest_variable):
