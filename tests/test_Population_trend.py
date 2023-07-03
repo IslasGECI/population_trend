@@ -96,4 +96,4 @@ pop_model = Population_Trend_Model(fit_data, intervals, variable_of_interest)
 class Test_Population_Trend_Model:
     def tests_model_med(self):
         obtained = pop_model.model_med
-        assert type(obtained) == "Array"
+        assert type(obtained) == np.ndarray
