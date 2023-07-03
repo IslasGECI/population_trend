@@ -66,8 +66,6 @@ class Tests_Plotter_Population_Trend_Model:
             os.makedirs(default_folder)
         if os.path.exists(default_path):
             os.remove(default_path)
-        if os.path.exists(default_path):
-            os.remove(default_path)
         Plotter.savefig(islet)
         assert os.path.exists(default_path)
         output_path = "tests/data/prueba.png"

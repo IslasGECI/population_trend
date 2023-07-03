@@ -6,6 +6,7 @@ from population_trend import (
 import os
 import pandas as pd
 from typer.testing import CliRunner
+import hashlib
 
 
 runner = CliRunner()
@@ -91,3 +92,6 @@ def test_plot_population_trend():
         data_path=data_path, intervals_path=intervals_path, output_path=output_path
     )
     assert os.path.exists(output_path)
+    obtained_hash = hashlib.md5(open(output_path, "rb").read()).hexdigest()
+    expected_hash = "49ed36c120648bce8e9609690374c956"
+    assert obtained_hash == expected_hash
