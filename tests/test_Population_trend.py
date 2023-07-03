@@ -83,16 +83,17 @@ class Tests_Plotter_Population_Trend_Model:
         assert os.path.exists(output_path)
 
 
-class Test_Population_Trend_Model:
-    data_path = "tests/data/gumu_guadalupe_data.csv"
-    fit_data = pd.read_csv(data_path)
-    intervals_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
-    with open(intervals_path, "r") as read_file:
-        intervals_json = json.load(read_file)
-    intervals = intervals_json["intervals"]
-    variable_of_interest = "Maxima_cantidad_nidos"
-    pop_model = Population_Trend_Model(fit_data, intervals, variable_of_interest)
+data_path = "tests/data/gumu_guadalupe_data.csv"
+fit_data = pd.read_csv(data_path)
+intervals_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
+with open(intervals_path, "r") as read_file:
+    intervals_json = json.load(read_file)
+intervals = intervals_json["intervals"]
+variable_of_interest = "Maxima_cantidad_nidos"
+pop_model = Population_Trend_Model(fit_data, intervals, variable_of_interest)
 
+
+class Test_Population_Trend_Model:
     def tests_model_med(self):
         obtained = pop_model.model_med()
-        assert typeof(obtained) == "Array"
+        assert type(obtained) == "Array"
