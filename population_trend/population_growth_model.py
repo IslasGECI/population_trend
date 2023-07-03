@@ -72,7 +72,7 @@ class Plotter_Population_Trend_Model:
 
     def plot_model(self, Population_Trend_Model):
         plt.plot(
-            Population_Trend_Model.time_to_model,
+            self.time_to_model,
             Population_Trend_Model.model_med,
             label="Population growth model",
             color="b",
