@@ -55,6 +55,7 @@ class Plotter_Population_Trend_Model:
         self.data = data
         self.plot_seasons = self.data["Temporada"][:] - self.data["Temporada"].iloc[0] + 1
         self.ticks_text = normalize_seasons(self.data)
+        self.ticks_positions = ticks_positions_array(self.ticks_text)
 
     def plot_smooth(self, Population_Trend_Model):
         self.ax.fill_between(
@@ -102,8 +103,8 @@ class Plotter_Population_Trend_Model:
 
     def set_x_lim(self, Population_Trend_Model):
         plt.xlim(
-            Population_Trend_Model.ticks_positions.min() - 0.2,
-            Population_Trend_Model.ticks_positions.max(),
+            self.ticks_positions.min() - 0.2,
+            self.ticks_positions.max(),
         )
 
     def set_labels(self):
@@ -112,7 +113,7 @@ class Plotter_Population_Trend_Model:
 
     def set_ticks(self, Population_Trend_Model):
         plt.xticks(
-            Population_Trend_Model.ticks_positions,
+            self.ticks_positions,
             self.ticks_text,
             rotation=90,
             size=20,
