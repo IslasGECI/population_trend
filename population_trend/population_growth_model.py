@@ -75,11 +75,7 @@ class Plotter_Population_Trend_Model:
         )
         return self.fig
 
-    def plot_data(self, Population_Trend_Model, fit_data):
-        variable_to_bootstrap = "Maxima_cantidad_nidos"
-        self.xxplot_data(variable_to_bootstrap)
-
-    def xxplot_data(self, variable_to_bootstrap):
+    def plot_data(self, variable_to_bootstrap):
         plt.plot(
             self.plot_seasons,
             self.data[variable_to_bootstrap],
