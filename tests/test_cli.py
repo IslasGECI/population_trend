@@ -82,6 +82,8 @@ def test_app():
             "write-bootstrap-intervals-json",
             "--data-path",
             data_gumu_path,
+            "--blocks-length",
+            1,
             "--output-path",
             output_json,
         ],
