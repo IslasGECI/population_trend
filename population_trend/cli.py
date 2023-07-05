@@ -18,10 +18,13 @@ app = typer.Typer(help="Write filtered burrows data by species and island")
 def write_bootstrap_intervals_json(
     data_path: str = "data/processed/gumu_guadalupe_burrows.csv",
     blocks_length: int = 3,
+    bootstrap_number: int = 2000,
     output_path: str = "reports/non-tabular/gumu_guadalupe_boostrap_intervals.json",
 ):
     data = pd.read_csv(data_path)
-    parametrizer = Bootstrap_from_time_series_parameterizer(blocks_length=blocks_length)
+    parametrizer = Bootstrap_from_time_series_parameterizer(
+        blocks_length=blocks_length, N=bootstrap_number
+    )
     parametrizer.set_data(data)
     bootstrap = Bootstrap_from_time_series(parametrizer)
     bootstrap.save_intervals(output_path)

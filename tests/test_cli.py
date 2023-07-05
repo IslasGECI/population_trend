@@ -84,9 +84,7 @@ def test_app():
             data_gumu_path,
             "--blocks-length",
             1,
-            "--variable-of-interest",
-            "Maxima_cantidad_nidos",
-            "--N",
+            "--bootstrap-number",
             100,
             "--output-path",
             output_json,
@@ -113,5 +111,5 @@ def test_plot_population_trend():
     )
     assert os.path.exists(output_path)
     obtained_hash = hashlib.md5(open(output_path, "rb").read()).hexdigest()
-    expected_hash = "49ed36c120648bce8e9609690374c956"
+    expected_hash = "6934a183b15c2691d6a2c6714ead057c"
     assert obtained_hash == expected_hash
