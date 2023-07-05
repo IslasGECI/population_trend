@@ -14,6 +14,7 @@ app = typer.Typer(help="Write filtered burrows data by species and island")
 @app.command(help="Write json with bootstrap intervals")
 def write_bootstrap_intervals_json(
     data_path: str = "data/processed/gumu_guadalupe_burrows.csv",
+    blocks_length: int = 3,
     output_path: str = "reports/non-tabular/gumu_guadalupe_boostrap_intervals.json",
 ):
     data = pd.read_csv(data_path)
