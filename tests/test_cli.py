@@ -75,6 +75,7 @@ def test_app():
     assert "XX" not in result.stdout
 
     data_gumu_path = "tests/data/gumu_guadalupe_data.csv"
+    output_json = "tests/data/gumu_guadalupe_tests.json"
     result = runner.invoke(
         app,
         [
@@ -82,7 +83,7 @@ def test_app():
             "--data-path",
             data_gumu_path,
             "--output-path",
-            output_figure,
+            output_json,
         ],
     )
     assert result.exit_code == 0

@@ -3,11 +3,24 @@ from population_trend.population_growth_model import (
     Population_Trend_Model,
     Plotter_Population_Trend_Model,
 )
+from population_trend.calculate_growth_rates import Bootstrap, Bootstrap_from_time_series
 import pandas as pd
 import typer
 import json
 
 app = typer.Typer(help="Write filtered burrows data by species and island")
+
+
+@app.command(help="Write json with bootstrap intervals")
+def write_bootstrap_intervals_json(
+    data_path: str = "data/processed/gumu_guadalupe_burrows.csv",
+    output_path: str = "reports/non-tabular/gumu_guadalupe_boostrap_intervals.json",
+):
+    data = pd.read_csv(data_path)
+    parametrizer = Bootstrap["default"]
+    parametrizer.set_data(data)
+    bootstrap = Bootstrap_from_time_series(parametrizer)
+    bootstrap.save_intervals(output_path)
 
 
 @app.command(help="Write csv with ouput-path")
