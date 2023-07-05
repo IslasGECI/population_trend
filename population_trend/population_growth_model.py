@@ -37,7 +37,7 @@ class Population_Trend_Model:
 
     @property
     def model_med(self):
-        return power_law(self.model_domain, self.initial_population[0], self.initial_population[1])
+        return power_law(self.model_domain, self.intervals[1][0], self.intervals[1][1])
 
     @property
     def model_max(self):
