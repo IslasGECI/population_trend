@@ -10,7 +10,7 @@ description-file = "README.md"
 home-page = "https://github.com/IslasGECI/population_trend"
 module = "population_trend"
 requires = [
-	"bootstrapping-tools==2.0.0",
+	"bootstrapping-tools==3.0.0",
 	"geci-plots",
 	"typer"
 ]
