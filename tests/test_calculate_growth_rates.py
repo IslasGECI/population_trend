@@ -42,6 +42,8 @@ def test_save_intervals():
     assert_array_almost_equal(obtained_values[0], expected_intervals, decimal=5)
     expected_latex_interval = "${1.21}_{-0.1}^{+0.22}$"
     assert obtained_values[1] == expected_latex_interval
+    obtained_min_lambda = min(obtained_values[2])
+    assert obtained_min_lambda[0] >= expected_intervals[0][0]
 
 
 def test_calculate_interest_numbers():
