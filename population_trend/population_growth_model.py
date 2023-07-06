@@ -30,10 +30,12 @@ class Population_Trend_Model:
         self.initial_population = lambda_calculator(
             fit_data["Temporada"], fit_data[interest_variable]
         )
+        self.bootstrap_distribution = json_parameters["bootstrap_distribution"]
 
-    @property
-    def intermediate(self):
-        return [i for i in range(10)]
+    def intermediate(self, i):
+        return power_law(
+            self.model_domain, self.bootstrap_distribution[i][0], self.bootstrap_distribution[i][1]
+        )
 
     @property
     def model_min(self):
