@@ -32,6 +32,10 @@ class Population_Trend_Model:
         )
 
     @property
+    def intermediate(self):
+        return [i for i in range(10)]
+
+    @property
     def model_min(self):
         return power_law(self.model_domain, self.intervals[0][0], self.intervals[0][1])
 
