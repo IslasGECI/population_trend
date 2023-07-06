@@ -57,10 +57,21 @@ class Plotter_Population_Trend_Model:
         self.ax.fill_between(
             self.plot_domain,
             Population_Trend_Model.model_min,
-            Population_Trend_Model.model_max,
-            alpha=0.2,
+            Population_Trend_Model.model_med,
             label="Confidence zone",
-            color="b",
+            color="powderblue",
+        )
+        self.ax.fill_between(
+            self.plot_domain,
+            Population_Trend_Model.model_med,
+            Population_Trend_Model.model_max,
+            color="powderblue",
+        )
+        self.ax.fill_between(
+            self.plot_domain,
+            Population_Trend_Model.model_min,
+            Population_Trend_Model.model_max,
+            color="powderblue",
         )
 
     def plot_model(self, Population_Trend_Model):

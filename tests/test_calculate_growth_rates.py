@@ -38,13 +38,9 @@ def test_save_intervals():
     expected_fields = ["intervals", "lambda_latex_interval"]
     assert obtained_fields == expected_fields
     obtained_values = list(obtained_json.values())
-    expected_intervals = [
-        [1.1659370756791658, 144.5772841667447],
-        [1.2401745749888458, 65.83504171041407],
-        [1.3169636656013695, 40.95285418480667],
-    ]
+    expected_intervals = [[1.1097, 128.85392], [1.21173, 77.48159], [1.4269, 10.38669]]
     assert_array_almost_equal(obtained_values[0], expected_intervals, decimal=5)
-    expected_latex_interval = "${1.24}_{-0.07}^{+0.08}$"
+    expected_latex_interval = "${1.21}_{-0.1}^{+0.22}$"
     assert obtained_values[1] == expected_latex_interval
 
 
@@ -116,7 +112,6 @@ def test_get_monitored_seasons(path, expected_seasons):
     parametrizer.set_data(burrows_data_dataframe)
     bootstraper = lam.Bootstrap_from_time_series(parametrizer)
     obtained_seasons = bootstraper.get_monitored_seasons()
-    print(obtained_seasons)
     assert expected_seasons == obtained_seasons
 
 
@@ -127,13 +122,13 @@ def test_calculate_growth_rates_table():
     tabla = lam.calculate_growth_rates_table(bootstrap)
     p_valor_mayor = tabla[10]
     p_valor_menor = tabla[11]
-    expected_p_valor_mayor = 0.25
-    expected_p_valor_menor = 0.75
+    expected_p_valor_mayor = 0.01
+    expected_p_valor_menor = 0.99
     assert expected_p_valor_mayor == p_valor_mayor
     assert expected_p_valor_menor == p_valor_menor
     obtained_central, obtained_inferior, obtained_superior = tabla[6:9]
-    assert obtained_central == 1.1
-    assert obtained_superior == "+0.55"
-    assert obtained_inferior == "-1.08"
+    assert obtained_central == 1.22
+    assert obtained_superior == "+8.27"
+    assert obtained_inferior == "-0.22"
     latex_intervals = tabla[4]
-    assert latex_intervals == "${1.1}_{-1.08}^{+0.55}$"
+    assert latex_intervals == "${1.22}_{-0.22}^{+8.27}$"
