@@ -104,3 +104,9 @@ class Test_Population_Trend_Model:
         assert type(obtained) == np.ndarray
         expected_first_value = 24.23
         np.testing.assert_almost_equal(obtained[0], expected_first_value, decimal=2)
+
+    def tests_intermediate(self):
+        obtained_intermediate = pop_model.intermediate
+        expected_rows = 10
+        obtained_rows = len(obtained_intermediate)
+        assert obtained_rows == expected_rows
