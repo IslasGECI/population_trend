@@ -148,11 +148,18 @@ class Bootstrap_from_time_series:
         )
         return model
 
+    def get_intermediate_lambdas(self):
+        return [
+            lambda_n0
+            for lambda_n0 in self.lambdas_distribution
+            if lambda_n0[0] > self.intervals[0][0]
+        ]
+
     def save_intervals(self, output_path):
         json_dict = {
             "intervals": list(self.intervals),
             "lambda_latex_interval": self.get_lambda_interval_latex_string(),
-            "bootstrap_distribution": [],
+            "bootstrap_distribution": self.get_intermediate_lambdas(),
         }
         with open(output_path, "w") as file:
             json.dump(json_dict, file)
