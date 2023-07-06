@@ -105,7 +105,8 @@ class Test_Population_Trend_Model:
         np.testing.assert_almost_equal(obtained[0], expected_first_value, decimal=2)
 
     def tests_intermediate(self):
-        obtained_intermediate = pop_model.intermediate
-        expected_rows = 10
+        index = 1
+        obtained_intermediate = pop_model.intermediate(index)
+        expected_rows = 100
         obtained_rows = len(obtained_intermediate)
         assert obtained_rows == expected_rows
