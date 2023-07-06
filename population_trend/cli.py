@@ -53,10 +53,11 @@ def plot_population_trend(
     fit_data = pd.read_csv(data_path)
     with open(intervals_path, "r") as read_file:
         intervals_json = json.load(read_file)
-    intervals = intervals_json
     lambda_latex = intervals_json["lambda_latex_interval"]
 
-    Modelo_Tendencia_Poblacional = Population_Trend_Model(fit_data, intervals, variable_of_interest)
+    Modelo_Tendencia_Poblacional = Population_Trend_Model(
+        fit_data, intervals_json, variable_of_interest
+    )
     Graficador = Plotter_Population_Trend_Model(fit_data)
     Graficador.plot_smooth(Modelo_Tendencia_Poblacional)
     Graficador.plot_model(Modelo_Tendencia_Poblacional)

@@ -24,8 +24,8 @@ def calculate_upper_limit(data_interest_variable):
 
 
 class Population_Trend_Model:
-    def __init__(self, fit_data, intervals, interest_variable):
-        self.intervals = intervals["intervals"]
+    def __init__(self, fit_data, json_parameters, interest_variable):
+        self.intervals = json_parameters["intervals"]
         self.model_domain = calculate_model_domain(fit_data)
         self.initial_population = lambda_calculator(
             fit_data["Temporada"], fit_data[interest_variable]
