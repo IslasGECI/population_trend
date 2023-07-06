@@ -44,6 +44,8 @@ def test_save_intervals():
     assert obtained_values[1] == expected_latex_interval
     obtained_min_lambda = min(obtained_values[2])
     assert obtained_min_lambda[0] >= expected_intervals[0][0]
+    obtained_max_lambda = max(obtained_values[2])
+    assert obtained_max_lambda[0] <= expected_intervals[2][0]
 
 
 def test_calculate_interest_numbers():
