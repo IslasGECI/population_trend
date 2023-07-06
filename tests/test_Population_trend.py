@@ -99,14 +99,14 @@ class Test_Population_Trend_Model:
         obtained_max_lambda = pop_model.intervals[2][0]
         assert obtained_min_lambda < obtained_lambda_and_n0_no_bootstrap
         assert obtained_lambda_and_n0_no_bootstrap < obtained_max_lambda
-        obtained = pop_model.model_med
+        obtained = pop_model.med_model
         assert type(obtained) == np.ndarray
         expected_first_value = 24.23
         np.testing.assert_almost_equal(obtained[0], expected_first_value, decimal=2)
 
     def tests_intermediate(self):
         index = 1
-        obtained_intermediate = pop_model.intermediate(index)
+        obtained_intermediate = pop_model.intern_model(index)
         expected_rows = 100
         obtained_rows = len(obtained_intermediate)
         assert obtained_rows == expected_rows

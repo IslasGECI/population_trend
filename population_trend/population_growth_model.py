@@ -32,21 +32,21 @@ class Population_Trend_Model:
         )
         self.bootstrap_distribution = json_parameters["bootstrap_distribution"]
 
-    def intermediate(self, i):
+    def intern_model(self, i):
         return power_law(
             self.model_domain, self.bootstrap_distribution[i][0], self.bootstrap_distribution[i][1]
         )
 
     @property
-    def model_min(self):
+    def min_model(self):
         return power_law(self.model_domain, self.intervals[0][0], self.intervals[0][1])
 
     @property
-    def model_med(self):
+    def med_model(self):
         return power_law(self.model_domain, self.intervals[1][0], self.intervals[1][1])
 
     @property
-    def model_max(self):
+    def max_model(self):
         return power_law(self.model_domain, self.intervals[2][0], self.intervals[2][1])
 
 
@@ -62,28 +62,28 @@ class Plotter_Population_Trend_Model:
     def plot_smooth(self, Population_Trend_Model):
         self.ax.fill_between(
             self.plot_domain,
-            Population_Trend_Model.model_min,
-            Population_Trend_Model.model_med,
+            Population_Trend_Model.min_model,
+            Population_Trend_Model.med_model,
             label="Confidence zone",
             color="powderblue",
         )
         self.ax.fill_between(
             self.plot_domain,
-            Population_Trend_Model.model_med,
-            Population_Trend_Model.model_max,
+            Population_Trend_Model.med_model,
+            Population_Trend_Model.max_model,
             color="powderblue",
         )
         self.ax.fill_between(
             self.plot_domain,
-            Population_Trend_Model.model_min,
-            Population_Trend_Model.model_max,
+            Population_Trend_Model.min_model,
+            Population_Trend_Model.max_model,
             color="powderblue",
         )
 
     def plot_model(self, Population_Trend_Model):
         plt.plot(
             self.plot_domain,
-            Population_Trend_Model.model_med,
+            Population_Trend_Model.med_model,
             label="Population growth model",
             color="b",
         )
