@@ -5,6 +5,7 @@ from population_trend import (
     normalize_seasons,
     Plotter_Population_Trend_Model,
     Population_Trend_Model,
+    xxPlotter_Population_Trend_Model,
 )
 from geci_plots import geci_plot
 import json
@@ -50,7 +51,16 @@ def tests_calculate_upper_limit():
     assert expected_limit == obtained_limit
 
 
-Plotter = Plotter_Population_Trend_Model(cormorant_data)
+cormorant_data_for_plotter = pd.DataFrame(
+    {"Maxima_cantidad_nidos": [1, 1, 2], "Temporada": [2020, 2021, 2020]}
+)
+Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter)
+pop_model = Population_Trend_Model(
+    cormorant_data_for_plotter,
+    {"intervals": [], "bootstrap_distribution": []},
+    "Maxima_cantidad_nidos",
+)
+Plotter = xxPlotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model)
 
 
 class Tests_Plotter_Population_Trend_Model:
