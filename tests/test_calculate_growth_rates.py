@@ -40,7 +40,7 @@ def test_save_intervals():
     obtained_values = list(obtained_json.values())
     expected_intervals = [[1.1097, 128.85392], [1.21173, 77.48159], [1.4269, 10.38669]]
     assert_array_almost_equal(obtained_values[0], expected_intervals, decimal=5)
-    expected_latex_interval = "${1.21}_{-0.1}^{+0.22}$"
+    expected_latex_interval = "1.21 (1.11 - 1.43)"
     assert obtained_values[1] == expected_latex_interval
     obtained_min_lambda = min(obtained_values[2])
     assert obtained_min_lambda[0] >= expected_intervals[0][0]
@@ -135,4 +135,4 @@ def test_calculate_growth_rates_table():
     assert obtained_superior == "+8.27"
     assert obtained_inferior == "-0.22"
     latex_intervals = tabla[4]
-    assert latex_intervals == "${1.22}_{-0.22}^{+8.27}$"
+    assert latex_intervals == "1.22 (1.0 - 9.49)"

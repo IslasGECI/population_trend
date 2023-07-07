@@ -122,7 +122,9 @@ class Bootstrap_from_time_series:
         return inferior_limit, central, superior_limit
 
     def get_lambda_interval_latex_string(self):
-        lambda_latex_string = generate_latex_interval_string(self.lambdas, **{"decimals": 2})
+        lambda_latex_string = generate_latex_interval_string(
+            self.lambdas, deltas=False, **{"decimals": 2}
+        )
         return lambda_latex_string
 
     def generate_season_interval(self):
