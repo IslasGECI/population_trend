@@ -160,6 +160,11 @@ class Plotter_Population_Trend_Model:
         plt.draw()
 
     def savefig(self, islet, output_path=None):
+        self.set_x_lim()
+        self.set_y_lim()
+        self.set_labels()
+        self.set_ticks()
+        self.draw()
         if output_path is None:
             plt.savefig(
                 "reports/figures/cormorant_population_trend_{}".format(
