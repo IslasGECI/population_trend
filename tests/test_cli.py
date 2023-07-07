@@ -1,9 +1,12 @@
 from population_trend import (
     app,
+    plot_population_trend,
     write_burrows_by_species_and_island,
 )
+import os
 import pandas as pd
 from typer.testing import CliRunner
+import hashlib
 
 
 runner = CliRunner()
@@ -85,6 +88,24 @@ def test_app():
             10,
             "--output-path",
             output_json,
+        ],
+    )
+    assert result.exit_code == 0
+
+    result = runner.invoke(
+        app,
+        [
+            "write-bootstrap-intervals-json",
+            "--data-path",
+            data_gumu_path,
+            "--blocks-length",
+            3,
+            "--bootstrap-number",
+            10,
+            "--output-path",
+            output_json,
+            "--variable-of-interest",
+            "Cantidad de nidos",
         ],
     )
     assert result.exit_code == 0
