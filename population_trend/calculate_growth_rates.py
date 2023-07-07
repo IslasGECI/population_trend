@@ -81,10 +81,10 @@ def calculate_percent_diff_in_seasons(cantidad_nidos, model):
 
 
 class Bootstrap_from_time_series_parameterizer:
-    def __init__(self, blocks_length=3, N=2000):
+    def __init__(self, blocks_length=3, N=2000, column_name="Maxima_cantidad_nidos"):
         self.parameters = dict(
             dataframe=None,
-            column_name="Maxima_cantidad_nidos",
+            column_name=column_name,
             N=N,
             return_distribution=True,
             blocks_length=blocks_length,

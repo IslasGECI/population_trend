@@ -19,11 +19,12 @@ def write_bootstrap_intervals_json(
     data_path: str = "data/processed/gumu_guadalupe_burrows.csv",
     blocks_length: int = 3,
     bootstrap_number: int = 2000,
+    variable_of_interest: str = "Maxima_cantidad_nidos",
     output_path: str = "reports/non-tabular/gumu_guadalupe_boostrap_intervals.json",
 ):
     data = pd.read_csv(data_path)
     parametrizer = Bootstrap_from_time_series_parameterizer(
-        blocks_length=blocks_length, N=bootstrap_number
+        blocks_length=blocks_length, N=bootstrap_number, column_name=variable_of_interest
     )
     parametrizer.set_data(data)
     bootstrap = Bootstrap_from_time_series(parametrizer)
