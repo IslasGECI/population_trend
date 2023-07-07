@@ -54,7 +54,6 @@ def tests_calculate_upper_limit():
 cormorant_data_for_plotter = pd.DataFrame(
     {"Maxima_cantidad_nidos": [1, 1, 2], "Temporada": [2020, 2021, 2020]}
 )
-Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter)
 pop_model = Population_Trend_Model(
     cormorant_data_for_plotter,
     {"intervals": [], "bootstrap_distribution": []},
