@@ -31,6 +31,7 @@ class Population_Trend_Model:
             fit_data["Temporada"], fit_data[interest_variable]
         )
         self.bootstrap_distribution = json_parameters["bootstrap_distribution"]
+        self.interest_variable = interest_variable
 
     def intern_model(self, i):
         return power_law(
