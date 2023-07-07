@@ -64,7 +64,7 @@ def plot_population_trend(
     Graficador.plot_data(variable_of_interest)
     legend_mpl_object = Graficador.set_legend_location(island)
     Graficador.set_x_lim()
-    Graficador.set_y_lim(fit_data[variable_of_interest])
+    Graficador.set_y_lim()
     Graficador.set_labels()
     Graficador.set_ticks()
     Graficador.draw()
