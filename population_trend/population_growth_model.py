@@ -133,7 +133,7 @@ class Plotter_Population_Trend_Model:
     def set_y_lim(self, fit_data):
         self.ax.set_ylim(
             0,
-            calculate_upper_limit(fit_data),
+            calculate_upper_limit(self.data[self.interest_variable]),
         )
 
     def set_x_lim(self):
