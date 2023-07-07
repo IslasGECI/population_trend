@@ -79,7 +79,8 @@ class Plotter_Population_Trend_Model:
             Population_Trend_Model.max_model,
             color="powderblue",
         )
-        for i in range(0, len(Population_Trend_Model.bootstrap_distribution) - 1, 10):
+        number_of_samples = len(Population_Trend_Model.bootstrap_distribution)
+        for i in range(0, number_of_samples - 1, 10):
             self.ax.fill_between(
                 self.plot_domain,
                 Population_Trend_Model.intern_model(i),
@@ -92,6 +93,12 @@ class Plotter_Population_Trend_Model:
                 Population_Trend_Model.intern_model(i + 1),
                 color="powderblue",
             )
+        self.ax.fill_between(
+            self.plot_domain,
+            Population_Trend_Model.intern_model(number_of_samples - 1),
+            Population_Trend_Model.med_model,
+            color="powderblue",
+        )
 
     def plot_model(self, Population_Trend_Model):
         plt.plot(
