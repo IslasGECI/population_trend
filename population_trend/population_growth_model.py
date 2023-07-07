@@ -53,6 +53,9 @@ class Population_Trend_Model:
 
 class Plotter_Population_Trend_Model:
     def __init__(self, data):
+        self.xx__init__(data, None)
+
+    def xx__init__(self, data, Population_Trend_Model):
         self.fig, self.ax = geci_plot()
         self.data = data
         self.plot_seasons = self.data["Temporada"][:] - self.data["Temporada"].iloc[0] + 1
