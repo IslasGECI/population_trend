@@ -1,12 +1,31 @@
+import hashlib
 import pytest
 from unittest.mock import Mock
 import pandas as pd
 import numpy as np
+import os
 
 from population_trend import (
     Population_Trend_Model,
     Plotter_Population_Trend_Model,
+    plot_population_trend,
 )
+
+intervals_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
+
+
+def test_plot_population_trend():
+    data_path = "tests/data/gumu_guadalupe_data.csv"
+    output_path = "tests/data/gumu_guadalupe_population_trend.png"
+    if os.path.exists(output_path):
+        os.remove(output_path)
+    plot_population_trend(
+        data_path=data_path, intervals_path=intervals_path, output_path=output_path
+    )
+    assert os.path.exists(output_path)
+    obtained_hash = hashlib.md5(open(output_path, "rb").read()).hexdigest()
+    expected_hash = "ab0882c0f6ca3934a977a32991fde718"
+    assert obtained_hash == expected_hash
 
 
 @pytest.mark.mpl_image_compare
