@@ -1,12 +1,9 @@
 from population_trend import (
     app,
-    plot_population_trend,
     write_burrows_by_species_and_island,
 )
-import os
 import pandas as pd
 from typer.testing import CliRunner
-import hashlib
 
 
 runner = CliRunner()
