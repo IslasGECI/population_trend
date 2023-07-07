@@ -52,13 +52,14 @@ class Population_Trend_Model:
 
 
 class Plotter_Population_Trend_Model:
-    def __init__(self, data, popuplation_model):
+    def __init__(self, data, population_model):
         self.fig, self.ax = geci_plot()
         self.data = data
         self.plot_seasons = self.data["Temporada"][:] - self.data["Temporada"].iloc[0] + 1
         self.ticks_text = normalize_seasons(self.data)
         self.ticks_positions = ticks_positions_array(self.ticks_text)
         self.plot_domain = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
+        self.interest_variable = population_model.interest_variable
 
     def plot_smooth(self, Population_Trend_Model):
         self.ax.fill_between(

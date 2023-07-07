@@ -13,6 +13,7 @@ from population_trend import (
 def tests_Plotter_Population_Trend_Model():
     model = Mock(spec=Population_Trend_Model)
     model.med_model = np.linspace(1, 3, 100)
+    model.interest_variable = "Maxima_cantidad_nidos"
     dataframe = pd.DataFrame({"Isla": [1, 3], "Temporada": [2020, 2021]})
     Plotter = Plotter_Population_Trend_Model(dataframe, model)
     Plotter.set_labels()
