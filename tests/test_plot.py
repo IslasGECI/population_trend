@@ -5,7 +5,6 @@ import numpy as np
 
 from population_trend import (
     Population_Trend_Model,
-    Plotter_Population_Trend_Model,
     xxPlotter_Population_Trend_Model,
 )
 
