@@ -114,7 +114,7 @@ class Plotter_Population_Trend_Model:
     def plot_data(self, variable_to_bootstrap):
         plt.plot(
             self.plot_seasons,
-            self.data[variable_to_bootstrap],
+            self.data[self.interest_variable],
             "-Dk",
             label="Active Nests",
         )
