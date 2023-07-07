@@ -5,7 +5,7 @@ import numpy as np
 
 from population_trend import (
     Population_Trend_Model,
-    xxPlotter_Population_Trend_Model,
+    Plotter_Population_Trend_Model,
 )
 
 
@@ -14,6 +14,6 @@ def tests_Plotter_Population_Trend_Model():
     model = Mock(spec=Population_Trend_Model)
     model.med_model = np.linspace(1, 3, 100)
     dataframe = pd.DataFrame({"Isla": [1, 3], "Temporada": [2020, 2021]})
-    Plotter = xxPlotter_Population_Trend_Model(dataframe, model)
+    Plotter = Plotter_Population_Trend_Model(dataframe, model)
     Plotter.set_labels()
     return Plotter.plot_model(model)

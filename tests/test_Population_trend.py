@@ -4,7 +4,7 @@ from population_trend import (
     filter_data_by_islet,
     normalize_seasons,
     Population_Trend_Model,
-    xxPlotter_Population_Trend_Model,
+    Plotter_Population_Trend_Model,
 )
 from geci_plots import geci_plot
 import json
@@ -58,7 +58,7 @@ pop_model = Population_Trend_Model(
     {"intervals": [], "bootstrap_distribution": []},
     "Maxima_cantidad_nidos",
 )
-Plotter = xxPlotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model)
+Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model)
 
 
 class Tests_Plotter_Population_Trend_Model:

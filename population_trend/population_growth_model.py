@@ -51,7 +51,7 @@ class Population_Trend_Model:
         return power_law(self.model_domain, self.intervals[2][0], self.intervals[2][1])
 
 
-class xxPlotter_Population_Trend_Model:
+class Plotter_Population_Trend_Model:
     def __init__(self, data, popuplation_model):
         self.fig, self.ax = geci_plot()
         self.data = data
