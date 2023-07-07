@@ -1,7 +1,6 @@
 from population_trend.filter_data import filter_by_species_and_island
 from population_trend.population_growth_model import (
     Population_Trend_Model,
-    Plotter_Population_Trend_Model,
     xxPlotter_Population_Trend_Model,
 )
 from population_trend.calculate_growth_rates import (
