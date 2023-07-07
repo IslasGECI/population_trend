@@ -95,7 +95,7 @@ class Plotter_Population_Trend_Model:
             )
         self.ax.fill_between(
             self.plot_domain,
-            Population_Trend_Model.intern_model(number_of_samples - 1),
+            Population_Trend_Model.intern_model(i + 1),
             Population_Trend_Model.med_model,
             color="powderblue",
         )
