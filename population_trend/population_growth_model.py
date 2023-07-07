@@ -111,7 +111,7 @@ class Plotter_Population_Trend_Model:
         )
         return self.fig
 
-    def plot_data(self, variable_to_bootstrap):
+    def plot_data(self):
         plt.plot(
             self.plot_seasons,
             self.data[self.interest_variable],
