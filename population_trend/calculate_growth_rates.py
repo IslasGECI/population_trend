@@ -170,7 +170,7 @@ class Bootstrap_from_time_series:
 
     def save_intervals(self, output_path):
         json_dict = {
-            "intervals": list(self.intervals),
+            "intervals": list(self._intervals),
             "lambda_latex_interval": self.get_lambda_interval_latex_string(),
             "bootstrap_distribution": self.get_intermediate_lambdas(),
         }
