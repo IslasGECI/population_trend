@@ -165,7 +165,7 @@ class Bootstrap_from_time_series:
         return [
             lambda_n0
             for lambda_n0 in self.lambdas_distribution
-            if (lambda_n0[0] > self.intervals[0][0]) and (lambda_n0[0] < self.intervals[2][0])
+            if (lambda_n0[0] > self._intervals[0][0]) and (lambda_n0[0] < self._intervals[2][0])
         ]
 
     def save_intervals(self, output_path):
