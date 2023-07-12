@@ -40,7 +40,7 @@ def test_save_intervals():
     obtained_values = list(obtained_json.values())
     expected_intervals = [[1.1097, 128.85392], [1.21173, 77.48159], [1.4269, 10.38669]]
     assert_array_almost_equal(obtained_values[0], expected_intervals, decimal=5)
-    expected_latex_interval = "1.21 (1.11 - 1.43)"
+    expected_latex_interval = "1.21 (1.12 - 1.43)"
     assert obtained_values[1] == expected_latex_interval
     obtained_min_lambda = min(obtained_values[2])
     assert obtained_min_lambda[0] >= expected_intervals[0][0]

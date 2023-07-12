@@ -108,8 +108,8 @@ class Bootstrap_from_time_series:
         self.lambdas_distribution, self.intervals = self._calculate_distribution_and_interval()
         self.season_series = self.parameters["dataframe"]["Temporada"]
         self.data_series = self.parameters["dataframe"][self.parameters["column_name"]]
-        self.lambdas = [interval[0] for interval in self.intervals]
         self._intervals = self.intervals_from_p_values_and_alpha()
+        self.lambdas = [interval[0] for interval in self._intervals]
 
     def intervals_from_p_values_and_alpha(self):
         p_value_mayor, p_value_menor = calculate_p_values(self.lambdas_distribution)
