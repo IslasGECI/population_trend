@@ -20,6 +20,7 @@ def write_bootstrap_intervals_json(
     blocks_length: int = 3,
     bootstrap_number: int = 2000,
     variable_of_interest: str = "Maxima_cantidad_nidos",
+    alpha: float = 0.05,
     output_path: str = "reports/non-tabular/gumu_guadalupe_boostrap_intervals.json",
 ):
     data = pd.read_csv(data_path)
