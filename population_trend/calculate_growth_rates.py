@@ -107,6 +107,7 @@ class Bootstrap_from_time_series:
         self.season_series = self.parameters["dataframe"]["Temporada"]
         self.data_series = self.parameters["dataframe"][self.parameters["column_name"]]
         self.lambdas = [interval[0] for interval in self.intervals]
+        self._intervals = None
 
     def get_distribution(self):
         return self.lambdas_distribution
