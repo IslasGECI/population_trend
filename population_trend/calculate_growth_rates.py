@@ -1,10 +1,11 @@
 from bootstrapping_tools import (
+    bootstrap_from_time_series,
+    calculate_intervals_from_p_values_and_alpha,
+    calculate_p_values,
+    generate_latex_interval_string,
+    get_bootstrap_deltas,
     lambda_calculator,
     power_law,
-    bootstrap_from_time_series,
-    get_bootstrap_deltas,
-    generate_latex_interval_string,
-    calculate_p_values,
 )
 from matplotlib.ticker import MaxNLocator
 
@@ -109,6 +110,14 @@ class Bootstrap_from_time_series:
         self.data_series = self.parameters["dataframe"][self.parameters["column_name"]]
         self.lambdas = [interval[0] for interval in self.intervals]
         self._intervals = None
+
+    def intervals_from_p_values_and_alpha(self):
+        p_value_mayor, p_value_menor = calculate_p_values(self.lambdas_distribution)
+        p_values = (p_value_mayor, p_value_menor)
+        intervals = calculate_intervals_from_p_values_and_alpha(
+            self.lambdas_distribution, p_values, self.parameters["alpha"]
+        )
+        return intervals
 
     def get_distribution(self):
         return self.lambdas_distribution
