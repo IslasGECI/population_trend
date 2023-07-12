@@ -60,8 +60,12 @@ def test_intervals_from_p_values_and_alpha():
     expected_len_intervals = 3
     assert obtained_len_intervals == expected_len_intervals
     obtained_intervals_property = bootstraper._intervals
-    expected_intervals = [[0, 0], [1, 1], [2, 2]]
-    assert obtained_intervals_property == expected_intervals
+    expected_intervals = [
+        (1.0006690092546682, 61.132100207193695),
+        (1.2199265239402008, 14.422599452094458),
+        (9.493687823287985, 2.426208966013621e-07),
+    ]
+    assert_array_almost_equal(obtained_intervals_property, expected_intervals, decimal=5)
 
 
 def test_calculate_interest_numbers():
