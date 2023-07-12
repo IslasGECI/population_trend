@@ -48,6 +48,14 @@ def test_save_intervals():
     assert obtained_max_lambda[0] <= expected_intervals[2][0]
 
 
+def test_intervals_from_p_values_and_alphat():
+    dcco = df[df["Nombre_en_ingles"] == "Double-crested Cormorant"]
+    parametrizer = lam.Bootstrap["testing"]
+    parametrizer.set_data(dcco)
+    bootstraper = lam.Bootstrap_from_time_series(parametrizer)
+    bottstraper._intervals
+
+
 def test_calculate_interest_numbers():
     model = bootstraper.xxfit_population_model()
     cantidad_nidos = pd.DataFrame(nidos_array)
