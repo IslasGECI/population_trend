@@ -88,6 +88,7 @@ class Bootstrap_from_time_series_parameterizer:
             N=N,
             return_distribution=True,
             blocks_length=blocks_length,
+            alpha=0.05,
         )
 
     def set_data(self, data):
