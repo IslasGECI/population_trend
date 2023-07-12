@@ -83,6 +83,8 @@ def test_app():
             3,
             "--bootstrap-number",
             10,
+            "--alpha",
+            0.05,
             "--output-path",
             output_json,
         ],
