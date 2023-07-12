@@ -55,6 +55,10 @@ def test_intervals_from_p_values_and_alpha():
     assert parametrizer.parameters["alpha"] == 0.05
     bootstraper = lam.Bootstrap_from_time_series(parametrizer)
     bootstraper._intervals
+    obtained_intervals = bootstraper.intervals_from_p_values_and_alpha()
+    obtained_len_intervals = len(obtained_intervals)
+    expected_len_intervals = 3
+    assert obtained_len_intervals == expected_len_intervals
 
 
 def test_calculate_interest_numbers():
