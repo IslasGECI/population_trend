@@ -105,7 +105,7 @@ Bootstrap = dict(
 class Bootstrap_from_time_series:
     def __init__(self, bootstrap_parametrizer):
         self.parameters = bootstrap_parametrizer.parameters
-        self.lambdas_distribution, self.intervals = self._calculate_distribution_and_interval()
+        self.lambdas_distribution, _ = self._calculate_distribution_and_interval()
         self.season_series = self.parameters["dataframe"]["Temporada"]
         self.data_series = self.parameters["dataframe"][self.parameters["column_name"]]
         self._intervals = self.intervals_from_p_values_and_alpha()
