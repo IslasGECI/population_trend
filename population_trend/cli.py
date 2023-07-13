@@ -4,7 +4,7 @@ from population_trend.population_growth_model import (
     Plotter_Population_Trend_Model,
 )
 from population_trend.calculate_growth_rates import (
-    Bootstrap_from_time_series_parameterizer,
+    Bootstrap_from_time_series_parametrizer,
     Bootstrap_from_time_series,
 )
 import pandas as pd
@@ -24,8 +24,11 @@ def write_bootstrap_intervals_json(
     output_path: str = "reports/non-tabular/gumu_guadalupe_boostrap_intervals.json",
 ):
     data = pd.read_csv(data_path)
-    parametrizer = Bootstrap_from_time_series_parameterizer(
-        blocks_length=blocks_length, N=bootstrap_number, column_name=variable_of_interest
+    parametrizer = Bootstrap_from_time_series_parametrizer(
+        blocks_length=blocks_length,
+        N=bootstrap_number,
+        column_name=variable_of_interest,
+        alpha=alpha,
     )
     parametrizer.set_data(data)
     bootstrap = Bootstrap_from_time_series(parametrizer)

@@ -81,7 +81,7 @@ def calculate_percent_diff_in_seasons(cantidad_nidos, model):
     return porcentaje_cambio
 
 
-class Bootstrap_from_time_series_parameterizer:
+class Bootstrap_from_time_series_parametrizer:
     def __init__(self, blocks_length=3, N=2000, column_name="Maxima_cantidad_nidos", alpha=0.05):
         self.parameters = dict(
             dataframe=None,
@@ -97,8 +97,8 @@ class Bootstrap_from_time_series_parameterizer:
 
 
 Bootstrap = dict(
-    default=Bootstrap_from_time_series_parameterizer(),
-    testing=Bootstrap_from_time_series_parameterizer(blocks_length=2, N=100),
+    default=Bootstrap_from_time_series_parametrizer(),
+    testing=Bootstrap_from_time_series_parametrizer(blocks_length=2, N=100),
 )
 
 
@@ -178,7 +178,7 @@ class Bootstrap_from_time_series:
             json.dump(json_dict, file)
 
 
-def calculate_growth_rates_table(bootstrap: Bootstrap_from_time_series_parameterizer):
+def calculate_growth_rates_table(bootstrap: Bootstrap_from_time_series_parametrizer):
     bootstraper = Bootstrap_from_time_series(bootstrap)
     df = bootstrap.parameters["dataframe"]
     model = bootstraper.xxfit_population_model()
