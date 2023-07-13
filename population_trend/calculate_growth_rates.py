@@ -108,8 +108,8 @@ class Bootstrap_from_time_series:
         self.lambdas_distribution, _ = self._calculate_distribution_and_interval()
         self.season_series = self.parameters["dataframe"]["Temporada"]
         self.data_series = self.parameters["dataframe"][self.parameters["column_name"]]
-        self._intervals = self.intervals_from_p_values_and_alpha()
-        self.lambdas = [interval[0] for interval in self._intervals]
+        self.intervals = self.intervals_from_p_values_and_alpha()
+        self.lambdas = [interval[0] for interval in self.intervals]
 
     def intervals_from_p_values_and_alpha(self):
         p_value_mayor, p_value_menor = calculate_p_values(self.lambdas_distribution)
@@ -165,12 +165,12 @@ class Bootstrap_from_time_series:
         return [
             lambda_n0
             for lambda_n0 in self.lambdas_distribution
-            if (lambda_n0[0] > self._intervals[0][0]) and (lambda_n0[0] < self._intervals[2][0])
+            if (lambda_n0[0] > self.intervals[0][0]) and (lambda_n0[0] < self.intervals[2][0])
         ]
 
     def save_intervals(self, output_path):
         json_dict = {
-            "intervals": list(self._intervals),
+            "intervals": list(self.intervals),
             "lambda_latex_interval": self.get_lambda_interval_latex_string(),
             "bootstrap_distribution": self.get_intermediate_lambdas(),
         }

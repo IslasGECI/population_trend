@@ -59,7 +59,7 @@ def test_intervals_from_p_values_and_alpha():
     obtained_len_intervals = len(obtained_intervals)
     expected_len_intervals = 3
     assert obtained_len_intervals == expected_len_intervals
-    obtained_intervals_property = bootstraper._intervals
+    obtained_intervals_property = bootstraper.intervals
     expected_intervals = [
         (1.0006690092546682, 61.132100207193695),
         (1.2199265239402008, 14.422599452094458),
