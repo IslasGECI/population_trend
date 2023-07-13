@@ -156,3 +156,10 @@ def test_calculate_growth_rates_table():
     assert obtained_inferior == "-0.22"
     latex_intervals = tabla[4]
     assert latex_intervals == "1.22 (1.0 - 9.49)"
+
+
+def test_Bootstrap_from_time_series_parametrizer():
+    parameters = Bootstrap_from_time_series_parametrizer(
+        blocks_lenght=3, N=2000, column_name="Maxima_cantidad_nidos", alpha=0.1
+    )
+    assert 0.01 == parameters.alpha
