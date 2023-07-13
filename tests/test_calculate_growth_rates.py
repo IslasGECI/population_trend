@@ -159,7 +159,7 @@ def test_calculate_growth_rates_table():
 
 
 def test_Bootstrap_from_time_series_parametrizer():
-    parameters = lam.Bootstrap_from_time_series_parametrizer(
+    parameters = lam.Bootstrap_from_time_series_parameterizer(
         blocks_lenght=3, N=2000, column_name="Maxima_cantidad_nidos", alpha=0.1
     )
     assert 0.01 == parameters.alpha
