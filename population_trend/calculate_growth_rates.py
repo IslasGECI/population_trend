@@ -172,6 +172,7 @@ class Bootstrap_from_time_series:
         json_dict = {
             "intervals": list(self.intervals),
             "lambda_latex_interval": self.get_lambda_interval_latex_string(),
+            "p-values": [0, 0],
             "bootstrap_distribution": self.get_intermediate_lambdas(),
         }
         with open(output_path, "w") as file:
