@@ -105,7 +105,7 @@ Bootstrap = dict(
 class Bootstrap_from_time_series:
     def __init__(self, bootstrap_parametrizer):
         self.parameters = bootstrap_parametrizer.parameters
-        self.lambdas_distribution, _ = self._calculate_distribution_and_interval()
+        self.lambdas_n0_distribution, _ = self._calculate_distribution_and_interval()
         self.season_series = self.parameters["dataframe"]["Temporada"]
         self.data_series = self.parameters["dataframe"][self.parameters["column_name"]]
         self.intervals = self.intervals_from_p_values_and_alpha()
@@ -114,22 +114,22 @@ class Bootstrap_from_time_series:
     def intervals_from_p_values_and_alpha(self):
         p_values = self.get_p_values()
         intervals = calculate_intervals_from_p_values_and_alpha(
-            self.lambdas_distribution, p_values, self.parameters["alpha"]
+            self.lambdas_n0_distribution, p_values, self.parameters["alpha"]
         )
         return intervals
 
     def get_p_values(self):
-        lambdas = [lambdas_n0[0] for lambdas_n0 in self.lambdas_distribution]
+        lambdas = [lambdas_n0[0] for lambdas_n0 in self.lambdas_n0_distribution]
         p_value_mayor, p_value_menor = calculate_p_values(lambdas)
         p_values = (p_value_mayor, p_value_menor)
         return p_values
 
     def get_distribution(self):
-        return self.lambdas_distribution
+        return self.lambdas_n0_distribution
 
     def _calculate_distribution_and_interval(self):
-        lambdas_distribution, intervals = bootstrap_from_time_series(**self.parameters)
-        return lambdas_distribution, intervals
+        lambdas_n0_distribution, intervals = bootstrap_from_time_series(**self.parameters)
+        return lambdas_n0_distribution, intervals
 
     def get_inferior_central_and_superior_limit(self):
         inferior_limit, central, superior_limit = get_bootstrap_deltas(
@@ -169,7 +169,7 @@ class Bootstrap_from_time_series:
     def get_intermediate_lambdas(self):
         return [
             lambda_n0
-            for lambda_n0 in self.lambdas_distribution
+            for lambda_n0 in self.lambdas_n0_distribution
             if (lambda_n0[0] > self.intervals[0][0]) and (lambda_n0[0] < self.intervals[2][0])
         ]
 
