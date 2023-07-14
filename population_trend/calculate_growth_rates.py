@@ -109,7 +109,7 @@ class Bootstrap_from_time_series:
         self.season_series = self.parameters["dataframe"]["Temporada"]
         self.data_series = self.parameters["dataframe"][self.parameters["column_name"]]
         self.intervals = self.intervals_from_p_values_and_alpha()
-        self.lambdas = [interval[0] for interval in self.intervals]
+        self.interval_lambdas = [interval[0] for interval in self.intervals]
 
     def intervals_from_p_values_and_alpha(self):
         p_values = self.get_p_values()
@@ -133,13 +133,13 @@ class Bootstrap_from_time_series:
 
     def get_inferior_central_and_superior_limit(self):
         inferior_limit, central, superior_limit = get_bootstrap_deltas(
-            self.lambdas, **{"decimals": 2}
+            self.interval_lambdas, **{"decimals": 2}
         )
         return inferior_limit, central, superior_limit
 
     def get_lambda_interval_latex_string(self):
         lambda_latex_string = generate_latex_interval_string(
-            self.lambdas, deltas=False, **{"decimals": 2}
+            self.interval_lambdas, deltas=False, **{"decimals": 2}
         )
         return lambda_latex_string
 
