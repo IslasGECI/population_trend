@@ -43,7 +43,9 @@ def test_save_intervals():
     expected_latex_interval = "1.21 (1.12 - 1.43)"
     assert obtained_values[1] == expected_latex_interval
     obtained_p_minor_value = obtained_values[2][0]
-    assert obtained_p_minor_value > 0
+    assert obtained_p_minor_value >= 0
+    obtained_p_major_value = obtained_values[2][1]
+    assert obtained_p_major_value <= 1
     obtained_min_lambda = min(obtained_values[3])
     assert obtained_min_lambda[0] >= expected_intervals[0][0]
     obtained_max_lambda = max(obtained_values[3])
@@ -63,9 +65,9 @@ def test_intervals_from_p_values_and_alpha():
     assert obtained_len_intervals == expected_len_intervals
     obtained_intervals_property = bootstraper.intervals
     expected_intervals = [
-        (1.0006690092546682, 61.132100207193695),
+        (1.03555254967221, 56.72689275689199),
         (1.2199265239402008, 14.422599452094458),
-        (9.493687823287985, 2.426208966013621e-07),
+        (9.496750484649498, 2.419173122070242e-07),
     ]
     assert_array_almost_equal(obtained_intervals_property, expected_intervals, decimal=5)
 
@@ -154,10 +156,10 @@ def test_calculate_growth_rates_table():
     assert expected_p_valor_menor == p_valor_menor
     obtained_central, obtained_inferior, obtained_superior = tabla[6:9]
     assert obtained_central == 1.22
-    assert obtained_superior == "+8.27"
-    assert obtained_inferior == "-0.22"
+    assert obtained_superior == "+8.28"
+    assert obtained_inferior == "-0.18"
     latex_intervals = tabla[4]
-    assert latex_intervals == "1.22 (1.0 - 9.49)"
+    assert latex_intervals == "1.22 (1.04 - 9.5)"
 
 
 def test_Bootstrap_from_time_series_parametrizer():

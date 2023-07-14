@@ -112,12 +112,17 @@ class Bootstrap_from_time_series:
         self.lambdas = [interval[0] for interval in self.intervals]
 
     def intervals_from_p_values_and_alpha(self):
-        p_value_mayor, p_value_menor = calculate_p_values(self.lambdas_distribution)
-        p_values = (p_value_mayor, p_value_menor)
+        p_values = self.get_p_values()
         intervals = calculate_intervals_from_p_values_and_alpha(
             self.lambdas_distribution, p_values, self.parameters["alpha"]
         )
         return intervals
+
+    def get_p_values(self):
+        lambdas = [lambdas_n0[0] for lambdas_n0 in self.lambdas_distribution]
+        p_value_mayor, p_value_menor = calculate_p_values(lambdas)
+        p_values = (p_value_mayor, p_value_menor)
+        return p_values
 
     def get_distribution(self):
         return self.lambdas_distribution
@@ -172,7 +177,7 @@ class Bootstrap_from_time_series:
         json_dict = {
             "intervals": list(self.intervals),
             "lambda_latex_interval": self.get_lambda_interval_latex_string(),
-            "p-values": [0, 0],
+            "p-values": self.get_p_values(),
             "bootstrap_distribution": self.get_intermediate_lambdas(),
         }
         with open(output_path, "w") as file:
