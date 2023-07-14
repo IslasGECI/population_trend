@@ -14,7 +14,7 @@
         ]
     ],
     "lambda_latex_interval": "${1.61}_{-0.12}^{+0.48}$",
-    "bootstrap_distribution": [
+    "bootstrap_intermediate_distribution": [
         [
             1.5991826636363564,
             25.3145778680492
