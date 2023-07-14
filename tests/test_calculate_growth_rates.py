@@ -42,6 +42,8 @@ def test_save_intervals():
     assert_array_almost_equal(obtained_values[0], expected_intervals, decimal=5)
     expected_latex_interval = "1.21 (1.12 - 1.43)"
     assert obtained_values[1] == expected_latex_interval
+    obtained_p_minor_value = obtained_values[2][0]
+    assert obtained_p_minor_value > 0
     obtained_min_lambda = min(obtained_values[3])
     assert obtained_min_lambda[0] >= expected_intervals[0][0]
     obtained_max_lambda = max(obtained_values[3])
