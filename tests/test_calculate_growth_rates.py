@@ -35,7 +35,7 @@ def test_save_intervals():
     with open(output_path) as json_file:
         obtained_json = json.load(json_file)
     obtained_fields = list(obtained_json.keys())
-    expected_fields = ["intervals", "lambda_latex_interval", "bootstrap_distribution"]
+    expected_fields = ["intervals", "lambda_latex_interval", "p-values", "bootstrap_distribution"]
     assert obtained_fields == expected_fields
     obtained_values = list(obtained_json.values())
     expected_intervals = [[1.11653, 150.30929], [1.21173, 77.48159], [1.4272, 4.56072]]
