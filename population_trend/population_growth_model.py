@@ -31,7 +31,7 @@ class Population_Trend_Model:
         self.initial_population = lambda_calculator(
             fit_data["Temporada"], fit_data[self.interest_variable]
         )
-        self.bootstrap_distribution = json_parameters["bootstrap_distribution"]
+        self.bootstrap_distribution = json_parameters["bootstrap_intermediate_distribution"]
 
     def intern_model(self, i):
         return power_law(

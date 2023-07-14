@@ -55,7 +55,7 @@ cormorant_data_for_plotter = pd.DataFrame(
 )
 pop_model = Population_Trend_Model(
     cormorant_data_for_plotter,
-    {"intervals": [], "bootstrap_distribution": []},
+    {"intervals": [], "bootstrap_intermediate_distribution": []},
     "Maxima_cantidad_nidos",
 )
 Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model)
