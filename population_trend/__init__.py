@@ -1,6 +1,6 @@
 """A template Python module"""
 
-__version__ = "5.3.0"
+__version__ = "5.4.0"
 from .cli import *  # noqa
 from .filter_data import *  # noqa
 from .population_growth_model import *  # noqa
