@@ -27,8 +27,8 @@ def test_read_distribution():
 
 
 def test_concatenate_distribution():
-    laal_distribution = read_distribution(laal)
-    gumu_distribution = read_distribution(gumu)
+    laal_distribution = [1, 1, 1, 1]
+    gumu_distribution = [2, 2, 2, 2]
     expected_shape = (2000, 2)
     concatenated = concatenate_distribution(laal_distribution, gumu_distribution)
     obtained_shape = np.shape(concatenated)
