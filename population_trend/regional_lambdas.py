@@ -18,3 +18,8 @@ def concatenate_distribution(*argv):
 
 def mean_by_row(concatenated_distributions):
     return np.mean(concatenated_distributions, axis=1)
+
+
+class Calculator_Regional_Lambdas:
+    def __init__(self):
+        pass
