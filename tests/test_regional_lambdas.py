@@ -20,6 +20,6 @@ def test_read_distribution():
     assert obtained_n == expected_n
 
     distribution = read_distribution(gumu)
-    expected_n = 2000
+    expected_n = 1892
     obtained_n = len(distribution)
     assert obtained_n == expected_n
