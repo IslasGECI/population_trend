@@ -14,3 +14,7 @@ def concatenate_distribution(*argv):
         resampled = rng.choice(arg, size=2000, replace=True)
         list_of_distributions.append(resampled)
     return np.array(list_of_distributions).T
+
+
+def mean_by_row(concatenated_distributions):
+    return np.mean(concatenated_distributions, axis=1)

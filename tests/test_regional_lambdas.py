@@ -44,4 +44,4 @@ def test_mean_by_row():
     concatenated = np.array([[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3]]).T
     obtained = mean_by_row(concatenated)
     expected = np.array([2, 2, 2, 2])
-    assert obtained == expected
+    assert (obtained == expected).all()
