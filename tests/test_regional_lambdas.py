@@ -54,10 +54,13 @@ def test_mean_by_row():
 
 
 def test_Calculator_Regional_Lambdas():
-    regional_lambdas = np.array([2.0, 2.0, 2.0, 2.0, 2.0, 2.0])
+    regional_lambdas = np.array([0.1, 0.2, 0.3, 2.0, 2.0, 2.0])
     calculator = Calculator_Regional_Lambdas(regional_lambdas)
     obtained = calculator.regional_distribution
     assert (obtained == regional_lambdas).all()
     output_path = "tests/tmp/regional_intervals.json"
     calculator.save_intervals(output_path)
     assert os.path.exists(output_path)
+    p_values = calculator.p_values
+    expected = (0.5, 0.5)
+    assert p_values == expected, "It obtains the right p-values"
