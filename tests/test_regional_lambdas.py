@@ -1,3 +1,4 @@
+import os
 import json
 import numpy as np
 from population_trend import (
@@ -57,3 +58,6 @@ def test_Calculator_Regional_Lambdas():
     calculator = Calculator_Regional_Lambdas(regional_lambdas)
     obtained = calculator.regional_distribution
     assert (obtained == regional_lambdas).all()
+    output_path = "tests/tmp/regional_intervals.json"
+    calculator.save_intervals(output_path)
+    assert os.path.exists(output_path)
