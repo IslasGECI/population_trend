@@ -1,6 +1,6 @@
 import json
 import numpy as np
-from population_trend import read_distribution, concatenate_distribution
+from population_trend import read_distribution, concatenate_distribution, mean_by_row
 
 laal_path = "tests/data/laal_intervals.json"
 with open(laal_path) as json_file:
@@ -38,3 +38,10 @@ def test_concatenate_distribution():
     concatenated = concatenate_distribution(laal_distribution, gumu_distribution, laal_distribution)
     obtained_shape = np.shape(concatenated)
     assert obtained_shape == expected_shape
+
+
+def test_mean_by_row():
+    concatenated = np.array([[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3]]).T
+    obtained = mean_by_row(concatenated)
+    expected = np.array([2, 2, 2, 2])
+    assert obtained == expected
