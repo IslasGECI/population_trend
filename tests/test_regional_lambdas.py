@@ -1,4 +1,5 @@
 import json
+import numpy as np
 from population_trend import read_distribution
 
 laal_path = "tests/data/laal_intervals.json"
@@ -23,3 +24,12 @@ def test_read_distribution():
     expected_n = 1892
     obtained_n = len(distribution)
     assert obtained_n == expected_n
+
+
+def test_concatenate_distribution():
+    laal_distribution = read_distribution(laal)
+    gumu_distribution = read_distribution(gumu)
+    expected_shape = (2000, 2)
+    concatenated = concatenate_distribution(laal_distribution, gumu_distribution)
+    obtained_shape = np.shape(concatenated)
+    assert obtained_shape == expected_shape
