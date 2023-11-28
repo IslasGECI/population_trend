@@ -8,3 +8,6 @@ with open(laal_path) as json_file:
 
 def test_read_distribution():
     distribution = read_distribution(laal)
+    obtained_first_element = distribution[0]
+    expected_first_element = 1.2130418011696964
+    assert obtained_first_element == expected_first_element
