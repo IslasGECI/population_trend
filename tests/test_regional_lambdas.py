@@ -33,3 +33,8 @@ def test_concatenate_distribution():
     concatenated = concatenate_distribution(laal_distribution, gumu_distribution)
     obtained_shape = np.shape(concatenated)
     assert obtained_shape == expected_shape
+
+    expected_shape = (2000, 3)
+    concatenated = concatenate_distribution(laal_distribution, gumu_distribution, laal_distribution)
+    obtained_shape = np.shape(concatenated)
+    assert obtained_shape == expected_shape
