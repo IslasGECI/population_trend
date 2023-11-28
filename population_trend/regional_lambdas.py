@@ -1,3 +1,4 @@
+import json
 import numpy as np
 
 
@@ -23,4 +24,15 @@ def mean_by_row(concatenated_distributions):
 class Calculator_Regional_Lambdas:
     def __init__(self, regional_lambdas):
         self.regional_distribution = regional_lambdas
-        pass
+        self.intervals = [1, 2, 3]
+        self.interval_lambdas = [1, 3, 7]
+
+    def save_intervals(self, output_path):
+        json_dict = {
+            "intervals": list(self.intervals),
+            "lambda_latex_interval": "3 (1 - 7)",
+            "p-values": "(0,1)",
+            "bootstrap_intermediate_distribution": list(self.regional_distribution),
+        }
+        with open(output_path, "w") as file:
+            json.dump(json_dict, file)

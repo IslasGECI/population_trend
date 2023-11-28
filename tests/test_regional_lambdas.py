@@ -54,7 +54,7 @@ def test_mean_by_row():
 
 
 def test_Calculator_Regional_Lambdas():
-    regional_lambdas = np.array([2, 2, 2, 2, 2, 2])
+    regional_lambdas = np.array([2.0, 2.0, 2.0, 2.0, 2.0, 2.0])
     calculator = Calculator_Regional_Lambdas(regional_lambdas)
     obtained = calculator.regional_distribution
     assert (obtained == regional_lambdas).all()
