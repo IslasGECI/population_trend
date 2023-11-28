@@ -58,7 +58,7 @@ def test_Calculator_Regional_Lambdas():
     calculator = Calculator_Regional_Lambdas(regional_lambdas)
     obtained = calculator.regional_distribution
     assert (obtained == regional_lambdas).all()
-    output_path = "tests/tmp/regional_intervals.json"
+    output_path = "tests/regional_intervals.json"
     calculator.save_intervals(output_path)
     assert os.path.exists(output_path)
     p_values = calculator.p_values
