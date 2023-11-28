@@ -1,6 +1,6 @@
 import json
 import numpy as np
-from population_trend import read_distribution
+from population_trend import read_distribution, concatenate_distribution
 
 laal_path = "tests/data/laal_intervals.json"
 with open(laal_path) as json_file:
