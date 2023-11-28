@@ -1,6 +1,11 @@
 import json
 import numpy as np
-from population_trend import read_distribution, concatenate_distribution, mean_by_row
+from population_trend import (
+    read_distribution,
+    concatenate_distribution,
+    mean_by_row,
+    Calculator_Regional_Lambdas,
+)
 
 laal_path = "tests/data/laal_intervals.json"
 with open(laal_path) as json_file:
@@ -45,3 +50,8 @@ def test_mean_by_row():
     obtained = mean_by_row(concatenated)
     expected = np.array([2, 2, 2, 2])
     assert (obtained == expected).all()
+
+
+def test_Calculator_Regional_Lambdas():
+    regional_lambdas = np.array([2, 2, 2, 2, 2, 2])
+    Calculator_Regional_Lambdas()
