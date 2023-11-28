@@ -11,3 +11,6 @@ def test_read_distribution():
     obtained_first_element = distribution[0]
     expected_first_element = 1.2130418011696964
     assert obtained_first_element == expected_first_element
+    expected_n = 2000
+    obtained_n = len(distribution)
+    assert obtained_n == expected_n
