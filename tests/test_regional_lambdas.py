@@ -64,3 +64,7 @@ def test_Calculator_Regional_Lambdas():
     p_values = calculator.p_values
     expected = (3 / 7, 4 / 7)
     assert p_values == expected, "It obtains the right p-values"
+
+    obtained_intervals = calculator.intervals
+    expected_intervals = [[0.1], [3], [4]]
+    assert (obtained_intervals == expected_intervals).all()
