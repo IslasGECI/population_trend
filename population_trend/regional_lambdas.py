@@ -7,8 +7,10 @@ def read_distribution(json_dict):
     return lambdas_distribution
 
 
-def concatenate_distribution(distribution_1, distribution_2):
+def concatenate_distribution(*argv):
     rng = np.random.default_rng()
-    completed_1 = rng.choice(distribution_1, size=2000, replace=True)
-    completed_2 = rng.choice(distribution_2, size=2000, replace=True)
-    return np.array([completed_1, completed_2]).T
+    list_of_distributions = []
+    for arg in argv:
+        resampled = rng.choice(arg, size=2000, replace=True)
+        list_of_distributions.append(resampled)
+    return np.array(list_of_distributions).T
