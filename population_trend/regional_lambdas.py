@@ -21,5 +21,6 @@ def mean_by_row(concatenated_distributions):
 
 
 class Calculator_Regional_Lambdas:
-    def __init__(self):
+    def __init__(self, regional_lambdas):
+        self.regional_distribution = regional_lambdas
         pass
