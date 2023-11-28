@@ -1,6 +1,8 @@
 import json
 import numpy as np
 
+from bootstrapping_tools import calculate_p_values
+
 
 def read_distribution(json_dict):
     completed_distribution = json_dict["bootstrap_intermediate_distribution"]
@@ -26,6 +28,12 @@ class Calculator_Regional_Lambdas:
         self.regional_distribution = regional_lambdas
         self.intervals = [1, 2, 3]
         self.interval_lambdas = [1, 3, 7]
+        self.p_values = self.get_p_values()
+
+    def get_p_values(self):
+        p_value_mayor, p_value_menor = calculate_p_values(self.regional_distribution)
+        p_values = (p_value_mayor, p_value_menor)
+        return p_values
 
     def save_intervals(self, output_path):
         json_dict = {
