@@ -7,6 +7,8 @@ from bootstrapping_tools import (
     generate_latex_interval_string,
 )
 
+from population_trend import Bootstrap_from_time_series
+
 
 def read_distribution(json_dict):
     completed_distribution = json_dict["bootstrap_intermediate_distribution"]
@@ -27,7 +29,7 @@ def mean_by_row(concatenated_distributions):
     return np.mean(concatenated_distributions, axis=1)
 
 
-class Calculator_Regional_Lambdas:
+class Calculator_Regional_Lambdas(Bootstrap_from_time_series):
     def __init__(self, regional_lambdas):
         self.regional_distribution = regional_lambdas
         self.p_values = self.get_p_values()
@@ -45,12 +47,6 @@ class Calculator_Regional_Lambdas:
         p_value_mayor, p_value_menor = calculate_p_values(self.regional_distribution)
         p_values = (p_value_mayor, p_value_menor)
         return p_values
-
-    def get_lambda_interval_latex_string(self):
-        lambda_latex_string = generate_latex_interval_string(
-            self.interval_lambdas, deltas=False, **{"decimals": 2}
-        )
-        return lambda_latex_string
 
     def save_intervals(self, output_path):
         json_dict = {
