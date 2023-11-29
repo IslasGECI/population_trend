@@ -47,15 +47,6 @@ class Island_Bootstrap_Distribution_Concatenator:
         return lambdas_distribution
 
 
-def concatenate_distribution(*argv):
-    rng = np.random.default_rng(seed=42)
-    list_of_distributions = []
-    for arg in argv:
-        resampled = rng.choice(arg, size=2000, replace=True)
-        list_of_distributions.append(resampled)
-    return np.array(list_of_distributions).T
-
-
 def mean_by_row(concatenated_distributions):
     return np.mean(concatenated_distributions, axis=1)
 
