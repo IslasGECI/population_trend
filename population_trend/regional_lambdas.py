@@ -31,20 +31,18 @@ def mean_by_row(concatenated_distributions):
 
 class Calculator_Regional_Lambdas(Bootstrap_from_time_series):
     def __init__(self, regional_lambdas):
-        self.regional_distribution = regional_lambdas
+        self.lambdas = regional_lambdas
         self.p_values = self.get_p_values()
         self.intervals = self.intervals_from_p_values_and_alpha()
         self.interval_lambdas = [interval for interval in self.intervals]
         self.lambda_latex_interval = self.get_lambda_interval_latex_string()
 
     def intervals_from_p_values_and_alpha(self):
-        intervals = calculate_intervals_from_p_values_and_alpha(
-            self.regional_distribution, self.p_values, 0.05
-        )
+        intervals = calculate_intervals_from_p_values_and_alpha(self.lambdas, self.p_values, 0.05)
         return intervals
 
     def get_p_values(self):
-        p_value_mayor, p_value_menor = calculate_p_values(self.regional_distribution)
+        p_value_mayor, p_value_menor = calculate_p_values(self.lambdas)
         p_values = (p_value_mayor, p_value_menor)
         return p_values
 
@@ -53,7 +51,7 @@ class Calculator_Regional_Lambdas(Bootstrap_from_time_series):
             "intervals": list(self.intervals),
             "lambda_latex_interval": self.lambda_latex_interval,
             "p-values": self.p_values,
-            "bootstrap_intermediate_distribution": list(self.regional_distribution),
+            "bootstrap_intermediate_distribution": list(self.lambdas),
         }
         with open(output_path, "w") as file:
             json.dump(json_dict, file)
