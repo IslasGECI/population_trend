@@ -41,11 +41,6 @@ class Calculator_Regional_Lambdas(Bootstrap_from_time_series):
         intervals = calculate_intervals_from_p_values_and_alpha(self.lambdas, self.p_values, 0.05)
         return intervals
 
-    def get_p_values(self):
-        p_value_mayor, p_value_menor = calculate_p_values(self.lambdas)
-        p_values = (p_value_mayor, p_value_menor)
-        return p_values
-
     def save_intervals(self, output_path):
         json_dict = {
             "intervals": list(self.intervals),
