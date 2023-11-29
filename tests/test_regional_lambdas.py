@@ -48,7 +48,8 @@ def test_read_distribution():
     obtained_n = len(distribution)
     assert obtained_n == expected_n
 
-    distribution = read_distribution(gumu)
+    distribution = concatenator._read_distribution(gumu)
+
     expected_n = 1892
     obtained_n = len(distribution)
     assert obtained_n == expected_n
