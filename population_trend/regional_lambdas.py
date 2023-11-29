@@ -30,6 +30,9 @@ class Island_Bootstrap_Distribution_Concatenator:
         distributions = [read_distribution(json_content) for json_content in json_list]
         return distributions
 
+    def mean_by_row(self):
+        return np.mean(concatenate_distribution(*self.distributions), axis=1)
+
 
 def read_distribution(json_dict):
     completed_distribution = json_dict["bootstrap_intermediate_distribution"]

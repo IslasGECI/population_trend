@@ -34,6 +34,7 @@ def test_Island_Bootstrap_Distribution_Concatenator():
     assert obtained_len_laal_distribution == expected_len_laal_distribution
 
     obtained_mean_distribution = concatenator.mean_by_row()
+    print(obtained_number_of_distributions)
     expected_mean_distribution_length = 2000
     assert len(obtained_mean_distribution) == expected_mean_distribution_length
 
