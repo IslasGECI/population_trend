@@ -46,13 +46,15 @@ def test_Island_Bootstrap_Distribution_Concatenator():
 
 def test_concatenate_distribution():
     laal_distribution = [1, 2, 3, 4]
-    gumu_distribution = [55, 66, 77, 88]
+    gumu_distribution = [55, 66, 77]
 
     concatenator = Island_Bootstrap_Distribution_Concatenator(laal_path)
 
     distributions_list = [laal_distribution, gumu_distribution]
     expected_shape = (2000, 2)
     concatenated = concatenator._concatenate_distribution(*distributions_list)
+    print(concatenated)
+    assert False
     obtained_shape = np.shape(concatenated)
     assert obtained_shape == expected_shape
 
