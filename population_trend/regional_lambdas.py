@@ -43,7 +43,7 @@ class Calculator_Regional_Lambdas(Bootstrap_from_time_series):
 
     def get_intermediate_lambdas(self):
         return [
-            lambda_n0
-            for lambda_n0 in self.lambdas
-            if (lambda_n0 > self.intervals[0]) and (lambda_n0 < self.intervals[2])
+            lambdas
+            for lambdas in self.lambdas
+            if (lambdas > self.intervals[0]) and (lambdas < self.intervals[2])
         ]
