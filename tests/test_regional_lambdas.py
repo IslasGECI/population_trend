@@ -25,6 +25,10 @@ def test_Island_Bootstrap_Distribution_Concatenator():
     expected_paths = [laal_path, gumu_path]
     assert obatined_paths == expected_paths
 
+    expected_number_distributions = 2
+    obtained_number_of_distributions = len(concatenator.distributions)
+    assert obtained_number_of_distributions == expected_number_distributions
+
 
 def test_read_distribution():
     distribution = read_distribution(laal)
