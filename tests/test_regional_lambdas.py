@@ -48,18 +48,14 @@ def test_Island_Bootstrap_Distribution_Concatenator():
 def test_concatenate_distribution():
     laal_distribution = [1, 2, 3, 4]
     gumu_distribution = [55, 66, 77, 88]
-    expected_shape = (2000, 2)
-    concatenated = concatenate_distribution(laal_distribution, gumu_distribution)
-    obtained_shape = np.shape(concatenated)
-    assert obtained_shape == expected_shape
+
+    concatenator = Island_Bootstrap_Distribution_Concatenator(laal_path)
 
     distributions_list = [laal_distribution, gumu_distribution]
     expected_shape = (2000, 2)
-    concatenated = concatenate_distribution(*distributions_list)
+    concatenated = concatenator._concatenate_distribution(*distributions_list)
     obtained_shape = np.shape(concatenated)
     assert obtained_shape == expected_shape
-
-    concatenator = Island_Bootstrap_Distribution_Concatenator(laal_path)
 
     expected_shape = (2000, 3)
     concatenated = concatenator._concatenate_distribution(
@@ -67,9 +63,6 @@ def test_concatenate_distribution():
     )
     obtained_shape = np.shape(concatenated)
     assert obtained_shape == expected_shape
-
-    distributions = [laal_distribution, gumu_distribution]
-    concatenator._concatenate_distribution(*distributions)
 
 
 def test_mean_by_row():
