@@ -33,6 +33,14 @@ class Island_Bootstrap_Distribution_Concatenator:
     def mean_by_row(self):
         return np.mean(concatenate_distribution(*self.distributions), axis=1)
 
+    def _concatenate_distribution(self, *argv):
+        rng = np.random.default_rng(seed=42)
+        list_of_distributions = []
+        for arg in argv:
+            resampled = rng.choice(arg, size=2000, replace=True)
+            list_of_distributions.append(resampled)
+        return np.array(list_of_distributions).T
+
     def _read_distribution(self, json_dict):
         completed_distribution = json_dict["bootstrap_intermediate_distribution"]
         lambdas_distribution = [sample[0] for sample in completed_distribution]
@@ -40,7 +48,7 @@ class Island_Bootstrap_Distribution_Concatenator:
 
 
 def concatenate_distribution(*argv):
-    rng = np.random.default_rng()
+    rng = np.random.default_rng(seed=42)
     list_of_distributions = []
     for arg in argv:
         resampled = rng.choice(arg, size=2000, replace=True)
