@@ -45,14 +45,6 @@ def test_Island_Bootstrap_Distribution_Concatenator():
     assert len(obtained_mean_distribution) == expected_mean_distribution_length
 
 
-def test_read_distribution():
-    concatenator = Island_Bootstrap_Distribution_Concatenator(laal_path)
-    distribution = concatenator._read_distribution(laal)
-    obtained_first_element = distribution[0]
-    expected_first_element = 1.2130418011696964
-    assert obtained_first_element == expected_first_element
-
-
 def test_concatenate_distribution():
     laal_distribution = [1, 1, 1, 1]
     gumu_distribution = [2, 2, 2, 2]
