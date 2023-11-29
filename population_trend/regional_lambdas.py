@@ -1,4 +1,5 @@
 import numpy as np
+import json
 
 from bootstrapping_tools import calculate_intervals_from_p_values_and_alpha
 
@@ -8,11 +9,21 @@ from population_trend import Bootstrap_from_time_series
 class Island_Bootstrap_Distribution_Concatenator:
     def __init__(self, paths):
         self.paths_string = paths
+        self.distributions = self.read_json_files()
 
     def split_paths(self):
         splited_paths = self.paths_string.split(",")
         clean_paths = [path.strip() for path in splited_paths]
         return clean_paths
+
+    def read_json_files(self):
+        splited_paths = self.split_paths()
+        json_list = []
+        for path in splited_paths:
+            with open(path) as json_file:
+                json_content = json.load(json_file)
+            json_list.append(json_content)
+        return json_list
 
 
 def read_distribution(json_dict):
