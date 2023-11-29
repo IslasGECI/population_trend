@@ -1,7 +1,11 @@
 import json
 import numpy as np
 
-from bootstrapping_tools import calculate_p_values, calculate_intervals_from_p_values_and_alpha
+from bootstrapping_tools import (
+    calculate_p_values,
+    calculate_intervals_from_p_values_and_alpha,
+    generate_latex_interval_string,
+)
 
 
 def read_distribution(json_dict):
@@ -28,7 +32,8 @@ class Calculator_Regional_Lambdas:
         self.regional_distribution = regional_lambdas
         self.p_values = self.get_p_values()
         self.intervals = self.intervals_from_p_values_and_alpha()
-        self.interval_lambdas = [1, 3, 7]
+        self.interval_lambdas = [interval for interval in self.intervals]
+        self.lambda_latex_interval = self.get_lambda_interval_latex_string()
 
     def intervals_from_p_values_and_alpha(self):
         intervals = calculate_intervals_from_p_values_and_alpha(
@@ -41,10 +46,16 @@ class Calculator_Regional_Lambdas:
         p_values = (p_value_mayor, p_value_menor)
         return p_values
 
+    def get_lambda_interval_latex_string(self):
+        lambda_latex_string = generate_latex_interval_string(
+            self.interval_lambdas, deltas=False, **{"decimals": 2}
+        )
+        return lambda_latex_string
+
     def save_intervals(self, output_path):
         json_dict = {
             "intervals": list(self.intervals),
-            "lambda_latex_interval": "3 (1 - 7)",
+            "lambda_latex_interval": self.lambda_latex_interval,
             "p-values": "(0,1)",
             "bootstrap_intermediate_distribution": list(self.regional_distribution),
         }
