@@ -39,12 +39,6 @@ class Island_Bootstrap_Distribution_Concatenator:
         return lambdas_distribution
 
 
-def read_distribution(json_dict):
-    completed_distribution = json_dict["bootstrap_intermediate_distribution"]
-    lambdas_distribution = [sample[0] for sample in completed_distribution]
-    return lambdas_distribution
-
-
 def concatenate_distribution(*argv):
     rng = np.random.default_rng()
     list_of_distributions = []
