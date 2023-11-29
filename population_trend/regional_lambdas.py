@@ -41,12 +41,19 @@ class Calculator_Regional_Lambdas(Bootstrap_from_time_series):
         intervals = calculate_intervals_from_p_values_and_alpha(self.lambdas, self.p_values, 0.05)
         return intervals
 
+    def get_intermediate_lambdas(self):
+        return [
+            lambda_n0
+            for lambda_n0 in self.lambdas
+            if (lambda_n0 > self.intervals[0]) and (lambda_n0 < self.intervals[2])
+        ]
+
     def save_intervals(self, output_path):
         json_dict = {
             "intervals": list(self.intervals),
             "lambda_latex_interval": self.lambda_latex_interval,
             "p-values": self.p_values,
-            "bootstrap_intermediate_distribution": list(self.lambdas),
+            "bootstrap_intermediate_distribution": self.get_intermediate_lambdas(),
         }
         with open(output_path, "w") as file:
             json.dump(json_dict, file)
