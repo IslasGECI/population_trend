@@ -53,8 +53,7 @@ def test_concatenate_distribution():
     distributions_list = [laal_distribution, gumu_distribution]
     expected_shape = (2000, 2)
     concatenated = concatenator._concatenate_distribution(*distributions_list)
-    print(concatenated)
-    assert False
+    assert (concatenated[0] == np.array([1, 77])).all()
     obtained_shape = np.shape(concatenated)
     assert obtained_shape == expected_shape
 
