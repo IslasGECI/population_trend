@@ -27,11 +27,16 @@ class Island_Bootstrap_Distribution_Concatenator:
 
     def extract_distributions(self):
         json_list = self.read_json_files()
-        distributions = [read_distribution(json_content) for json_content in json_list]
+        distributions = [self._read_distribution(json_content) for json_content in json_list]
         return distributions
 
     def mean_by_row(self):
         return np.mean(concatenate_distribution(*self.distributions), axis=1)
+
+    def _read_distribution(self, json_dict):
+        completed_distribution = json_dict["bootstrap_intermediate_distribution"]
+        lambdas_distribution = [sample[0] for sample in completed_distribution]
+        return lambdas_distribution
 
 
 def read_distribution(json_dict):
