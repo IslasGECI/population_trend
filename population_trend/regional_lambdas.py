@@ -1,11 +1,6 @@
-import json
 import numpy as np
 
-from bootstrapping_tools import (
-    calculate_p_values,
-    calculate_intervals_from_p_values_and_alpha,
-    generate_latex_interval_string,
-)
+from bootstrapping_tools import calculate_intervals_from_p_values_and_alpha
 
 from population_trend import Bootstrap_from_time_series
 
