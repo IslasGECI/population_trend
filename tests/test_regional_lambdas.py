@@ -33,6 +33,10 @@ def test_Island_Bootstrap_Distribution_Concatenator():
     obtained_len_laal_distribution = len(concatenator.distributions[0])
     assert obtained_len_laal_distribution == expected_len_laal_distribution
 
+    obtained_mean_distribution = concatenator.mean_by_row()
+    expected_mean_distribution_length = 2000
+    assert len(obtained_mean_distribution) == expected_mean_distribution_length
+
 
 def test_read_distribution():
     distribution = read_distribution(laal)
