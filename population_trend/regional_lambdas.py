@@ -9,7 +9,7 @@ from population_trend import Bootstrap_from_time_series
 class Island_Bootstrap_Distribution_Concatenator:
     def __init__(self, paths):
         self.paths_string = paths
-        self.distributions = self.read_json_files()
+        self.distributions = self.extract_distributions()
 
     def split_paths(self):
         splited_paths = self.paths_string.split(",")
@@ -24,6 +24,11 @@ class Island_Bootstrap_Distribution_Concatenator:
                 json_content = json.load(json_file)
             json_list.append(json_content)
         return json_list
+
+    def extract_distributions(self):
+        json_list = self.read_json_files()
+        distributions = [read_distribution(json_content) for json_content in json_list]
+        return distributions
 
 
 def read_distribution(json_dict):
