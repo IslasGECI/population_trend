@@ -108,7 +108,7 @@ class Test_Population_Trend_Model:
         assert obtained_min_lambda < obtained_lambda_and_n0_no_bootstrap
         assert obtained_lambda_and_n0_no_bootstrap < obtained_max_lambda
         obtained = pop_model.med_model
-        assert type(obtained) == np.ndarray
+        assert type(obtained) is np.ndarray
         expected_first_value = 24.23
         np.testing.assert_almost_equal(obtained[0], expected_first_value, decimal=2)
 
