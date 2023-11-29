@@ -32,6 +32,10 @@ def test_Island_Bootstrap_Distribution_Concatenator():
     obtained_len_laal_distribution = len(concatenator.distributions[0])
     assert obtained_len_laal_distribution == expected_len_laal_distribution
 
+    expected_len_gumu_distribution = 1892
+    obtained_len_gumu_distribution = len(concatenator.distributions[1])
+    assert obtained_len_gumu_distribution == expected_len_gumu_distribution
+
     obtained_mean_distribution = concatenator.mean_by_row()
     expected_mean_distribution_length = 2000
     assert len(obtained_mean_distribution) == expected_mean_distribution_length
@@ -43,12 +47,8 @@ def test_read_distribution():
     obtained_first_element = distribution[0]
     expected_first_element = 1.2130418011696964
     assert obtained_first_element == expected_first_element
-    expected_n = 92
-    obtained_n = len(distribution)
-    assert obtained_n == expected_n
 
     distribution = concatenator._read_distribution(gumu)
-
     expected_n = 1892
     obtained_n = len(distribution)
     assert obtained_n == expected_n
