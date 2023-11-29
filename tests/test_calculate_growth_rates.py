@@ -4,6 +4,7 @@ from numpy.testing import assert_array_almost_equal
 import pandas as pd
 import pytest
 import json
+import os
 
 
 nidos_array = [
@@ -55,6 +56,7 @@ def test_save_intervals():
     assert obtained_min_lambda[0] >= expected_intervals[0][0]
     obtained_max_lambda = max(obtained_values[3])
     assert obtained_max_lambda[0] <= expected_intervals[2][0]
+    os.remove(output_path)
 
 
 def test_intervals_from_p_values_and_alpha():
