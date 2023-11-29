@@ -56,7 +56,7 @@ class Calculator_Regional_Lambdas:
         json_dict = {
             "intervals": list(self.intervals),
             "lambda_latex_interval": self.lambda_latex_interval,
-            "p-values": "(0,1)",
+            "p-values": self.p_values,
             "bootstrap_intermediate_distribution": list(self.regional_distribution),
         }
         with open(output_path, "w") as file:
