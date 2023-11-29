@@ -1,7 +1,7 @@
 import json
 import numpy as np
 
-from bootstrapping_tools import calculate_p_values
+from bootstrapping_tools import calculate_p_values, calculate_intervals_from_p_values_and_alpha
 
 
 def read_distribution(json_dict):
@@ -26,9 +26,16 @@ def mean_by_row(concatenated_distributions):
 class Calculator_Regional_Lambdas:
     def __init__(self, regional_lambdas):
         self.regional_distribution = regional_lambdas
-        self.intervals = [1, 2, 3]
+        self.intervals = self.intervals_from_p_values_and_alpha()
         self.interval_lambdas = [1, 3, 7]
         self.p_values = self.get_p_values()
+
+    def intervals_from_p_values_and_alpha(self):
+        p_values = self.get_p_values()
+        intervals = calculate_intervals_from_p_values_and_alpha(
+            self.regional_distribution, p_values, 0.05
+        )
+        return intervals
 
     def get_p_values(self):
         p_value_mayor, p_value_menor = calculate_p_values(self.regional_distribution)
