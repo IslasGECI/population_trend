@@ -5,7 +5,7 @@ from population_trend import (
     read_distribution,
     concatenate_distribution,
     mean_by_row,
-    Calculator_Regional_Lambdas,
+    Calculator_Regional_Lambdas_Intervals,
 )
 
 laal_path = "tests/data/laal_intervals_for_tests.json"
@@ -55,7 +55,7 @@ def test_mean_by_row():
 
 def test_Calculator_Regional_Lambdas():
     regional_lambdas = np.array([0.1, 0.2, 0.3, 2.0, 2.0, 2.0, 4.0])
-    calculator = Calculator_Regional_Lambdas(regional_lambdas)
+    calculator = Calculator_Regional_Lambdas_Intervals(regional_lambdas)
     obtained = calculator.lambdas
     assert (obtained == regional_lambdas).all()
     output_path = "tests/regional_intervals.json"
