@@ -10,7 +10,9 @@ class Island_Bootstrap_Distribution_Concatenator:
         self.paths_string = paths
 
     def split_paths(self):
-        return self.paths_string.split(", ")
+        splited_paths = self.paths_string.split(",")
+        clean_paths = [path.strip() for path in splited_paths]
+        return clean_paths
 
 
 def read_distribution(json_dict):
