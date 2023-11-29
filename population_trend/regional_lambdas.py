@@ -5,6 +5,11 @@ from bootstrapping_tools import calculate_intervals_from_p_values_and_alpha
 from population_trend import Bootstrap_from_time_series
 
 
+class Island_Bootstrap_Distribution_Concatenator:
+    def __init__(self, paths):
+        pass
+
+
 def read_distribution(json_dict):
     completed_distribution = json_dict["bootstrap_intermediate_distribution"]
     lambdas_distribution = [sample[0] for sample in completed_distribution]
