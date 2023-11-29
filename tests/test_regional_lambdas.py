@@ -19,7 +19,7 @@ with open(gumu_path) as json_file:
 
 
 def test_Island_Bootstrap_Distribution_Concatenator():
-    paths = f"{laal_path},{gumu_path}"
+    paths = f"{laal_path}, {gumu_path}"
     concatenator = Island_Bootstrap_Distribution_Concatenator(paths)
     obatined_paths = concatenator.split_paths()
     expected_paths = [laal_path, gumu_path]
