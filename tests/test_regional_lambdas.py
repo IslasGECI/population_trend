@@ -6,6 +6,7 @@ from population_trend import (
     concatenate_distribution,
     mean_by_row,
     Calculator_Regional_Lambdas_Intervals,
+    Island_Bootstrap_Distribution_Concatenator,
 )
 
 laal_path = "tests/data/laal_intervals_for_tests.json"
@@ -15,6 +16,11 @@ with open(laal_path) as json_file:
 gumu_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
 with open(gumu_path) as json_file:
     gumu = json.load(json_file)
+
+
+def test_Island_Bootstrap_Distribution_Concatenator():
+    paths = f"{laal_path}, {gumu_path}"
+    Island_Bootstrap_Distribution_Concatenator(paths)
 
 
 def test_read_distribution():
