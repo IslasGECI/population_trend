@@ -2,7 +2,6 @@ import os
 import json
 import numpy as np
 from population_trend import (
-    concatenate_distribution,
     mean_by_row,
     Calculator_Regional_Lambdas_Intervals,
     Island_Bootstrap_Distribution_Concatenator,

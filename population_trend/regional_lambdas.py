@@ -31,7 +31,7 @@ class Island_Bootstrap_Distribution_Concatenator:
         return distributions
 
     def mean_by_row(self):
-        return np.mean(concatenate_distribution(*self.distributions), axis=1)
+        return np.mean(self._concatenate_distribution(*self.distributions), axis=1)
 
     def _concatenate_distribution(self, *argv):
         rng = np.random.default_rng(seed=42)
