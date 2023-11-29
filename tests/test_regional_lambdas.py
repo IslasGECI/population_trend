@@ -2,7 +2,6 @@ import os
 import json
 import numpy as np
 from population_trend import (
-    read_distribution,
     concatenate_distribution,
     mean_by_row,
     Calculator_Regional_Lambdas_Intervals,
