@@ -53,7 +53,7 @@ def test_mean_by_row():
     assert (obtained == expected).all()
 
 
-def test_Calculator_Regional_Lambdas():
+def test_Calculator_Regional_Lambdas_Intervals():
     regional_lambdas = np.array([0.1, 0.2, 0.3, 2.0, 2.0, 2.0, 4.0])
     calculator = Calculator_Regional_Lambdas_Intervals(regional_lambdas)
     obtained = calculator.lambdas
