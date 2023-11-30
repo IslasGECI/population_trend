@@ -54,7 +54,7 @@ class Island_Bootstrap_Distribution_Concatenator:
         return lambdas_distribution
 
 
-def mean_by_row(concatenated_distributions):
+def xxmean_by_row(concatenated_distributions):
     return np.mean(concatenated_distributions, axis=1)
 
 
