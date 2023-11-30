@@ -70,3 +70,8 @@ def plot_population_trend(
     legend_mpl_object = Graficador.set_legend_location(island)
     Graficador.plot_growth_rate_interval(legend_mpl_object, lambda_latex)
     Graficador.savefig(island, output_path)
+
+
+@app.command(help="Write json with the regional trends")
+def write_regional_trends():
+    pass

@@ -109,6 +109,12 @@ def test_app():
     )
     assert result.exit_code == 0
 
+    result = runner.invoke(
+        app,
+        ["write-regional-trends", "--help"],
+    )
+    assert result.exit_code == 0
+
 
 def test_write_burrows_by_species_and_island():
     write_burrows_by_species_and_island(data_path, species, island, output_path)
