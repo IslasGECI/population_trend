@@ -21,7 +21,7 @@ paths = "tests/data/region_config.json"
 
 def test_Island_Bootstrap_Distribution_Concatenator():
     concatenator = Island_Bootstrap_Distribution_Concatenator(paths)
-    concatenator.set_region("region")
+    concatenator.set_region("region_1")
 
     expected_number_distributions = 2
     obtained_number_of_distributions = len(concatenator.distributions)
@@ -49,7 +49,7 @@ def test_concatenate_distribution():
     gumu_distribution = [55, 66, 77]
 
     concatenator = Island_Bootstrap_Distribution_Concatenator(paths)
-    concatenator.set_region("region")
+    concatenator.set_region("region_1")
 
     distributions_list = [laal_distribution, gumu_distribution]
     concatenated = concatenator._concatenate_distribution(*distributions_list)
