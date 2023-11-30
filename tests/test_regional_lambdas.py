@@ -6,15 +6,6 @@ from population_trend import (
     Island_Bootstrap_Distribution_Concatenator,
 )
 
-laal_path = "tests/data/laal_intervals_for_tests.json"
-with open(laal_path) as json_file:
-    laal = json.load(json_file)
-
-gumu_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
-with open(gumu_path) as json_file:
-    gumu = json.load(json_file)
-
-
 config_path = "tests/data/region_config.json"
 
 
