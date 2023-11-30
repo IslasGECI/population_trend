@@ -17,7 +17,7 @@ intervals_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
 output_figure = "tests/data/figure.png"
 
 
-def test_app():
+def test_app_plot_population_trend():
     result = runner.invoke(
         app,
         ["plot-population-trend", "--help"],
@@ -42,6 +42,9 @@ def test_app():
         ],
     )
     assert result.exit_code == 0
+
+
+def test_app_write_burrows_by_species_and_island():
     result = runner.invoke(
         app,
         ["write-burrows-by-species-and-island", "--help"],
@@ -71,6 +74,8 @@ def test_app():
     )
     assert "XX" not in result.stdout
 
+
+def test_app_write_bootstrap_intervals_json():
     data_gumu_path = "tests/data/gumu_guadalupe_data.csv"
     output_json = "tests/data/gumu_guadalupe_tests.json"
     result = runner.invoke(
@@ -109,6 +114,8 @@ def test_app():
     )
     assert result.exit_code == 0
 
+
+def test_app_write_regional_trends():
     result = runner.invoke(
         app,
         ["write-regional-trends", "--help"],
