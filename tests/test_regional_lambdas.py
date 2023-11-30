@@ -21,7 +21,8 @@ paths = "tests/data/region_config.json"
 
 def test_Island_Bootstrap_Distribution_Concatenator():
     concatenator = Island_Bootstrap_Distribution_Concatenator(paths)
-    obatined_paths = concatenator.extract_paths_from_region()
+    region = "region"
+    obatined_paths = concatenator.xxextract_paths_from_region(region)
     expected_paths = [laal_path, gumu_path]
     assert obatined_paths == expected_paths
 
