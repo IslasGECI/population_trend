@@ -25,8 +25,8 @@ class Island_Bootstrap_Distribution_Concatenator:
         self.region = region
 
     def read_json_files(self):
-        region = "region"
-        splited_paths = self.extract_paths_from_region(region)
+        self.set_region()
+        splited_paths = self.extract_paths_from_region(self.region)
         json_list = []
         for path in splited_paths:
             json_content = self.read_json_file(path)
