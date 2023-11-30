@@ -130,6 +130,8 @@ def test_app_write_regional_trends():
             "tests/data/region_config.json",
             "--region",
             "region_1",
+            "--regional-trend-path",
+            "tests/data/region_1_trends.json",
         ],
     )
     assert result.exit_code == 0
