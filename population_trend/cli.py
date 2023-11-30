@@ -7,6 +7,11 @@ from population_trend.calculate_growth_rates import (
     Bootstrap_from_time_series_parametrizer,
     Bootstrap_from_time_series,
 )
+from population_trend.regional_lambdas import (
+    Island_Bootstrap_Distribution_Concatenator,
+    Calculator_Regional_Lambdas_Intervals,
+)
+
 import pandas as pd
 import typer
 import json
@@ -78,4 +83,8 @@ def write_regional_trends(
     region: str = "",
     regional_trend_path: str = "",
 ):
-    pass
+    concatenator = Island_Bootstrap_Distribution_Concatenator(config_path)
+    concatenator.set_region(region)
+    regional_lambdas = concatenator.mean_by_row()
+    calculator = Calculator_Regional_Lambdas_Intervals(regional_lambdas)
+    calculator.save_intervals(regional_trend_path)
