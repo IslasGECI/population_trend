@@ -15,3 +15,6 @@ requires = [
 	"typer"
 ]
 requires-python=">=3.9"
+
+[tool.flit.scripts]
+population-trend = "population_trend.cli:app"
