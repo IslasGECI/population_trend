@@ -11,6 +11,11 @@ class Island_Bootstrap_Distribution_Concatenator:
         self.paths_string = paths
         self.distributions = self.extract_distributions()
 
+    def read_json_file(self, path):
+        with open(path) as json_file:
+            json_content = json.load(json_file)
+        return json_content
+
     def split_paths(self):
         splited_paths = self.paths_string.split(",")
         clean_paths = [path.strip() for path in splited_paths]
@@ -20,8 +25,7 @@ class Island_Bootstrap_Distribution_Concatenator:
         splited_paths = self.split_paths()
         json_list = []
         for path in splited_paths:
-            with open(path) as json_file:
-                json_content = json.load(json_file)
+            json_content = self.read_json_file(path)
             json_list.append(json_content)
         return json_list
 
