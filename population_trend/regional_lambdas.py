@@ -20,7 +20,7 @@ class Island_Bootstrap_Distribution_Concatenator:
         clean_paths = config_content[region]["paths"]
         return clean_paths
 
-    def set_region(self, region="region"):
+    def set_region(self, region):
         self.region = region
         self.distributions = self.extract_distributions()
 
