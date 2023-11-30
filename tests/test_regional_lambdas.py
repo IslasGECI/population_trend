@@ -51,6 +51,7 @@ def test_concatenate_distribution():
     concatenator = Island_Bootstrap_Distribution_Concatenator(paths)
     concatenator.set_region("region_1")
     obtained_mean_distribution = concatenator.mean_by_row()
+    assert obtained_mean_distribution[0] == 1.3687478379206273
 
     distributions_list = [laal_distribution, gumu_distribution]
     concatenated = concatenator._concatenate_distribution(*distributions_list)
