@@ -73,5 +73,5 @@ def plot_population_trend(
 
 
 @app.command(help="Write json with the regional trends")
-def write_regional_trends():
+def write_regional_trends(config_path: str = "data/processed/gumu_guadalupe_burrows.json"):
     pass
