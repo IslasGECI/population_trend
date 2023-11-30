@@ -21,10 +21,7 @@ paths = "tests/data/region_config.json"
 
 def test_Island_Bootstrap_Distribution_Concatenator():
     concatenator = Island_Bootstrap_Distribution_Concatenator(paths)
-    region = "region"
-    obatined_paths = concatenator.extract_paths_from_region(region)
-    expected_paths = [laal_path, gumu_path]
-    assert obatined_paths == expected_paths
+    concatenator.set_region("region")
 
     expected_number_distributions = 2
     obtained_number_of_distributions = len(concatenator.distributions)
