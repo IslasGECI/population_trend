@@ -1,5 +1,4 @@
 import os
-import json
 import numpy as np
 from population_trend import (
     Calculator_Regional_Lambdas_Intervals,
