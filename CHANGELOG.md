@@ -11,12 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added command `write-regional-trends` to cli
+- Added badges to readme
 
 ### Fixed
+
+- Fix `tests/test_Population_trend.py` to pass check
 
 
 ### Changed
 
+- Use properties in class `Bootstrap_from_time_series`
+- Split `test_app()`
 
 ### Removed
 
