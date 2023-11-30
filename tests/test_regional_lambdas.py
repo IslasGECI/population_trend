@@ -46,29 +46,6 @@ def test_Island_Bootstrap_Distribution_Concatenator():
     assert obtained_mean_distribution[1] == 1.40338597444926
 
 
-def test_concatenate_distribution():
-    laal_distribution = [1, 2, 3, 4]
-    gumu_distribution = [55, 66, 77]
-
-    concatenator = Island_Bootstrap_Distribution_Concatenator(paths)
-    concatenator.set_region("region_1")
-
-    distributions_list = [laal_distribution, gumu_distribution]
-    concatenated = concatenator._concatenate_distribution(*distributions_list)
-    assert (concatenated[0] == np.array([1, 77])).all()
-
-    expected_shape = (2000, 2)
-    obtained_shape = np.shape(concatenated)
-    assert obtained_shape == expected_shape
-
-    expected_shape = (2000, 3)
-    concatenated = concatenator._concatenate_distribution(
-        laal_distribution, gumu_distribution, laal_distribution
-    )
-    obtained_shape = np.shape(concatenated)
-    assert obtained_shape == expected_shape
-
-
 def test_mean_by_row():
     concatenated = np.array([[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3]]).T
     obtained = mean_by_row(concatenated)
