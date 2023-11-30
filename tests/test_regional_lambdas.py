@@ -2,7 +2,6 @@ import os
 import json
 import numpy as np
 from population_trend import (
-    xxmean_by_row,
     Calculator_Regional_Lambdas_Intervals,
     Island_Bootstrap_Distribution_Concatenator,
 )
@@ -44,13 +43,6 @@ def test_Island_Bootstrap_Distribution_Concatenator():
     assert len(obtained_mean_distribution) == expected_mean_distribution_length
     assert obtained_mean_distribution[0] == 1.3687478379206273
     assert obtained_mean_distribution[1] == 1.40338597444926
-
-
-def test_mean_by_row():
-    concatenated = np.array([[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3]]).T
-    obtained = xxmean_by_row(concatenated)
-    expected = np.array([2, 2, 2, 2])
-    assert (obtained == expected).all()
 
 
 def test_Calculator_Regional_Lambdas_Intervals():

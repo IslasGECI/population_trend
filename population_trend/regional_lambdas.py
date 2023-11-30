@@ -54,10 +54,6 @@ class Island_Bootstrap_Distribution_Concatenator:
         return lambdas_distribution
 
 
-def xxmean_by_row(concatenated_distributions):
-    return np.mean(concatenated_distributions, axis=1)
-
-
 class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
     def __init__(self, regional_lambdas):
         self.lambdas = regional_lambdas
