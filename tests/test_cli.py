@@ -117,7 +117,13 @@ def test_app():
 
     result = runner.invoke(
         app,
-        ["write-regional-trends", "--config-path", "tests/data/region_config.json"],
+        [
+            "write-regional-trends",
+            "--config-path",
+            "tests/data/region_config.json",
+            "--region",
+            "region_1",
+        ],
     )
     assert result.exit_code == 0
 
