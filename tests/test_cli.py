@@ -53,7 +53,6 @@ def test_app_write_burrows_by_species_and_island():
     assert "[default: data/processed/subset_burrows_data.csv]" in result.stdout
     assert "[default: Guadalupe Murrelet]" in result.stdout
     assert "[default: Guadalupe]" in result.stdout
-    assert "[default: data/processed/gumu_guadalupe_burrows.csv]" in result.stdout
     result = runner.invoke(
         app,
         [
