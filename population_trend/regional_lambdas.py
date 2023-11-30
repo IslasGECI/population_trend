@@ -23,7 +23,7 @@ class Island_Bootstrap_Distribution_Concatenator:
 
     def xxextract_paths_from_region(self, region):
         config_content = self.read_json_file(self.paths_string)
-        clean_paths = config_content["region"]["paths"]
+        clean_paths = config_content[region]["paths"]
         return clean_paths
 
     def read_json_files(self):
