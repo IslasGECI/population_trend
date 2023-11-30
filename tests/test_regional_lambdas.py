@@ -16,11 +16,11 @@ with open(gumu_path) as json_file:
     gumu = json.load(json_file)
 
 
-paths = "tests/data/region_config.json"
+config_path = "tests/data/region_config.json"
 
 
 def test_Island_Bootstrap_Distribution_Concatenator():
-    concatenator = Island_Bootstrap_Distribution_Concatenator(paths)
+    concatenator = Island_Bootstrap_Distribution_Concatenator(config_path)
     concatenator.set_region("region_1")
 
     expected_number_distributions = 2
