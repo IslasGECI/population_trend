@@ -1,9 +1,10 @@
+import pandas as pd
+from typer.testing import CliRunner
+import os
 from population_trend import (
     app,
     write_burrows_by_species_and_island,
 )
-import pandas as pd
-from typer.testing import CliRunner
 
 
 runner = CliRunner()
@@ -135,6 +136,8 @@ def test_app_write_regional_trends():
         ],
     )
     assert result.exit_code == 0
+    does_file_exist = os.path.exists("tests/data/region_1_trends.json")
+    assert does_file_exist
 
 
 def test_write_burrows_by_species_and_island():
