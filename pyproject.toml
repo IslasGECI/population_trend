@@ -12,7 +12,7 @@ module = "population_trend"
 requires = [
 	"bootstrapping-tools==3.0.0",
 	"geci-plots",
-	"typer"
+	"typer[all]"
 ]
 requires-python=">=3.9"
 
