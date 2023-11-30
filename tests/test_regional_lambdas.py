@@ -49,6 +49,7 @@ def test_concatenate_distribution():
     gumu_distribution = [55, 66, 77]
 
     concatenator = Island_Bootstrap_Distribution_Concatenator(paths)
+    concatenator.set_region("region")
 
     distributions_list = [laal_distribution, gumu_distribution]
     concatenated = concatenator._concatenate_distribution(*distributions_list)
