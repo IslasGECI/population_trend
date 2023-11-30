@@ -16,8 +16,10 @@ with open(gumu_path) as json_file:
     gumu = json.load(json_file)
 
 
+paths = "tests/data/region_config.json"
+
+
 def test_Island_Bootstrap_Distribution_Concatenator():
-    paths = "tests/data/region_config.json"
     concatenator = Island_Bootstrap_Distribution_Concatenator(paths)
     obatined_paths = concatenator.split_paths()
     expected_paths = [laal_path, gumu_path]
@@ -48,7 +50,7 @@ def test_concatenate_distribution():
     laal_distribution = [1, 2, 3, 4]
     gumu_distribution = [55, 66, 77]
 
-    concatenator = Island_Bootstrap_Distribution_Concatenator(laal_path)
+    concatenator = Island_Bootstrap_Distribution_Concatenator(paths)
 
     distributions_list = [laal_distribution, gumu_distribution]
     concatenated = concatenator._concatenate_distribution(*distributions_list)
