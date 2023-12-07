@@ -9,5 +9,5 @@ class Plotter_Growth_Rate:
     def plot_error_bars(self):
         _, ax = gp.geci_plot()
         plt.ylabel("Growth Rate", fontsize=20)
-        plt.xticks([1, 2], ["California", "Pacific"], rotation=90)
+        plt.xticks([1, 2], ["California", "Pacific"])
         return ax
