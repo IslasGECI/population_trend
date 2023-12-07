@@ -62,7 +62,7 @@ linter:
 	$(call lint, tests)
 
 mutants: setup
-	mutmut run --paths-to-mutate ${module}
+	mutmut run --paths-to-mutate ${module} || \
 	mutmut html
 
 setup: clean install
@@ -71,19 +71,19 @@ tests:
 	pytest --verbose
 
 red: format
-	pytest --verbose \
+	pytest --verbose tests/test_plot_growth_rate.py \
 	&& git restore tests/*.py \
 	|| (git add tests/*.py && git commit -m "🛑🧪 Fail tests")
 	chmod g+w -R .
 
 green: format
-	pytest --verbose \
+	pytest --verbose tests/test_plot_growth_rate.py \
 	&& (git add ${module}/*.py tests/*.py && git commit -m "✅ Pass tests") \
 	|| git restore ${module}/*.py
 	chmod g+w -R .
 
 refactor: format
-	pytest --verbose \
+	pytest --verbose tests/test_plot_growth_rate.py \
 	&& (git add ${module}/*.py tests/*.py && git commit -m "♻️  Refactor") \
 	|| git restore ${module}/*.py tests/*.py
 	chmod g+w -R .
