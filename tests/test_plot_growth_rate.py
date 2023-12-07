@@ -16,7 +16,8 @@ def test_plotter_growth_rate():
     obtained_segments = plotter.error_bar_container.lines[2][0].properties()["segments"]
     assert obtained_segments[0][0][1] == lambdas_dict["intervals"][0]
     assert obtained_segments[0][1][1] == lambdas_dict["intervals"][2]
-    print(plotter.error_bar_container.lines[2][0].properties()["segments"][1])
+    assert obtained_segments[1][0][1] == lambdas_dict_2["intervals"][0]
+    assert obtained_segments[1][1][1] == lambdas_dict_2["intervals"][2]
     assert isinstance(obtained, plt.axes._axes.Axes)
     obtained_y_label = obtained.get_ylabel()
     expected_y_label = "Growth Rate"
