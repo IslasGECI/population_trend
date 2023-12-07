@@ -4,9 +4,9 @@ import numpy as np
 
 
 def test_plotter_growth_rate():
-    lambdas_dict = {"intervals": [1, 2, 3.5]}
-    lambdas_dict_2 = {"intervals": [1.9, 3, 7.5]}
-    plotter = Plotter_Growth_Rate(lambdas_dict, lambdas_dict_2)
+    lambdas_california = {"intervals": [1, 2, 3.5]}
+    lambdas_pacific = {"intervals": [1.9, 3, 7.5]}
+    plotter = Plotter_Growth_Rate(lambdas_california, lambdas_pacific)
     obtained = plotter.plot_error_bars()
 
     x_positions = plotter.error_bar_container.lines[0].get_data()[0]
@@ -14,10 +14,10 @@ def test_plotter_growth_rate():
     np.testing.assert_array_equal(x_positions, [1, 2])
     np.testing.assert_array_equal(y_positions, [2, 3])
     obtained_segments = plotter.error_bar_container.lines[2][0].properties()["segments"]
-    assert obtained_segments[0][0][1] == lambdas_dict["intervals"][0]
-    assert obtained_segments[0][1][1] == lambdas_dict["intervals"][2]
-    assert obtained_segments[1][0][1] == lambdas_dict_2["intervals"][0]
-    assert obtained_segments[1][1][1] == lambdas_dict_2["intervals"][2]
+    assert obtained_segments[0][0][1] == lambdas_california["intervals"][0]
+    assert obtained_segments[0][1][1] == lambdas_california["intervals"][2]
+    assert obtained_segments[1][0][1] == lambdas_pacific["intervals"][0]
+    assert obtained_segments[1][1][1] == lambdas_pacific["intervals"][2]
     assert isinstance(obtained, plt.axes._axes.Axes)
     obtained_y_label = obtained.get_ylabel()
     expected_y_label = "Growth Rate"
