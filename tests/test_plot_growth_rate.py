@@ -13,4 +13,4 @@ def test_plotter_growth_rate():
     assert obtained_y_label == expected_y_label
     plt.pyplot.savefig("tests/data/borrame.png")
     assert obtained.get_xticklabels()[0].get_text() == "California"
-    assert obtained.get_xticklabels()[0].get_text() == "Pacific"
+    assert obtained.get_xticklabels()[1].get_text() == "Pacific"
