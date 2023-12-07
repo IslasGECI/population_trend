@@ -8,3 +8,6 @@ def test_plotter_growth_rate():
     obtained = plotter.plot_error_bars()
     assert plotter.interval == [[1, 2, 3], [1, 2, 3]]
     assert isinstance(obtained, plt.axes._axes.Axes)
+    obtained_y_label = obtained.get_ylabel()
+    expected_y_label = "Growth Rate"
+    assert obtained_y_label == expected_y_label
