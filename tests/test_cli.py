@@ -18,6 +18,14 @@ intervals_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
 output_figure = "tests/data/figure.png"
 
 
+def test_app_plot_growth_rate():
+    result = runner.invoke(
+        app,
+        ["plot-growth-rate", "--help"],
+    )
+    assert result.exit_code == 0
+
+
 def test_app_plot_population_trend():
     result = runner.invoke(
         app,
