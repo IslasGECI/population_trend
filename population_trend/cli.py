@@ -88,3 +88,8 @@ def write_regional_trends(
     regional_lambdas = concatenator.mean_by_row()
     calculator = Calculator_Regional_Lambdas_Intervals(regional_lambdas)
     calculator.save_intervals(regional_trend_path)
+
+
+@app.command()
+def plot_growth_rate():
+    pass
