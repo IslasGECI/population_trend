@@ -1,4 +1,5 @@
 from population_trend import Plotter_Growth_Rate
+import pytest
 import matplotlib as plt
 import numpy as np
 
@@ -36,6 +37,7 @@ def test_plotter_growth_rate():
     assert segment[0][1] == height
     assert segment[1][1] == height
     linestyle = obtained_h_line_in_1.get_linestyle()[0][1]
+    assert pytest.approx(linestyle) == [5.55, 2.4]
     print(linestyle)
     color_line = obtained_h_line_in_1.get_color()[0]
     print(color_line)
