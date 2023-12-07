@@ -12,9 +12,12 @@ from population_trend.regional_lambdas import (
     Calculator_Regional_Lambdas_Intervals,
 )
 
+from population_trend.plotter_growth_rate import Plotter_Growth_Rate
+
 import pandas as pd
 import typer
 import json
+import matplotlib.pyplot as plt
 
 app = typer.Typer(help="Write filtered burrows data by species and island")
 
@@ -91,5 +94,15 @@ def write_regional_trends(
 
 
 @app.command()
-def plot_growth_rate():
-    pass
+def plot_growth_rate(
+    intervals_california: str = "", intervals_pacific: str = "", output_path: str = ""
+):
+    with open(intervals_california, "r") as read_file:
+        lambdas_intervals_california = json.load(read_file)
+
+    with open(intervals_pacific, "r") as read_file:
+        lambdas_intervals_pacific = json.load(read_file)
+
+    plotter = Plotter_Growth_Rate(lambdas_intervals_california, lambdas_intervals_pacific)
+    plotter.plot_error_bars()
+    plt.savefig(output_path)
