@@ -68,7 +68,7 @@ jobs:
       - name: Evalúa resistencia a mutaciones
         run: docker run islasgeci/population_trend:latest make mutants
       - name: Upload
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@v3
         with:
           name: mutant-registry
           path: html/
