@@ -23,6 +23,20 @@ def test_app_plot_growth_rate():
         app,
         ["plot-growth-rate", "--help"],
     )
+    trend_california_json_path = "tests/data/california_trend_test.json"
+    trend_pacific_json_path = "tests/data/pacific_trend_test.json"
+    result = runner.invoke(
+        app,
+        [
+            "plot-growth-rate",
+            "--intervals-california",
+            trend_california_json_path,
+            "--intervals-pacific",
+            trend_pacific_json_path,
+            "--output-path",
+            output_figure,
+        ],
+    )
     assert result.exit_code == 0
 
 
