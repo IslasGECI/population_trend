@@ -18,7 +18,7 @@ class Plotter_Growth_Rate:
         ]
         yerror = [low_limits, up_limits]
         xticks_position = [1, 2]
-        plt.errorbar(
+        self.error_bar_container = plt.errorbar(
             xticks_position,
             [self.interval[0][1], self.interval[1][1]],
             yerr=yerror,
