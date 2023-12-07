@@ -14,8 +14,8 @@ def test_plotter_growth_rate():
     np.testing.assert_array_equal(x_positions, [1, 2])
     np.testing.assert_array_equal(y_positions, [2, 3])
     obtained_segments = plotter.error_bar_container.lines[2][0].properties()["segments"]
-    print(obtained_segments[0][0][1])
     assert obtained_segments[0][0][1] == lambdas_dict["intervals"][0]
+    assert obtained_segments[0][1][1] == lambdas_dict["intervals"][2]
     print(plotter.error_bar_container.lines[2][0].properties()["segments"][1])
     assert isinstance(obtained, plt.axes._axes.Axes)
     obtained_y_label = obtained.get_ylabel()

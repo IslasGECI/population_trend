@@ -22,7 +22,6 @@ class Plotter_Growth_Rate:
             xticks_position,
             [self.interval[0][1], self.interval[1][1]],
             yerr=yerror,
-            marker="o",
             fmt="o",
         )
         plt.ylabel("Growth Rate", fontsize=20)
