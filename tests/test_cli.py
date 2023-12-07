@@ -23,6 +23,7 @@ def test_app_plot_growth_rate():
         app,
         ["plot-growth-rate", "--help"],
     )
+    assert "XX" not in result.stdout
     trend_california_json_path = "tests/data/california_trend_test.json"
     trend_pacific_json_path = "tests/data/pacific_trend_test.json"
     output_figure = "tests/data/regional_figure.png"
