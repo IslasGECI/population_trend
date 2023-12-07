@@ -1,4 +1,5 @@
 import geci_plots as gp
+import matplotlib.pyplot as plt
 
 
 class Plotter_Growth_Rate:
@@ -7,4 +8,5 @@ class Plotter_Growth_Rate:
 
     def plot_error_bars(self):
         _, ax = gp.geci_plot()
+        plt.ylabel("Growth Rate", fontsize=20)
         return ax
