@@ -8,6 +8,24 @@ class Plotter_Growth_Rate:
 
     def plot_error_bars(self):
         _, ax = gp.geci_plot()
+        low_limits = [
+            self.interval[0][1] - self.interval[0][0],
+            self.interval[1][1] - self.interval[1][0],
+        ]
+        up_limits = [
+            self.interval[0][2] - self.interval[0][1],
+            self.interval[1][2] - self.interval[1][1],
+        ]
+        yerror = [low_limits, up_limits]
+        xticks_position = [1, 2]
+        plt.errorbar(
+            xticks_position,
+            [self.interval[0][1], self.interval[1][1]],
+            yerr=yerror,
+            marker="o",
+            fmt="o",
+        )
         plt.ylabel("Growth Rate", fontsize=20)
-        plt.xticks([1, 2], ["California", "Pacific"], fontsize=20)
+        plt.xticks(xticks_position, ["California", "Pacific"], fontsize=20)
+        plt.xlim([0.5, 2.5])
         return ax
