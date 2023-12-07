@@ -24,7 +24,9 @@ class Plotter_Growth_Rate:
             yerr=yerror,
             fmt="o",
         )
+        xlimits = [0.5, 2.5]
+        self.horizontal_line = plt.hlines(1, xmin=xlimits[0], xmax=xlimits[1])
         plt.ylabel("Growth Rate", fontsize=20)
         plt.xticks(xticks_position, ["California", "Pacific"], fontsize=20)
-        plt.xlim([0.5, 2.5])
+        plt.xlim(xlimits)
         return ax
