@@ -97,12 +97,15 @@ def write_regional_trends(
 def plot_growth_rate(
     intervals_california: str = "", intervals_pacific: str = "", output_path: str = ""
 ):
-    with open(intervals_california, "r") as read_file:
-        lambdas_intervals_california = json.load(read_file)
-
-    with open(intervals_pacific, "r") as read_file:
-        lambdas_intervals_pacific = json.load(read_file)
+    lambdas_intervals_california = read_json(intervals_california)
+    lambdas_intervals_pacific = read_json(intervals_pacific)
 
     plotter = Plotter_Growth_Rate(lambdas_intervals_california, lambdas_intervals_pacific)
     plotter.plot_error_bars()
     plt.savefig(output_path)
+
+
+def read_json(intervals_json):
+    with open(intervals_json, "r") as read_file:
+        lambdas_intervals = json.load(read_file)
+    return lambdas_intervals
