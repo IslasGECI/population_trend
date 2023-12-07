@@ -27,6 +27,8 @@ def test_app_plot_growth_rate():
     trend_california_json_path = "tests/data/california_trend_test.json"
     trend_pacific_json_path = "tests/data/pacific_trend_test.json"
     output_figure = "tests/data/regional_figure.png"
+    if os.path.exists(output_figure):
+        os.remove(output_figure)
     result = runner.invoke(
         app,
         [
