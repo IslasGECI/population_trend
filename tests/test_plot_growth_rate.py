@@ -14,4 +14,4 @@ def test_plotter_growth_rate():
     plt.pyplot.savefig("tests/data/borrame.png")
     assert obtained.get_xticklabels()[0].get_text() == "California"
     assert obtained.get_xticklabels()[1].get_text() == "Pacific"
-    assert obtained.xticks().get_fontsize() == 20.0
+    assert obtained.get_xticks().get_fontsize() == 20.0
