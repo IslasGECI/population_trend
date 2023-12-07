@@ -29,3 +29,5 @@ def test_plotter_growth_rate():
     obtained_xlim = plt.pyplot.xlim()
     expected_xlim = (0.5, 2.5)
     assert obtained_xlim == expected_xlim
+
+    h_line_in_1 = plotter.horizontal_line
