@@ -63,6 +63,7 @@ linter:
 
 mutants: setup
 	mutmut run --paths-to-mutate ${module}
+	mutmut html
 
 setup: clean install
 
