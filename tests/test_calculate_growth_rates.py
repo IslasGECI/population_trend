@@ -183,6 +183,8 @@ def test_set_axis_plot_config():
     _, ax = gp.geci_plot()
     lam.set_axis_plot_config(ax)
     assert plt.xlim() == (0, 1)
+    assert plt.ylim() == (0, 1)
     assert ax.get_xlabel() == "Año"
+    assert ax.get_ylabel() == "Cantidad de parejas reproductoras"
     assert ax.get_xticklabels()[0].get_fontsize() == 20
     assert ax.get_yticklabels()[1].get_rotation() == 90.0
