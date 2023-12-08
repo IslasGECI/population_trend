@@ -62,7 +62,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       - name: Copia repositorio
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
       - name: Construye imagen
         run: docker build --tag islasgeci/population_trend:latest .
       - name: Evalúa resistencia a mutaciones

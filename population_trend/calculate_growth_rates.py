@@ -14,10 +14,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def do_nothing():
-    pass
-
-
 def fit_population_model(seasons_series, data_series):
     parameters = lambda_calculator(seasons_series, data_series)
     model = power_law(
