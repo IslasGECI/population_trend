@@ -184,3 +184,4 @@ def test_set_axis_plot_config():
     lam.set_axis_plot_config(ax)
     assert plt.xlim() == (0, 1)
     assert ax.get_xlabel() == "Año"
+    assert ax.get_xticklabels()[0].get_fontsize() == 20
