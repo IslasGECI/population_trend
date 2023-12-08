@@ -226,5 +226,5 @@ def set_axis_plot_config(ax):
     plt.xticks(locs_x[1:], size=20)
     plt.xlim(locs_x[0], locs_x[-1])
     plt.ylim(0, locs_y[-1])
-    plt.xlabel("Año", size=20, labelpad=10)
+    ax.set_xlabel("Año", size=20, labelpad=10)
     plt.ylabel("Cantidad de parejas reproductoras", size=20)
