@@ -66,7 +66,7 @@ jobs:
       - name: Construye imagen
         run: docker build --tag islasgeci/population_trend:latest .
       - name: Evalúa resistencia a mutaciones
-        run: docker run islasgeci/population_trend:latest make mutants
+        run: docker run -v $PWD:/workdir islasgeci/population_trend:latest make mutants
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
