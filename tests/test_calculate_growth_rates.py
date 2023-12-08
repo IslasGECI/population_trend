@@ -1,10 +1,12 @@
-import population_trend as lam
-
 from numpy.testing import assert_array_almost_equal
 import pandas as pd
 import pytest
 import json
 import os
+import population_trend as lam
+import geci_plots as gp
+
+import matplotlib.pyplot as plt
 
 
 nidos_array = [
@@ -175,3 +177,10 @@ def test_Bootstrap_from_time_series_parametrizer():
         blocks_length=3, N=2000, column_name="Maxima_cantidad_nidos", alpha=expected_alpha
     )
     assert parameters.parameters["alpha"] == expected_alpha
+
+
+def test_set_axis_plot_config():
+    _, ax = gp.geci_plot()
+    lam.set_axis_plot_config(ax)
+    assert plt.xlim() == (0, 1)
+    assert ax.get_xlabel() == "Año"
