@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.6.1] - 2023-12-08
+
+### Fixed
+
+- Command `plot-growth-rate` and `plot_population_trend()` function write figures with transparent background
+
 ## [5.6.0] - 2023-12-07
 
 ### Added
