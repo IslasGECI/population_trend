@@ -102,7 +102,7 @@ def plot_growth_rate(
 
     plotter = Plotter_Growth_Rate(lambdas_intervals_california, lambdas_intervals_pacific)
     plotter.plot_error_bars()
-    plt.savefig(output_path)
+    plt.savefig(output_path, transparent=True)
 
 
 def read_json(intervals_json):
