@@ -222,8 +222,8 @@ def set_axis_plot_config(ax):
     ax.spines["top"].set_visible(False)
     fontsize = 20
     plt.yticks(rotation=90, size=fontsize)
-    locs_x, labels_x = plt.xticks()
-    locs_y, labels_y = plt.yticks()
+    locs_x, _ = plt.xticks()
+    locs_y, _ = plt.yticks()
     plt.xticks(locs_x[1:], size=fontsize)
     plt.xlim(locs_x[0], locs_x[-1])
     plt.ylim(0, locs_y[-1])
