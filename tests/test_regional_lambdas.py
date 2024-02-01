@@ -4,6 +4,7 @@ from population_trend import (
     Calculator_Regional_Lambdas_Intervals,
     Island_Bootstrap_Distribution_Concatenator,
 )
+import json
 
 config_path = "tests/data/region_config.json"
 
@@ -44,6 +45,10 @@ def test_Calculator_Regional_Lambdas_Intervals():
     output_path = "tests/regional_intervals.json"
     calculator.save_intervals(output_path)
     assert os.path.exists(output_path)
+
+    with open(output_path, encoding="utf8") as json_file:
+        json_data = json.load(json_file)
+
     p_values = calculator.p_values
     expected = (3 / 7, 4 / 7)
     assert p_values == expected, "It obtains the right p-values"
@@ -51,6 +56,7 @@ def test_Calculator_Regional_Lambdas_Intervals():
     obtained_intervals = calculator.intervals
     expected_intervals = [0.1, 2.0, 4.0]
     assert obtained_intervals == expected_intervals
+    assert json_data["intervals"] == expected_intervals
 
     obtained_intervals = calculator.lambda_latex_interval
     expected_intervals = "2.0 (0.1 - 4.0)"
@@ -61,6 +67,7 @@ def test_Calculator_Regional_Lambdas_Intervals():
         "El valor $p$ calculado resultó mayor que \alpha en las dos hipótesis nulas probadas"
     )
     assert obtained_statement_latex == expected_statement_latex
+    assert json_data["hypotesis_test_statement_latex"] == expected_statement_latex
 
 
 def test_Calculator_Regional_Lambdas_Intervals_hypotesis_test_statement_latex():

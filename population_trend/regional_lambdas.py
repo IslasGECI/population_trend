@@ -84,3 +84,14 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
         if self.p_values[0] < self.alpha:
             return f"La población está creciendo. $H_0: \lambda < 1$, $\alpha > p =$ {rounded_p_values[0]}"
         return "El valor $p$ calculado resultó mayor que \alpha en las dos hipótesis nulas probadas"
+
+    def save_intervals(self, output_path):
+        json_dict = {
+            "intervals": list(self.intervals),
+            "lambda_latex_interval": self.lambda_latex_interval,
+            "p-values": self.p_values,
+            "bootstrap_intermediate_distribution": self.get_intermediate_lambdas(),
+            "hypotesis_test_statement_latex": self.hypotesis_test_statement_latex,
+        }
+        with open(output_path, "w") as file:
+            json.dump(json_dict, file)
