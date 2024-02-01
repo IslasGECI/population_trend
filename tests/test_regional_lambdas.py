@@ -82,7 +82,7 @@ def test_Calculator_Regional_Lambdas_Intervals_hypotesis_test_statement_latex():
     )
     obtained_statement_latex = obtain_statement_latex(increasing_regional_lambdas)
     expected_statement_latex = (
-        f"La población está creciendo. $H_0: \lambda < 1$, $\alpha > p =$ {1/21}"
+        f"La población está creciendo. $H_0: \lambda < 1$, $\alpha > p =$ 0.048"
     )
     assert obtained_statement_latex == expected_statement_latex
 
@@ -114,7 +114,7 @@ def test_Calculator_Regional_Lambdas_Intervals_hypotesis_test_statement_latex():
     )
     obtained_statement_latex = obtain_statement_latex(decreasing_regional_lambdas)
     expected_statement_latex = (
-        f"La población está decreciendo. $H_0: \lambda > 1$, $\alpha > p =$ {1/22}"
+        f"La población está decreciendo. $H_0: \lambda > 1$, $\alpha > p =$ 0.045"
     )
     assert obtained_statement_latex == expected_statement_latex
 
