@@ -2,6 +2,7 @@ import os
 import numpy as np
 from population_trend import (
     Calculator_Regional_Lambdas_Intervals,
+    XXCalculator_Regional_Lambdas_Intervals,
     Island_Bootstrap_Distribution_Concatenator,
 )
 
@@ -37,7 +38,8 @@ def test_Island_Bootstrap_Distribution_Concatenator():
 
 def test_Calculator_Regional_Lambdas_Intervals():
     regional_lambdas = np.array([0.1, 0.2, 0.3, 2.0, 2.0, 2.0, 4.0])
-    calculator = Calculator_Regional_Lambdas_Intervals(regional_lambdas)
+    alpha = 0.05
+    calculator = XXCalculator_Regional_Lambdas_Intervals(regional_lambdas, alpha)
     obtained = calculator.lambdas
     assert (obtained == regional_lambdas).all()
     output_path = "tests/regional_intervals.json"
