@@ -56,5 +56,7 @@ def test_Calculator_Regional_Lambdas_Intervals():
     assert obtained_intervals == expected_intervals
 
     obtained_statement_latex = calculator.hypotesis_test_statement_latex
-    expected_statement_latex = "$H_0$"
+    expected_statement_latex = (
+        "El valor $p$ calculado resultó mayor que \alpha en las dos hipótesis nulas probadas"
+    )
     assert obtained_statement_latex == expected_statement_latex
