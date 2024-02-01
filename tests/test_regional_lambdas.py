@@ -78,3 +78,11 @@ def test_Calculator_Regional_Lambdas_Intervals_hypotesis_test_statement_latex():
         f"La población está creciendo. $H_0: \lambda < 1$, $\alpha > p =$ 0.0"
     )
     assert obtained_statement_latex == expected_statement_latex
+
+    regional_lambdas = np.array([0.4, 8, 2, 3, 2, 2, 2, 4, 3, 5, 7, 1, 2, 3, 2, 2, 2, 4, 3, 5, 7])
+    calculator = Calculator_Regional_Lambdas_Intervals(regional_lambdas)
+    obtained_statement_latex = calculator.hypotesis_test_statement_latex
+    expected_statement_latex = (
+        f"La población está creciendo. $H_0: \lambda < 1$, $\alpha > p =$ {1/21}"
+    )
+    assert obtained_statement_latex == expected_statement_latex
