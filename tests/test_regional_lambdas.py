@@ -122,6 +122,7 @@ def test_Calculator_Regional_Lambdas_Intervals_hypotesis_test_statement_latex():
 
 
 def obtain_statement_latex(regional_lambdas):
-    calculator = Calculator_Regional_Lambdas_Intervals(regional_lambdas)
+    alpha = 0.05
+    calculator = XXCalculator_Regional_Lambdas_Intervals(regional_lambdas, alpha)
     obtained_statement_latex = calculator.hypotesis_test_statement_latex
     return obtained_statement_latex
