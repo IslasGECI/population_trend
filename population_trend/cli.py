@@ -85,6 +85,7 @@ def write_regional_trends(
     config_path: str = "data/processed/gumu_guadalupe_burrows.json",
     region: str = "",
     regional_trend_path: str = "",
+    alpha: float = 0.05,
 ):
     concatenator = Island_Bootstrap_Distribution_Concatenator(config_path)
     concatenator.set_region(region)
