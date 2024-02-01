@@ -62,9 +62,7 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
         self.intervals = self.intervals_from_p_values_and_alpha()
         self.interval_lambdas = [interval for interval in self.intervals]
         self.lambda_latex_interval = self.get_lambda_interval_latex_string()
-        self.hypotesis_test_statement_latex = (
-            "El valor $p$ calculado resultó mayor que \alpha en las dos hipótesis nulas probadas"
-        )
+        self.hypotesis_test_statement_latex = self.get_hypotesis_statement()
 
     def intervals_from_p_values_and_alpha(self):
         intervals = calculate_intervals_from_p_values_and_alpha(
@@ -78,3 +76,8 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
             for lambdas in self.lambdas
             if (lambdas > self.intervals[0]) and (lambdas < self.intervals[2])
         ]
+
+    def get_hypotesis_statement(self):
+        if self.p_values[1] < self.alpha:
+            return f"La población está decreciendo. $H_0: \lambda > 1$, $\alpha > p =$ 0.0"
+        return "El valor $p$ calculado resultó mayor que \alpha en las dos hipótesis nulas probadas"
