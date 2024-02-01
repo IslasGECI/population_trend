@@ -58,15 +58,16 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
     def __init__(self, regional_lambdas):
         self.lambdas = regional_lambdas
         self.p_values = self.get_p_values()
+        self.alpha = 0.05
         self.intervals = self.intervals_from_p_values_and_alpha()
         self.interval_lambdas = [interval for interval in self.intervals]
         self.lambda_latex_interval = self.get_lambda_interval_latex_string()
         self.hypotesis_test_statement_latex = "$H_0$"
-        self.alpha = None
 
     def intervals_from_p_values_and_alpha(self):
-        alpha = 0.05
-        intervals = calculate_intervals_from_p_values_and_alpha(self.lambdas, self.p_values, alpha)
+        intervals = calculate_intervals_from_p_values_and_alpha(
+            self.lambdas, self.p_values, self.alpha
+        )
         return intervals
 
     def get_intermediate_lambdas(self):
