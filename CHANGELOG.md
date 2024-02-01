@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.6.3] - 2024-02-01
+
+### Fixed
+
+- Write statement of hypotesis test
+
 ## [5.6.2] - 2024-02-01
 
 ### Added
