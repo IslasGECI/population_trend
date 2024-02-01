@@ -54,3 +54,7 @@ def test_Calculator_Regional_Lambdas_Intervals():
     obtained_intervals = calculator.lambda_latex_interval
     expected_intervals = "2.0 (0.1 - 4.0)"
     assert obtained_intervals == expected_intervals
+
+    obtained_statement_latex = calculator.hypotesis_test_statement_latex
+    expected_statement_latex = "$H_0$"
+    assert obtained_statement_latex == expected_statement_latex
