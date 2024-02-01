@@ -70,21 +70,22 @@ setup: clean install
 tests:
 	pytest --verbose
 
+tdd_current_test_file = tests/test_regional_lambdas.py
 red: format
-	pytest --verbose tests/test_plot_growth_rate.py \
+	pytest --verbose $(tdd_current_test_file) \
 	&& git restore tests/*.py \
 	|| (git add tests/*.py && git commit -m "🛑🧪 Fail tests")
 	chmod g+w -R .
 
 green: format
-	pytest --verbose tests/test_plot_growth_rate.py \
+	pytest --verbose $(tdd_current_test_file) \
 	&& (git add ${module}/*.py tests/*.py && git commit -m "✅ Pass tests") \
 	|| git restore ${module}/*.py
 	chmod g+w -R .
 
 refactor: format
-	pytest --verbose tests/test_plot_growth_rate.py \
-	&& (git add ${module}/*.py tests/*.py && git commit -m "♻️  Refactor") \
+	pytest --verbose $(tdd_current_test_file) \
+	&& (git add ${module}/*.py tests/*.py && git commit -m "♻️ Refactor") \
 	|| git restore ${module}/*.py tests/*.py
 	chmod g+w -R .
 
