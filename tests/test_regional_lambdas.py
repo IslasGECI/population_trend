@@ -1,7 +1,6 @@
 import os
 import numpy as np
 from population_trend import (
-    Calculator_Regional_Lambdas_Intervals,
     XXCalculator_Regional_Lambdas_Intervals,
     Island_Bootstrap_Distribution_Concatenator,
 )
