@@ -90,7 +90,7 @@ def write_regional_trends(
     concatenator = Island_Bootstrap_Distribution_Concatenator(config_path)
     concatenator.set_region(region)
     regional_lambdas = concatenator.mean_by_row()
-    calculator = Calculator_Regional_Lambdas_Intervals(regional_lambdas)
+    calculator = Calculator_Regional_Lambdas_Intervals(regional_lambdas, alpha)
     calculator.save_intervals(regional_trend_path)
 
 

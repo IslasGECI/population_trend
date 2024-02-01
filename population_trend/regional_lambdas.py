@@ -54,7 +54,7 @@ class Island_Bootstrap_Distribution_Concatenator:
         return lambdas_distribution
 
 
-class XXCalculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
+class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
     def __init__(self, regional_lambdas, alpha):
         self.lambdas = regional_lambdas
         self.p_values = self.get_p_values()
@@ -84,8 +84,3 @@ class XXCalculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
         if self.p_values[0] < self.alpha:
             return f"La población está creciendo. $H_0: \lambda < 1$, $\alpha > p =$ {rounded_p_values[0]}"
         return "El valor $p$ calculado resultó mayor que \alpha en las dos hipótesis nulas probadas"
-
-
-def Calculator_Regional_Lambdas_Intervals(regional_lambdas):
-    alpha = 0.05
-    return XXCalculator_Regional_Lambdas_Intervals(regional_lambdas, alpha)
