@@ -67,5 +67,5 @@ def test_Calculator_Regional_Lambdas_Intervals_hypotesis_test_statement_latex():
     calculator = Calculator_Regional_Lambdas_Intervals(regional_lambdas)
     obtained = calculator.lambdas
     obtained_statement_latex = calculator.hypotesis_test_statement_latex
-    expected_statement_latex = f"El valor $p$ es de {calculator.p_value}"
+    expected_statement_latex = f"El valor $p$ es de {calculator.p_values}"
     assert obtained_statement_latex == expected_statement_latex
