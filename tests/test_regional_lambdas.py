@@ -73,7 +73,7 @@ def test_Calculator_Regional_Lambdas_Intervals():
         "The calculated $p$-value is higher than the $\\alpha$ in both null hypothesis tests"
     )
     assert obtained_english_statement_latex == expected_english_statement_latex
-    assert json_data["hypotesis_test_statement_latex"] == expected_statement_latex
+    assert json_data["hypotesis_test_statement_latex_sp"] == expected_statement_latex
     assert json_data["hypotesis_test_statement_latex_en"] == expected_english_statement_latex
 
 
