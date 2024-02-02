@@ -80,10 +80,10 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
     def get_hypotesis_statement(self):
         rounded_p_values = np.round(self.p_values, 3)
         if self.p_values[1] < self.alpha:
-            return f"La población está decreciendo. $H_0: \lambda > 1$, $\alpha > p =$ {rounded_p_values[1]}"
+            return f"La población está decreciendo. $H_0: \\lambda \\gt 1$, $\\alpha \\gt p =$ {rounded_p_values[1]}"
         if self.p_values[0] < self.alpha:
-            return f"La población está creciendo. $H_0: \lambda < 1$, $\alpha > p =$ {rounded_p_values[0]}"
-        return "El valor $p$ calculado resultó mayor que \alpha en las dos hipótesis nulas probadas"
+            return f"La población está creciendo. $H_0: \\lambda \\lt 1$, $\\alpha \\gt p =$ {rounded_p_values[0]}"
+        return f"El valor $p$ calculado resultó mayor que $\\alpha$ en las dos hipótesis nulas probadas"
 
     def save_intervals(self, output_path):
         json_dict = {

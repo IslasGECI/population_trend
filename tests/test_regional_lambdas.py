@@ -64,7 +64,7 @@ def test_Calculator_Regional_Lambdas_Intervals():
 
     obtained_statement_latex = calculator.hypotesis_test_statement_latex
     expected_statement_latex = (
-        "El valor $p$ calculado resultó mayor que \alpha en las dos hipótesis nulas probadas"
+        "El valor $p$ calculado resultó mayor que $\\alpha$ en las dos hipótesis nulas probadas"
     )
     assert obtained_statement_latex == expected_statement_latex
     assert json_data["hypotesis_test_statement_latex"] == expected_statement_latex
@@ -74,13 +74,13 @@ def test_Calculator_Regional_Lambdas_Intervals_hypotesis_test_statement_latex():
     decreasing_regional_lambdas = np.array([0.1, 0.2, 0.3, 0.2, 0.2, 0.2, 0.4])
     obtained_statement_latex = obtain_statement_latex(decreasing_regional_lambdas)
     expected_statement_latex = (
-        "La población está decreciendo. $H_0: \lambda > 1$, $\alpha > p =$ 0.0"
+        "La población está decreciendo. $H_0: \\lambda \\gt 1$, $\\alpha \\gt p =$ 0.0"
     )
     assert obtained_statement_latex == expected_statement_latex
 
     increasing_regional_lambdas = np.array([1, 2, 3, 2, 2, 2, 4])
     obtained_statement_latex = obtain_statement_latex(increasing_regional_lambdas)
-    expected_statement_latex = "La población está creciendo. $H_0: \lambda < 1$, $\alpha > p =$ 0.0"
+    expected_statement_latex = "La población está creciendo. $H_0: \\lambda \\lt 1$, $\\alpha \\gt p =$ 0.0"
     assert obtained_statement_latex == expected_statement_latex
 
     increasing_regional_lambdas = np.array(
@@ -88,7 +88,7 @@ def test_Calculator_Regional_Lambdas_Intervals_hypotesis_test_statement_latex():
     )
     obtained_statement_latex = obtain_statement_latex(increasing_regional_lambdas)
     expected_statement_latex = (
-        "La población está creciendo. $H_0: \lambda < 1$, $\alpha > p =$ 0.048"
+        "La población está creciendo. $H_0: \\lambda \\lt 1$, $\\alpha \\gt p =$ 0.048"
     )
     assert obtained_statement_latex == expected_statement_latex
 
@@ -120,7 +120,7 @@ def test_Calculator_Regional_Lambdas_Intervals_hypotesis_test_statement_latex():
     )
     obtained_statement_latex = obtain_statement_latex(decreasing_regional_lambdas)
     expected_statement_latex = (
-        "La población está decreciendo. $H_0: \lambda > 1$, $\alpha > p =$ 0.045"
+        "La población está decreciendo. $H_0: \\lambda \\gt 1$, $\\alpha \\gt p =$ 0.045"
     )
     assert obtained_statement_latex == expected_statement_latex
 
