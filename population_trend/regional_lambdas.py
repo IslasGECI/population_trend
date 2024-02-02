@@ -103,6 +103,7 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
             "p-values": self.p_values,
             "bootstrap_intermediate_distribution": self.get_intermediate_lambdas(),
             "hypotesis_test_statement_latex": self.hypotesis_test_statement_latex,
+            "hypotesis_test_statement_latex_en": self.hypotesis_test_statement_latex_en,
         }
         with open(output_path, "w") as file:
             json.dump(json_dict, file)
