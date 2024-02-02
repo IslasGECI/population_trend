@@ -63,6 +63,7 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
         self.interval_lambdas = [interval for interval in self.intervals]
         self.lambda_latex_interval = self.get_lambda_interval_latex_string()
         self.hypotesis_test_statement_latex = self.get_hypotesis_statement()
+        self.hypotesis_test_statement_latex_en = self.get_hypotesis_statement_en()
 
     def intervals_from_p_values_and_alpha(self):
         intervals = calculate_intervals_from_p_values_and_alpha(
@@ -86,6 +87,14 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
         return (
             "El valor $p$ calculado resultó mayor que $\\alpha$ en las dos hipótesis nulas probadas"
         )
+
+    def get_hypotesis_statement_en(self):
+        rounded_p_values = np.round(self.p_values, 3)
+        if self.p_values[1] < self.alpha:
+            return f"La población está decreciendo. $H_0: \\lambda > 1$, $\\alpha > p =$ {rounded_p_values[1]}"
+        if self.p_values[0] < self.alpha:
+            return f"La población está creciendo. $H_0: \\lambda < 1$, $\\alpha > p =$ {rounded_p_values[0]}"
+        return "The calculated $p$-value is higher than the $\\alpha$ in both null hypothesis tests"
 
     def save_intervals(self, output_path):
         json_dict = {
