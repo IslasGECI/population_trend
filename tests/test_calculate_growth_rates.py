@@ -82,7 +82,7 @@ def test_intervals_from_p_values_and_alpha():
 
 
 def test_calculate_interest_numbers():
-    model = bootstraper.xxfit_population_model()
+    model = bootstraper.fit_population_model()
     cantidad_nidos = pd.DataFrame(nidos_array)
     (
         obtained_first_number,

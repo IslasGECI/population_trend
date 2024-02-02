@@ -14,16 +14,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def fit_population_model(seasons_series, data_series):
-    parameters = lambda_calculator(seasons_series, data_series)
-    model = power_law(
-        seasons_series - seasons_series.iloc[0],
-        parameters[0],
-        parameters[1],
-    )
-    return model
-
-
 def calculate_porcentual_diff(x, y):
     return 100 * (x - y) / y
 
@@ -154,7 +144,7 @@ class Bootstrap_from_time_series:
             seasons_intervals = calculate_seasons_intervals(monitored_seasons)
             return ",".join(seasons_intervals)
 
-    def xxfit_population_model(self):
+    def fit_population_model(self):
         parameters = lambda_calculator(self.season_series, self.data_series)
         model = power_law(
             self.season_series - self.season_series.iloc[0],
@@ -184,7 +174,7 @@ class Bootstrap_from_time_series:
 def calculate_growth_rates_table(bootstrap: Bootstrap_from_time_series_parametrizer):
     bootstraper = Bootstrap_from_time_series(bootstrap)
     df = bootstrap.parameters["dataframe"]
-    model = bootstraper.xxfit_population_model()
+    model = bootstraper.fit_population_model()
     inferior_limit, central, superior_limit = bootstraper.get_inferior_central_and_superior_limit()
     lambda_latex_string = bootstraper.get_lambda_interval_latex_string()
     bootstrap_distribution = bootstraper.get_distribution()
