@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.6.4] - 2024-02-02
+
+### Fixed
+
+- JSON string format 
+
 ## [5.6.3] - 2024-02-01
 
 ### Fixed

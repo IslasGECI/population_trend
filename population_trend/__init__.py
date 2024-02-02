@@ -1,6 +1,6 @@
-"""A template Python module"""
+"""A population growth model package"""
 
-__version__ = "5.6.3"
+__version__ = "5.6.4"
 from .cli import *  # noqa
 from .filter_data import *  # noqa
 from .population_growth_model import *  # noqa
