@@ -62,22 +62,22 @@ def test_Calculator_Regional_Lambdas_Intervals():
     expected_intervals = "2.0 (0.1 - 4.0)"
     assert obtained_intervals == expected_intervals
 
-    obtained_statement_latex = calculator.hypotesis_test_statement_latex
+    obtained_statement_latex = calculator.hypothesis_test_statement_latex
     expected_statement_latex = (
         "El valor $p$ calculado resultó mayor que $\\alpha$ en las dos hipótesis nulas probadas"
     )
     assert obtained_statement_latex == expected_statement_latex
 
-    obtained_english_statement_latex = calculator.hypotesis_test_statement_latex_en
+    obtained_english_statement_latex = calculator.hypothesis_test_statement_latex_en
     expected_english_statement_latex = (
         "The calculated $p$-value is higher than the $\\alpha$ in both null hypothesis tests"
     )
     assert obtained_english_statement_latex == expected_english_statement_latex
-    assert json_data["hypotesis_test_statement_latex_sp"] == expected_statement_latex
-    assert json_data["hypotesis_test_statement_latex_en"] == expected_english_statement_latex
+    assert json_data["hypothesis_test_statement_latex_sp"] == expected_statement_latex
+    assert json_data["hypothesis_test_statement_latex_en"] == expected_english_statement_latex
 
 
-def test_Calculator_Regional_Lambdas_Intervals_hypotesis_test_statement_latex():
+def test_Calculator_Regional_Lambdas_Intervals_hypothesis_test_statement_latex():
     decreasing_regional_lambdas = np.array([0.1, 0.2, 0.3, 0.2, 0.2, 0.2, 0.4])
     obtained_statement_latex = obtain_statement_latex(decreasing_regional_lambdas)
     expected_statement_latex = (
@@ -149,12 +149,12 @@ def test_Calculator_Regional_Lambdas_Intervals_hypotesis_test_statement_latex():
 def obtain_statement_latex(regional_lambdas):
     alpha = 0.05
     calculator = Calculator_Regional_Lambdas_Intervals(regional_lambdas, alpha)
-    obtained_statement_latex = calculator.hypotesis_test_statement_latex
+    obtained_statement_latex = calculator.hypothesis_test_statement_latex
     return obtained_statement_latex
 
 
 def obtain_statement_latex_en(regional_lambdas):
     alpha = 0.05
     calculator = Calculator_Regional_Lambdas_Intervals(regional_lambdas, alpha)
-    obtained_statement_latex = calculator.hypotesis_test_statement_latex_en
+    obtained_statement_latex = calculator.hypothesis_test_statement_latex_en
     return obtained_statement_latex

@@ -62,8 +62,8 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
         self.intervals = self.intervals_from_p_values_and_alpha()
         self.interval_lambdas = [interval for interval in self.intervals]
         self.lambda_latex_interval = self.get_lambda_interval_latex_string()
-        self.hypotesis_test_statement_latex = self.get_hypotesis_statement()
-        self.hypotesis_test_statement_latex_en = self.get_hypotesis_statement_en()
+        self.hypothesis_test_statement_latex = self.get_hypotesis_statement()
+        self.hypothesis_test_statement_latex_en = self.get_hypotesis_statement_en()
 
     def intervals_from_p_values_and_alpha(self):
         intervals = calculate_intervals_from_p_values_and_alpha(
@@ -102,8 +102,8 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
             "lambda_latex_interval": self.lambda_latex_interval,
             "p-values": self.p_values,
             "bootstrap_intermediate_distribution": self.get_intermediate_lambdas(),
-            "hypotesis_test_statement_latex_sp": self.hypotesis_test_statement_latex,
-            "hypotesis_test_statement_latex_en": self.hypotesis_test_statement_latex_en,
+            "hypothesis_test_statement_latex_sp": self.hypothesis_test_statement_latex,
+            "hypothesis_test_statement_latex_en": self.hypothesis_test_statement_latex_en,
         }
         with open(output_path, "w") as file:
             json.dump(json_dict, file)
