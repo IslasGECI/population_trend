@@ -91,7 +91,7 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
     def get_hypotesis_statement_en(self):
         rounded_p_values = np.round(self.p_values, 3)
         if self.p_values[1] < self.alpha:
-            return f"La población está decreciendo. $H_0: \\lambda > 1$, $\\alpha > p =$ {rounded_p_values[1]}"
+            return f"The population is decreasing. $H_0: \\lambda > 1$, $\\alpha > p =$ {rounded_p_values[1]}"
         if self.p_values[0] < self.alpha:
             return f"La población está creciendo. $H_0: \\lambda < 1$, $\\alpha > p =$ {rounded_p_values[0]}"
         return "The calculated $p$-value is higher than the $\\alpha$ in both null hypothesis tests"
