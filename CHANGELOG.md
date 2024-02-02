@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.7.0] - 2024-02-02
+
+### Added
+- Add english version of hypothesis test: "hypotheris_tests_statement_latex_en"
+
+### Changed
+- json key for spanish hypothesis test: "hypotesis_test_statement_latex" -> "hypothesis_test_statement_latex_sp"
+
 ## [5.6.5] - 2024-02-02
 
 ### Fixed
