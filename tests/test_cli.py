@@ -112,6 +112,16 @@ def test_app_write_bootstrap_intervals_json():
     output_json = "tests/data/gumu_guadalupe_tests.json"
     result = runner.invoke(
         app,
+        ["write-bootstrap-intervals-json", "--help"],
+    )
+    assert "[default: 3]" in result.stdout
+    assert "[default: 2000]" in result.stdout
+    assert "[default: 0.05]" in result.stdout
+    assert " reports/non-tabular" in result.stdout
+    assert " data/processed" in result.stdout
+
+    result = runner.invoke(
+        app,
         [
             "write-bootstrap-intervals-json",
             "--data-path",
