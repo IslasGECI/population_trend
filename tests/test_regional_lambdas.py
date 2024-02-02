@@ -74,6 +74,7 @@ def test_Calculator_Regional_Lambdas_Intervals():
     )
     assert obtained_english_statement_latex == expected_english_statement_latex
     assert json_data["hypotesis_test_statement_latex"] == expected_statement_latex
+    assert json_data["hypotesis_test_statement_latex_en"] == expected_english_statement_latex
 
 
 def test_Calculator_Regional_Lambdas_Intervals_hypotesis_test_statement_latex():
