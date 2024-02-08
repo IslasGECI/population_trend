@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.7.1] - 2024-02-08
+
+### Fixed
+- Rephrase hypothesis tests statement
+- Print p-values without zero before decimal point
+
 ## [5.7.0] - 2024-02-02
 
 ### Added
