@@ -88,7 +88,7 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
 
     def _round_p_values(self):
         rounded_p_values = np.round(self.p_values, 3)
-        return [p_value if p_value >= 0.001 else "<.001" for p_value in rounded_p_values]
+        return [str(p_value)[1:5] if p_value >= 0.001 else "<.001" for p_value in rounded_p_values]
 
     def get_hypotesis_statement_en(self):
         rounded_p_values = self._round_p_values()

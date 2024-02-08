@@ -63,11 +63,11 @@ def test_Calculator_Regional_Lambdas_Intervals():
     assert obtained_intervals == expected_intervals
 
     obtained_statement_latex = calculator.hypothesis_test_statement_latex
-    expected_statement_latex = "No podemos concluir si la población está creciendo o decreciendo. El valor $p$ calculado resultó mayor que $\\alpha =$ 0.05 para ambas hipótesis nulas. Para $\\lambda>1: p =$ 0.571; para $\\lambda<1: p =$ 0.429"
+    expected_statement_latex = "No podemos concluir si la población está creciendo o decreciendo. El valor $p$ calculado resultó mayor que $\\alpha =$ 0.05 para ambas hipótesis nulas. Para $\\lambda>1: p =$ .571; para $\\lambda<1: p =$ .429"
     assert obtained_statement_latex == expected_statement_latex
 
     obtained_english_statement_latex = calculator.hypothesis_test_statement_latex_en
-    expected_english_statement_latex = "We can not conclude if the population is increasing or decreasing. The calculated $p$-value is higher than the $\\alpha =$ 0.05 for both null hypothesis tests. For $\\lambda>1: p =$ 0.571; for $\\lambda<1: p =$ 0.429"
+    expected_english_statement_latex = "We can not conclude if the population is increasing or decreasing. The calculated $p$-value is higher than the $\\alpha =$ 0.05 for both null hypothesis tests. For $\\lambda>1: p =$ .571; for $\\lambda<1: p =$ .429"
     assert obtained_english_statement_latex == expected_english_statement_latex
     assert json_data["hypothesis_test_statement_latex_sp"] == expected_statement_latex
     assert json_data["hypothesis_test_statement_latex_en"] == expected_english_statement_latex
@@ -100,7 +100,7 @@ def test_Calculator_Regional_Lambdas_Intervals_hypothesis_test_statement_latex()
         [0.4, 8, 2, 3, 2, 2, 2, 4, 3, 5, 7, 1, 2, 3, 2, 2, 2, 4, 3, 5, 7]
     )
     obtained_statement_latex = obtain_statement_latex(increasing_regional_lambdas)
-    expected_statement_latex = "La población está creciendo, $\\lambda$ CI 3.0 (1.0 - 8.0) con una significancia $p =$ 0.048"
+    expected_statement_latex = "La población está creciendo, $\\lambda$ CI 3.0 (1.0 - 8.0) con una significancia $p =$ .048"
     assert obtained_statement_latex == expected_statement_latex
 
     decreasing_regional_lambdas = np.array(
@@ -130,7 +130,7 @@ def test_Calculator_Regional_Lambdas_Intervals_hypothesis_test_statement_latex()
         ]
     )
     obtained_statement_latex = obtain_statement_latex(decreasing_regional_lambdas)
-    expected_statement_latex = "La población está decreciendo, $\\lambda$ CI 0.2 (0.1 - 0.4) con una significancia $p =$ 0.045"
+    expected_statement_latex = "La población está decreciendo, $\\lambda$ CI 0.2 (0.1 - 0.4) con una significancia $p =$ .045"
     assert obtained_statement_latex == expected_statement_latex
 
 
