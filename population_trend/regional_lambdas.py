@@ -81,22 +81,25 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
     def get_hypotesis_statement(self):
         rounded_p_values = self._round_p_values()
         if self.p_values[1] < self.alpha:
-            return f"La población está decreciendo, $\\lambda$ CI {self.lambda_latex_interval} con una significancia $p =$ {rounded_p_values[1]}"
+            return f"La población está decreciendo, $\\lambda$ CI {self.lambda_latex_interval} con una significancia $p {rounded_p_values[1]}$"
         if self.p_values[0] < self.alpha:
-            return f"La población está creciendo, $\\lambda$ CI {self.lambda_latex_interval} con una significancia $p =$ {rounded_p_values[0]}"
-        return f"No podemos concluir si la población está creciendo o decreciendo. El valor $p$ calculado resultó mayor que $\\alpha =$ {self.alpha} para ambas hipótesis nulas. Para $\\lambda>1: p =$ {rounded_p_values[1]}; para $\\lambda<1: p =$ {rounded_p_values[0]}"
+            return f"La población está creciendo, $\\lambda$ CI {self.lambda_latex_interval} con una significancia $p {rounded_p_values[0]}$"
+        return f"No podemos concluir si la población está creciendo o decreciendo. El valor $p$ calculado resultó mayor que $\\alpha =$ {self.alpha} para ambas hipótesis nulas. Para $\\lambda>1: p {rounded_p_values[1]}$; para $\\lambda<1: p {rounded_p_values[0]}$"
 
     def _round_p_values(self):
         rounded_p_values = np.round(self.p_values, 3)
-        return [str(p_value)[1:5] if p_value >= 0.001 else "<.001" for p_value in rounded_p_values]
+        return [
+            "= " + str(p_value)[1:5] if p_value >= 0.001 else "< .001"
+            for p_value in rounded_p_values
+        ]
 
     def get_hypotesis_statement_en(self):
         rounded_p_values = self._round_p_values()
         if self.p_values[1] < self.alpha:
-            return f"The population is decreasing, $\\lambda$ CI {self.lambda_latex_interval} with a significance $p =$ {rounded_p_values[1]}"
+            return f"The population is decreasing, $\\lambda$ CI {self.lambda_latex_interval} with a significance $p {rounded_p_values[1]}$"
         if self.p_values[0] < self.alpha:
-            return f"The population is increasing, $\\lambda$ CI {self.lambda_latex_interval} with a significance $p =$ {rounded_p_values[0]}"
-        return f"We can not conclude if the population is increasing or decreasing. The calculated $p$-value is higher than the $\\alpha =$ {self.alpha} for both null hypothesis tests. For $\\lambda>1: p =$ {rounded_p_values[1]}; for $\\lambda<1: p =$ {rounded_p_values[0]}"
+            return f"The population is increasing, $\\lambda$ CI {self.lambda_latex_interval} with a significance $p {rounded_p_values[0]}$"
+        return f"We can not conclude if the population is increasing or decreasing. The calculated $p$-value is higher than the $\\alpha =$ {self.alpha} for both null hypothesis tests. For $\\lambda>1: p {rounded_p_values[1]}$; for $\\lambda<1: p {rounded_p_values[0]}$"
 
     def save_intervals(self, output_path):
         json_dict = {
