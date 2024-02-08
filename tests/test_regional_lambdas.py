@@ -63,7 +63,7 @@ def test_Calculator_Regional_Lambdas_Intervals():
     assert obtained_intervals == expected_intervals
 
     obtained_statement_latex = calculator.hypothesis_test_statement_latex
-    expected_statement_latex = "No podemos concluir si la población está creciendo o decreciendo. El valor $p$ calculado resultó mayor para ambas hipótesis nulas para $\\alpha =$ 0.05. Para $\\lambda>1: p=0.571; para $\\lambda<1: p=$ 0.429}"
+    expected_statement_latex = "No podemos concluir si la población está creciendo o decreciendo. El valor $p$ calculado resultó mayor para ambas hipótesis nulas para $\\alpha =$ 0.05. Para $\\lambda>1: p =$ 0.571; para $\\lambda<1: p =$ 0.429"
     assert obtained_statement_latex == expected_statement_latex
 
     obtained_english_statement_latex = calculator.hypothesis_test_statement_latex_en
