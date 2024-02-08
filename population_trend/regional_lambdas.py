@@ -83,7 +83,7 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
         if self.p_values[1] < self.alpha:
             return f"La población está decreciendo, $\\lambda$ CI {self.lambda_latex_interval} con una significancia $p =$ {rounded_p_values[1]}"
         if self.p_values[0] < self.alpha:
-            return f"La población está creciendo. $H_0: \\lambda < 1$, $\\alpha > p =$ {rounded_p_values[0]}"
+            return f"La población está creciendo, $\\lambda$ CI {self.lambda_latex_interval} con una significancia $p =$ {rounded_p_values[0]}"
         return f"No podemos concluir si la población está creciendo o decreciendo. El valor $p$ calculado resultó mayor para ambas hipótesis nulas para $\\alpha =$ {self.alpha}. Para $\\lambda>1: p =$ {rounded_p_values[1]}; para $\\lambda<1: p =$ {rounded_p_values[0]}"
 
     def get_hypotesis_statement_en(self):

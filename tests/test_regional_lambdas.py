@@ -104,9 +104,7 @@ def test_Calculator_Regional_Lambdas_Intervals_hypothesis_test_statement_latex()
         [0.4, 8, 2, 3, 2, 2, 2, 4, 3, 5, 7, 1, 2, 3, 2, 2, 2, 4, 3, 5, 7]
     )
     obtained_statement_latex = obtain_statement_latex(increasing_regional_lambdas)
-    expected_statement_latex = (
-        "La población está creciendo, $\\lambda$ CI 2 (1 - 4) con una significancia $p =$ 0.048"
-    )
+    expected_statement_latex = "La población está creciendo, $\\lambda$ CI 3.0 (1.0 - 8.0) con una significancia $p =$ 0.048"
     assert obtained_statement_latex == expected_statement_latex
 
     decreasing_regional_lambdas = np.array(
