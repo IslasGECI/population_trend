@@ -67,9 +67,7 @@ def test_Calculator_Regional_Lambdas_Intervals():
     assert obtained_statement_latex == expected_statement_latex
 
     obtained_english_statement_latex = calculator.hypothesis_test_statement_latex_en
-    expected_english_statement_latex = (
-        "The calculated $p$-value is higher than the $\\alpha$ in both null hypothesis tests"
-    )
+    expected_english_statement_latex = "We can not conclude if the population is increasing or decreasing. The calculated $p$-value is higher than the $\\alpha =$ 0.05 for both null hypothesis tests. For $\\lambda>1: p =$ 0.571; for $\\lambda<1: p =$ 0.429"
     assert obtained_english_statement_latex == expected_english_statement_latex
     assert json_data["hypothesis_test_statement_latex_sp"] == expected_statement_latex
     assert json_data["hypothesis_test_statement_latex_en"] == expected_english_statement_latex
