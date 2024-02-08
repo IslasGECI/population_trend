@@ -92,7 +92,7 @@ class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
             return f"The population is decreasing. $H_0: \\lambda > 1$, $\\alpha > p =$ {rounded_p_values[1]}"
         if self.p_values[0] < self.alpha:
             return f"The population is increasing. $H_0: \\lambda < 1$, $\\alpha > p =$ {rounded_p_values[0]}"
-        return "The calculated $p$-value is higher than the $\\alpha$ in both null hypothesis tests"
+        return f"We can not conclude if the population is increasing or decreasing. The calculated $p$-value is higher than the $\\alpha =$ {self.alpha} for both null hypothesis tests. For $\\lambda>1: p =$ {rounded_p_values[1]}; for $\\lambda<1: p =$ {rounded_p_values[0]}"
 
     def save_intervals(self, output_path):
         json_dict = {
