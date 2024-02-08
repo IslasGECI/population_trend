@@ -76,25 +76,23 @@ def test_Calculator_Regional_Lambdas_Intervals():
 def test_Calculator_Regional_Lambdas_Intervals_hypothesis_test_statement_latex():
     decreasing_regional_lambdas = np.array([0.1, 0.2, 0.3, 0.2, 0.2, 0.2, 0.4])
     obtained_statement_latex = obtain_statement_latex(decreasing_regional_lambdas)
-    expected_statement_latex = "La población está decreciendo, $\\lambda$ CI 0.2 (0.1 - 0.4) con una significancia $p =$ 0.0"
+    expected_statement_latex = "La población está decreciendo, $\\lambda$ CI 0.2 (0.1 - 0.4) con una significancia $p =$ <.001"
     assert obtained_statement_latex == expected_statement_latex
 
     obtained_english_statement_latex = obtain_statement_latex_en(decreasing_regional_lambdas)
-    expected_english_statement_latex = (
-        "The population is decreasing, $\\lambda$ CI 0.2 (0.1 - 0.4) with a significance $p =$ 0.0"
-    )
+    expected_english_statement_latex = "The population is decreasing, $\\lambda$ CI 0.2 (0.1 - 0.4) with a significance $p =$ <.001"
     assert obtained_english_statement_latex == expected_english_statement_latex
 
     increasing_regional_lambdas = np.array([1, 2, 3, 2, 2, 2, 4])
     obtained_statement_latex = obtain_statement_latex(increasing_regional_lambdas)
     expected_statement_latex = (
-        "La población está creciendo, $\\lambda$ CI 2 (1 - 4) con una significancia $p =$ 0.0"
+        "La población está creciendo, $\\lambda$ CI 2 (1 - 4) con una significancia $p =$ <.001"
     )
     assert obtained_statement_latex == expected_statement_latex
 
     obtained_english_statement_latex = obtain_statement_latex_en(increasing_regional_lambdas)
     expected_english_statement_latex = (
-        "The population is increasing, $\\lambda$ CI 2 (1 - 4) with a significance $p =$ 0.0"
+        "The population is increasing, $\\lambda$ CI 2 (1 - 4) with a significance $p =$ <.001"
     )
     assert obtained_english_statement_latex == expected_english_statement_latex
 
