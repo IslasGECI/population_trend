@@ -136,9 +136,7 @@ def test_Calculator_Regional_Lambdas_Intervals_hypothesis_test_statement_latex()
         ]
     )
     obtained_statement_latex = obtain_statement_latex(decreasing_regional_lambdas)
-    expected_statement_latex = (
-        "La población está decreciendo. $H_0: \\lambda > 1$, $\\alpha > p =$ 0.045"
-    )
+    expected_statement_latex = "La población está decreciendo, $\\lambda$ CI 0.2 (0.1 - 0.4) con una significancia $p =$ 0.045"
     assert obtained_statement_latex == expected_statement_latex
 
 
