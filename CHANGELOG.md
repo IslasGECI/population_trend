@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.7.2] - 2024-02-08
+
+### Fixed
+- print p-values format
+
 ## [5.7.1] - 2024-02-08
 
 ### Fixed
