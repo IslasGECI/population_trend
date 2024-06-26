@@ -73,7 +73,7 @@ def plot_population_trend(
     )
     Graficador = Plotter_Population_Trend_Model(fit_data, Modelo_Tendencia_Poblacional)
     Graficador.plot_smooth()
-    Graficador.plot_model(Modelo_Tendencia_Poblacional)
+    Graficador.plot_model()
     Graficador.plot_data()
     legend_mpl_object = Graficador.set_legend_location(island)
     Graficador.plot_growth_rate_interval(legend_mpl_object, lambda_latex)

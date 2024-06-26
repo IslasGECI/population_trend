@@ -103,7 +103,7 @@ class Plotter_Population_Trend_Model:
             color="powderblue",
         )
 
-    def plot_model(self, Population_Trend_Model):
+    def plot_model(self):
         plt.plot(
             self.plot_domain,
             self.population_model.med_model,
