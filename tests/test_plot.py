@@ -1,4 +1,4 @@
-import hashlib
+import geci_test_tools as gtt
 import pytest
 from unittest.mock import Mock
 import pandas as pd
@@ -23,7 +23,7 @@ def test_plot_population_trend():
         data_path=data_path, intervals_path=intervals_path, output_path=output_path
     )
     assert os.path.exists(output_path)
-    obtained_hash = hashlib.md5(open(output_path, "rb").read()).hexdigest()
+    obtained_hash = gtt.calculate_hash(output_path)
     expected_hash = "e111df1001b4c177feec2c2eb7480ee0"
 
     assert obtained_hash == expected_hash
