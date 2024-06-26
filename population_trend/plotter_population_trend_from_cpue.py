@@ -22,7 +22,7 @@ class Plotter_Population_Trend_Model_From_CPUE(Plotter_Population_Trend_Model):
         legend_mpl_object = plt.legend(loc="best")
         return legend_mpl_object
 
-    def xxplot_growth_rate_interval(self, lambda_interval):
+    def plot_growth_rate_interval(self, lambda_interval):
         legend_mpl_object = self.set_legend_location()
         legend_box_positions = legend_mpl_object.get_window_extent()
         self.ax.annotate(

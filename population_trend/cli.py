@@ -86,7 +86,7 @@ def plot_population_trend(
 def plot_population_trend_from_cpue(
     data_path: str = "",
     intervals_path: str = "",
-    variable_of_interest: str = "Maxima_cantidad_nidos",
+    variable_of_interest: str = "max_CPUE",
     output_path: str = "",
 ):
     fit_data = pd.read_csv(data_path)
@@ -100,7 +100,7 @@ def plot_population_trend_from_cpue(
     Graficador.plot_smooth()
     Graficador.plot_model()
     Graficador.plot_data()
-    Graficador.xxplot_growth_rate_interval(lambda_latex)
+    Graficador.plot_growth_rate_interval(lambda_latex)
     Graficador.savefig(output_path)
 
 
