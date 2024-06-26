@@ -22,7 +22,7 @@ def test_plotter_from_cpue():
     assert isinstance(plotter_ax, plt.axes._axes.Axes)
 
     obtained_y_label = plotter_ax.get_ylabel()
-    expected_y_label = "Max CPUE"
+    expected_y_label = "CPUE"
     assert obtained_y_label == expected_y_label
     assert plotter_ax.get_yaxis().get_label().get_fontsize() == 20.0
 
