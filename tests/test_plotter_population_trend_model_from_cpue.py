@@ -11,10 +11,10 @@ pop_model = Population_Trend_Model(
     {"intervals": [], "bootstrap_intermediate_distribution": []},
     variable_of_interest,
 )
-Plotter = Plotter_Population_Trend_Model_From_CPUE(assp_cpue_data_for_plotter, pop_model)
 
 
 def test_plotter_from_cpue():
+    Plotter = Plotter_Population_Trend_Model_From_CPUE(assp_cpue_data_for_plotter, pop_model)
     Plotter.set_labels()
     Plotter.plot_data()
     Plotter.set_legend_location("Todos Santos")
