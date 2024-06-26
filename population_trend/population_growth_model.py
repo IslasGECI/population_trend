@@ -62,7 +62,7 @@ class Plotter_Population_Trend_Model:
         self.population_model = population_model
         self.interest_variable = population_model.interest_variable
 
-    def plot_smooth(self, Population_Trend_Model):
+    def plot_smooth(self):
         self.ax.fill_between(
             self.plot_domain,
             self.population_model.min_model,
