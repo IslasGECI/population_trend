@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.8.0] - 2024-06-26
+### Added
+- Added command `plot-population-trend-from-cpue` to cli
+
 ## [5.7.2] - 2024-02-08
 
 ### Fixed
