@@ -168,15 +168,10 @@ class Plotter_Population_Trend_Model:
         self.draw()
         transparent_background = True
         if output_path is None:
-            plt.savefig(
-                "reports/figures/cormorant_population_trend_{}".format(
-                    islet.replace(" ", "_").lower()
-                ),
-                dpi=300,
-                transparent=transparent_background,
+            output_path = "reports/figures/cormorant_population_trend_{}".format(
+                islet.replace(" ", "_").lower()
             )
-        else:
-            plt.savefig(output_path, dpi=300, transparent=transparent_background)
+        plt.savefig(output_path, dpi=300, transparent=transparent_background)
 
     def set_legend_location(self, islet):
         legend_mpl_object = plt.legend(loc="best")
