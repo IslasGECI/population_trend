@@ -15,6 +15,7 @@ Plotter = Plotter_Population_Trend_Model_From_CPUE(assp_cpue_data_for_plotter, p
 
 
 def test_plotter_from_cpue():
+    Plotter.set_labels()
     plotter_ax = Plotter.ax
     assert isinstance(plotter_ax, plt.axes._axes.Axes)
 
