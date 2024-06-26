@@ -16,6 +16,12 @@ class Plotter_Population_Trend_Model_From_CPUE(Plotter_Population_Trend_Model):
             label="Maximum CPUE",
         )
 
+    def set_legend_location(self, islet):
+        legend_mpl_object = plt.legend(loc="best")
+        if islet == "Natividad":
+            legend_mpl_object = plt.legend(loc="upper left")
+        return legend_mpl_object
+
     def savefig(self, output_path):
         self.set_x_lim()
         self.set_y_lim()
