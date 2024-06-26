@@ -86,6 +86,9 @@ def test_app_plot_population_trend_from_cpue():
     assert result.exit_code == 0
     assert "Plot population trend from CPUE " in result.stdout
 
+    output_figure_cpue = "tests/data/figure_cpue.png"
+    gtt.if_exist_remove(output_figure_cpue)
+
     result = runner.invoke(
         app,
         [
@@ -97,10 +100,11 @@ def test_app_plot_population_trend_from_cpue():
             "--variable-of-interest",
             "Maxima_cantidad_nidos",
             "--output-path",
-            output_figure,
+            output_figure_cpue,
         ],
     )
     assert result.exit_code == 0
+    gtt.assert_exist(output_figure_cpue)
 
 
 def test_app_write_burrows_by_species_and_island():
