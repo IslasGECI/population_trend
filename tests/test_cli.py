@@ -5,6 +5,7 @@ from population_trend import (
     app,
     write_burrows_by_species_and_island,
 )
+import geci_test_tools as gtt
 
 
 runner = CliRunner()
@@ -84,6 +85,22 @@ def test_app_plot_population_trend_from_cpue():
     )
     assert result.exit_code == 0
     assert "Plot population trend from CPUE " in result.stdout
+
+    result = runner.invoke(
+        app,
+        [
+            "plot-population-trend-from-cpue",
+            "--data-path",
+            data_path,
+            "--intervals-path",
+            intervals_path,
+            "--variable-of-interest",
+            "Maxima_cantidad_nidos",
+            "--output-path",
+            output_figure,
+        ],
+    )
+    assert result.exit_code == 0
 
 
 def test_app_write_burrows_by_species_and_island():
