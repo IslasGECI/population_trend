@@ -100,8 +100,7 @@ def plot_population_trend_from_cpue(
     Graficador.plot_smooth()
     Graficador.plot_model()
     Graficador.plot_data()
-    legend_mpl_object = Graficador.set_legend_location()
-    Graficador.plot_growth_rate_interval(legend_mpl_object, lambda_latex)
+    Graficador.xxplot_growth_rate_interval(lambda_latex)
     Graficador.savefig(output_path)
 
 
