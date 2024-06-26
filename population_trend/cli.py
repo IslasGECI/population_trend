@@ -51,10 +51,10 @@ def write_bootstrap_intervals_json(
 
 @app.command(help="Write csv with ouput-path")
 def write_burrows_by_species_and_island(
-    data_path: str = "data/processed/subset_burrows_data.csv",
-    species: str = "Guadalupe Murrelet",
-    island: str = "Guadalupe",
-    output_path: str = "data/processed/gumu_guadalupe_burrows.csv",
+    data_path: Annotated[str, typer.Option()] = "data/processed/subset_burrows_data.csv",
+    species: Annotated[str, typer.Option()] = "Guadalupe Murrelet",
+    island: Annotated[str, typer.Option()] = "Guadalupe",
+    output_path: Annotated[str, typer.Option()] = "data/processed/gumu_guadalupe_burrows.csv",
 ):
     data = pd.read_csv(data_path)
     filtered = filter_by_species_and_island(data, species, island)
@@ -63,11 +63,11 @@ def write_burrows_by_species_and_island(
 
 @app.command(help="Plot population trend")
 def plot_population_trend(
-    data_path: str = "",
-    intervals_path: str = "",
-    island: str = "Guadalupe",
-    variable_of_interest: str = "Maxima_cantidad_nidos",
-    output_path=None,
+    data_path: Annotated[str, typer.Option()],
+    intervals_path: Annotated[str, typer.Option()],
+    island: Annotated[str, typer.Option()] = "Guadalupe",
+    variable_of_interest: Annotated[str, typer.Option()] = "Maxima_cantidad_nidos",
+    output_path: Annotated[str, typer.Option()] = None,
 ):
     fit_data = pd.read_csv(data_path)
     intervals_json = read_json(intervals_path)
@@ -87,10 +87,10 @@ def plot_population_trend(
 
 @app.command(help="Plot population trend from CPUE")
 def plot_population_trend_from_cpue(
-    data_path: str = "",
-    intervals_path: str = "",
-    variable_of_interest: str = "max_CPUE",
-    output_path: str = "",
+    data_path: Annotated[str, typer.Option()],
+    intervals_path: Annotated[str, typer.Option()],
+    variable_of_interest: Annotated[str, typer.Option()],
+    output_path: Annotated[str, typer.Option()],
 ):
     fit_data = pd.read_csv(data_path)
     intervals_json = read_json(intervals_path)
@@ -109,10 +109,10 @@ def plot_population_trend_from_cpue(
 
 @app.command(help="Write json with the regional trends")
 def write_regional_trends(
-    config_path: str = "data/processed/gumu_guadalupe_burrows.json",
-    region: str = "",
-    regional_trend_path: str = "",
-    alpha: float = 0.05,
+    config_path: Annotated[str, typer.Option()] = "data/processed/gumu_guadalupe_burrows.json",
+    region: Annotated[str, typer.Option()] = "",
+    regional_trend_path: Annotated[str, typer.Option()] = "",
+    alpha: Annotated[float, typer.Option()] = 0.05,
 ):
     concatenator = Island_Bootstrap_Distribution_Concatenator(config_path)
     concatenator.set_region(region)
