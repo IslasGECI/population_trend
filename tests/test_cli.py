@@ -55,8 +55,7 @@ def test_app_plot_population_trend():
     assert "XX" not in result.stdout
     assert "[default: Guadalupe]" in result.stdout
     assert "[default: Maxima_cantidad_nidos]" in result.stdout
-    if os.path.exists(output_figure):
-        os.remove(output_figure)
+    gtt.if_exist_remove(output_figure)
     result = runner.invoke(
         app,
         [
@@ -74,8 +73,8 @@ def test_app_plot_population_trend():
         ],
     )
     assert result.exit_code == 0
-    assert os.path.exists(output_figure)
-    os.remove(output_figure)
+    gtt.assert_exist(output_figure)
+    gtt.if_exist_remove(output_figure)
 
 
 def test_app_plot_population_trend_from_cpue():
