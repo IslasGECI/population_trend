@@ -7,6 +7,8 @@ from population_trend import (
     Plotter_Population_Trend_Model,
 )
 from geci_plots import geci_plot
+
+import geci_test_tools as gtt
 import json
 import os
 import pandas as pd
@@ -80,13 +82,11 @@ class Tests_Plotter_Population_Trend_Model:
         default_folder = "reports/figures/"
         if not os.path.exists(default_folder):
             os.makedirs(default_folder)
-        if os.path.exists(default_path):
-            os.remove(default_path)
+        gtt.if_exist_remove(default_path)
         Plotter.savefig(islet)
         assert os.path.exists(default_path)
         output_path = "tests/data/prueba.png"
-        if os.path.exists(output_path):
-            os.remove(output_path)
+        gtt.if_exist_remove(default_path)
         Plotter.savefig(islet, output_path)
         assert os.path.exists(output_path)
 
