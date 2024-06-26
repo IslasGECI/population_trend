@@ -77,6 +77,14 @@ def test_app_plot_population_trend():
     os.remove(output_figure)
 
 
+def test_app_plot_population_trend_from_cpue():
+    result = runner.invoke(
+        app,
+        ["plot-population-trend-from-cpue", "--help"],
+    )
+    assert result.exit_code == 0
+
+
 def test_app_write_burrows_by_species_and_island():
     result = runner.invoke(
         app,
