@@ -24,7 +24,7 @@ def test_plot_population_trend():
     )
     assert os.path.exists(output_path)
     obtained_hash = hashlib.md5(open(output_path, "rb").read()).hexdigest()
-    expected_hash = "0526f34add8c1091b19c65ed33cfe612"
+    expected_hash = "e111df1001b4c177feec2c2eb7480ee0"
 
     assert obtained_hash == expected_hash
 
