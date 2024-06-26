@@ -1,6 +1,5 @@
 import pandas as pd
 from typer.testing import CliRunner
-import os
 from population_trend import (
     app,
     write_burrows_by_species_and_island,
