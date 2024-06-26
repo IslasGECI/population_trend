@@ -105,6 +105,9 @@ def test_app_plot_population_trend_from_cpue():
     )
     assert result.exit_code == 0
     gtt.assert_exist(output_figure_cpue)
+    obtained_hash = gtt.calculate_hash(output_figure_cpue)
+    expected_hash = "13ccd55f82e9ceb80ab818ceded78c44"
+    assert obtained_hash == expected_hash
 
 
 def test_app_write_burrows_by_species_and_island():
