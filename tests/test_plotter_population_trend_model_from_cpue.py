@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib as plt
 from population_trend import Population_Trend_Model, Plotter_Population_Trend_Model_From_CPUE
 
 variable_of_interest = "max_CPUE"
@@ -11,3 +12,12 @@ pop_model = Population_Trend_Model(
     variable_of_interest,
 )
 Plotter = Plotter_Population_Trend_Model_From_CPUE(assp_cpue_data_for_plotter, pop_model)
+
+
+def test_plotter_from_cpue():
+    plotter_ax = Plotter.ax
+    assert isinstance(plotter_ax, plt.axes._axes.Axes)
+
+    obtained_y_label = plotter_ax.get_ylabel()
+    expected_y_label = "Max CPUE"
+    assert obtained_y_label == expected_y_label

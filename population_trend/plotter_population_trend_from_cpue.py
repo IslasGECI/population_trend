@@ -1,0 +1,5 @@
+from population_trend.population_growth_model import Plotter_Population_Trend_Model
+
+
+class Plotter_Population_Trend_Model_From_CPUE(Plotter_Population_Trend_Model):
+    pass
