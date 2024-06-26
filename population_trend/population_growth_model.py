@@ -106,7 +106,7 @@ class Plotter_Population_Trend_Model:
     def plot_model(self, Population_Trend_Model):
         plt.plot(
             self.plot_domain,
-            Population_Trend_Model.med_model,
+            self.population_model.med_model,
             label="Population growth model",
             color="b",
         )
