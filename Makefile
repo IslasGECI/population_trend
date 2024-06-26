@@ -70,7 +70,7 @@ setup: clean install
 tests:
 	pytest --verbose
 
-tdd_current_test_file = tests/test_regional_lambdas.py
+tdd_current_test_file = tests/test_cli.py
 red: format
 	pytest --verbose $(tdd_current_test_file) \
 	&& git restore tests/*.py \
