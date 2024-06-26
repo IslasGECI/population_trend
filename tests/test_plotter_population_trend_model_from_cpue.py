@@ -1,3 +1,4 @@
+import geci_test_tools as gtt
 import pandas as pd
 import matplotlib as plt
 from population_trend import Population_Trend_Model, Plotter_Population_Trend_Model_From_CPUE
@@ -17,7 +18,7 @@ def test_plotter_from_cpue():
     Plotter = Plotter_Population_Trend_Model_From_CPUE(assp_cpue_data_for_plotter, pop_model)
     Plotter.set_labels()
     Plotter.plot_data()
-    Plotter.set_legend_location()
+    legend_mpl = Plotter.set_legend_location()
     plotter_ax = Plotter.ax
     assert isinstance(plotter_ax, plt.axes._axes.Axes)
 
@@ -30,3 +31,4 @@ def test_plotter_from_cpue():
 
     output_path = "tests/population_trend_from_cpue.png"
     Plotter.savefig(output_path=output_path)
+    gtt.assert_exist(output_path)
