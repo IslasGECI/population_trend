@@ -194,7 +194,8 @@ def test_app_write_regional_trends():
         ["write-regional-trends", "--help"],
     )
     assert result.exit_code == 0
-
+    output_json = "tests/data/region_1_trends.json"
+    gtt.if_exist_remove(output_json)
     result = runner.invoke(
         app,
         [
@@ -204,12 +205,12 @@ def test_app_write_regional_trends():
             "--region",
             "region_1",
             "--regional-trend-path",
-            "tests/data/region_1_trends.json",
+            output_json,
         ],
     )
     assert result.exit_code == 0
-    does_file_exist = os.path.exists("tests/data/region_1_trends.json")
-    assert does_file_exist
+    gtt.assert_exist(output_json)
+    gtt.if_exist_remove(output_json)
 
 
 def test_write_burrows_by_species_and_island():
