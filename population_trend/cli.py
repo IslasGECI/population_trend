@@ -79,7 +79,7 @@ def plot_population_trend(
     Graficador.savefig(island, output_path)
 
 
-@app.command(help="Plot population trend")
+@app.command(help="Plot population trend from CPUE")
 def plot_population_trend_from_cpue():
     pass
 
