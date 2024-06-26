@@ -8,4 +8,3 @@ from .plotter_growth_rate import *  # noqa
 from .plotter_population_trend_from_cpue import *  # noqa
 from .population_growth_model import *  # noqa
 from .regional_lambdas import *  # noqa
-from bootstrapping_tools import *  # noqa
