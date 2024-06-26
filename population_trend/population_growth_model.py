@@ -65,41 +65,41 @@ class Plotter_Population_Trend_Model:
     def plot_smooth(self, Population_Trend_Model):
         self.ax.fill_between(
             self.plot_domain,
-            Population_Trend_Model.min_model,
-            Population_Trend_Model.med_model,
+            self.population_model.min_model,
+            self.population_model.med_model,
             label="Confidence zone",
             color="powderblue",
         )
         self.ax.fill_between(
             self.plot_domain,
-            Population_Trend_Model.med_model,
-            Population_Trend_Model.max_model,
+            self.population_model.med_model,
+            self.population_model.max_model,
             color="powderblue",
         )
         self.ax.fill_between(
             self.plot_domain,
-            Population_Trend_Model.min_model,
-            Population_Trend_Model.max_model,
+            self.population_model.min_model,
+            self.population_model.max_model,
             color="powderblue",
         )
-        number_of_samples = len(Population_Trend_Model.bootstrap_distribution)
+        number_of_samples = len(self.population_model.bootstrap_distribution)
         for i in range(0, number_of_samples - 1, 10):
             self.ax.fill_between(
                 self.plot_domain,
-                Population_Trend_Model.intern_model(i),
-                Population_Trend_Model.med_model,
+                self.population_model.intern_model(i),
+                self.population_model.med_model,
                 color="powderblue",
             )
             self.ax.fill_between(
                 self.plot_domain,
-                Population_Trend_Model.intern_model(i),
-                Population_Trend_Model.intern_model(i + 1),
+                self.population_model.intern_model(i),
+                self.population_model.intern_model(i + 1),
                 color="powderblue",
             )
         self.ax.fill_between(
             self.plot_domain,
-            Population_Trend_Model.intern_model(i + 1),
-            Population_Trend_Model.med_model,
+            self.population_model.intern_model(i + 1),
+            self.population_model.med_model,
             color="powderblue",
         )
 
