@@ -83,6 +83,7 @@ def test_app_plot_population_trend_from_cpue():
         ["plot-population-trend-from-cpue", "--help"],
     )
     assert result.exit_code == 0
+    assert "Plot population trend from CPUE " in result.stdout
 
 
 def test_app_write_burrows_by_species_and_island():
