@@ -123,7 +123,9 @@ def write_regional_trends(
 
 @app.command()
 def plot_growth_rate(
-    intervals_california: str = "", intervals_pacific: str = "", output_path: str = ""
+    intervals_california: Annotated[str, typer.Option()],
+    intervals_pacific: Annotated[str, typer.Option()],
+    output_path: Annotated[str, typer.Option()],
 ):
     lambdas_intervals_california = read_json(intervals_california)
     lambdas_intervals_pacific = read_json(intervals_pacific)
