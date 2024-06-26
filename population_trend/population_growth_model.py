@@ -59,6 +59,7 @@ class Plotter_Population_Trend_Model:
         self.ticks_text = normalize_seasons(self.data)
         self.ticks_positions = ticks_positions_array(self.ticks_text)
         self.plot_domain = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
+        self.population_model = population_model
         self.interest_variable = population_model.interest_variable
 
     def plot_smooth(self, Population_Trend_Model):
