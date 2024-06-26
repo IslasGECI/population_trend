@@ -16,7 +16,7 @@ class Plotter_Population_Trend_Model_From_CPUE(Plotter_Population_Trend_Model):
             label="Maximum CPUE",
         )
 
-    def xxset_legend_location(
+    def set_legend_location(
         self,
     ):
         legend_mpl_object = plt.legend(loc="best")
