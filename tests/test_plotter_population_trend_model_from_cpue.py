@@ -16,9 +16,14 @@ Plotter = Plotter_Population_Trend_Model_From_CPUE(assp_cpue_data_for_plotter, p
 
 def test_plotter_from_cpue():
     Plotter.set_labels()
+    Plotter.plot_data()
+    Plotter.set_legend_location("Todos Santos")
     plotter_ax = Plotter.ax
     assert isinstance(plotter_ax, plt.axes._axes.Axes)
 
     obtained_y_label = plotter_ax.get_ylabel()
     expected_y_label = "Max CPUE"
     assert obtained_y_label == expected_y_label
+    assert plotter_ax.get_yaxis().get_label().get_fontsize() == 20.0
+
+    assert plotter_ax.get_legend().texts[0].get_text() == "Maximum CPUE"
