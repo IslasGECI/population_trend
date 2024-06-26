@@ -3,6 +3,9 @@ from population_trend.population_growth_model import (
     Population_Trend_Model,
     Plotter_Population_Trend_Model,
 )
+from population_trend.plotter_population_trend_from_cpue import (
+    Plotter_Population_Trend_Model_From_CPUE,
+)
 from population_trend.calculate_growth_rates import (
     Bootstrap_from_time_series_parametrizer,
     Bootstrap_from_time_series,
@@ -80,8 +83,26 @@ def plot_population_trend(
 
 
 @app.command(help="Plot population trend from CPUE")
-def plot_population_trend_from_cpue():
-    pass
+def plot_population_trend_from_cpue(
+    data_path: str = "",
+    intervals_path: str = "",
+    variable_of_interest: str = "Maxima_cantidad_nidos",
+    output_path: str = "",
+):
+    fit_data = pd.read_csv(data_path)
+    intervals_json = read_json(intervals_path)
+    lambda_latex = intervals_json["lambda_latex_interval"]
+
+    Modelo_Tendencia_Poblacional = Population_Trend_Model(
+        fit_data, intervals_json, variable_of_interest
+    )
+    Graficador = Plotter_Population_Trend_Model_From_CPUE(fit_data, Modelo_Tendencia_Poblacional)
+    Graficador.plot_smooth()
+    Graficador.plot_model()
+    Graficador.plot_data()
+    legend_mpl_object = Graficador.set_legend_location()
+    Graficador.plot_growth_rate_interval(legend_mpl_object, lambda_latex)
+    Graficador.savefig(output_path)
 
 
 @app.command(help="Write json with the regional trends")
