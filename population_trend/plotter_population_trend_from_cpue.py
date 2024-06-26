@@ -15,3 +15,12 @@ class Plotter_Population_Trend_Model_From_CPUE(Plotter_Population_Trend_Model):
             "-Dk",
             label="Maximum CPUE",
         )
+
+    def savefig(self, output_path):
+        self.set_x_lim()
+        self.set_y_lim()
+        self.set_labels()
+        self.set_ticks()
+        self.draw()
+        transparent_background = True
+        plt.savefig(output_path, dpi=300, transparent=transparent_background)
