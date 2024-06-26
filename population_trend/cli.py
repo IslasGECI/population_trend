@@ -18,6 +18,7 @@ from population_trend.regional_lambdas import (
 from population_trend.plotter_growth_rate import Plotter_Growth_Rate
 
 import pandas as pd
+from typing_extensions import Annotated
 import typer
 import json
 import matplotlib.pyplot as plt
@@ -27,12 +28,14 @@ app = typer.Typer(help="Write filtered burrows data by species and island")
 
 @app.command(help="Write json with bootstrap intervals")
 def write_bootstrap_intervals_json(
-    data_path: str = "data/processed/gumu_guadalupe_burrows.csv",
-    blocks_length: int = 3,
-    bootstrap_number: int = 2000,
-    variable_of_interest: str = "Maxima_cantidad_nidos",
-    alpha: float = 0.05,
-    output_path: str = "reports/non-tabular/gumu_guadalupe_boostrap_intervals.json",
+    data_path: Annotated[str, typer.Option()] = "data/processed/gumu_guadalupe_burrows.csv",
+    blocks_length: Annotated[int, typer.Option()] = 3,
+    bootstrap_number: Annotated[int, typer.Option()] = 2000,
+    variable_of_interest: Annotated[str, typer.Option()] = "Maxima_cantidad_nidos",
+    alpha: Annotated[float, typer.Option()] = 0.05,
+    output_path: Annotated[
+        str, typer.Option()
+    ] = "reports/non-tabular/gumu_guadalupe_boostrap_intervals.json",
 ):
     data = pd.read_csv(data_path)
     parametrizer = Bootstrap_from_time_series_parametrizer(
