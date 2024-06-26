@@ -29,4 +29,4 @@ def test_plotter_from_cpue():
     assert plotter_ax.get_legend().texts[0].get_text() == "Maximum CPUE"
 
     output_path = "tests/population_trend_from_cpue.png"
-    Plotter.savefig(output_path)
+    Plotter.savefig(output_path=output_path)
