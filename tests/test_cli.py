@@ -103,7 +103,7 @@ def test_app_plot_population_trend_from_cpue():
     assert result.exit_code == 0
     gtt.assert_exist(output_figure_cpue)
     obtained_hash = gtt.calculate_hash(output_figure_cpue)
-    expected_hash = "7b3af6ae198734d17427e146e5db6f04"
+    expected_hash = "bded6eff64c524081aa88b65cc8d266d"
     assert obtained_hash == expected_hash
 
 

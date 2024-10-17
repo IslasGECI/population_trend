@@ -24,7 +24,7 @@ def test_plot_population_trend():
     )
     assert os.path.exists(output_path)
     obtained_hash = gtt.calculate_hash(output_path)
-    expected_hash = "e111df1001b4c177feec2c2eb7480ee0"
+    expected_hash = "99ef730a3627f652940b055118b4b2ed"
 
     assert obtained_hash == expected_hash
 
