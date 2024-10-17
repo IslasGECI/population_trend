@@ -88,6 +88,16 @@ Bootstrap = dict(
 )
 
 
+def fit_population_model(seasons_series, data_series):
+    parameters = lambda_calculator(seasons_series, data_series)
+    model = power_law(
+        seasons_series - seasons_series.iloc[0],
+        parameters[0],
+        parameters[1],
+    )
+    return model
+
+
 class Bootstrap_from_time_series:
     def __init__(self, bootstrap_parametrizer):
         self.parameters = bootstrap_parametrizer.parameters
@@ -145,12 +155,7 @@ class Bootstrap_from_time_series:
             return ",".join(seasons_intervals)
 
     def fit_population_model(self):
-        parameters = lambda_calculator(self.season_series, self.data_series)
-        model = power_law(
-            self.season_series - self.season_series.iloc[0],
-            parameters[0],
-            parameters[1],
-        )
+        model = fit_population_model(self.season_series, self.data_series)
         return model
 
     def get_intermediate_lambdas(self):
