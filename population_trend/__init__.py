@@ -1,6 +1,6 @@
 """A population growth model package"""
 
-__version__ = "5.9.0"
+__version__ = "6.0.0"
 from .calculate_growth_rates import *  # noqa
 from .cli import *  # noqa
 from .filter_data import *  # noqa
