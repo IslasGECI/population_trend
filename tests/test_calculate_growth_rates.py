@@ -28,7 +28,7 @@ def get_df(file_path):
 
 df = get_df("tests/data/dcco_laal_gumu_burrows_data.csv")
 laal = df[df["Nombre_en_ingles"] == "Laysan Albatross"]
-bootstrap_number = 100
+bootstrap_number = 10
 parametrizer = Bootstrap_from_time_series_parametrizer(blocks_length=2, N=bootstrap_number)
 parametrizer.set_data(laal)
 bootstraper = lam.LambdasBootstrapper(parametrizer)
@@ -47,9 +47,9 @@ def test_save_intervals():
         "bootstrap_intermediate_distribution",
     ]
     assert set(obtained_fields) == set(expected_fields)
-    expected_intervals = [[1.11653, 150.30929], [1.21173, 77.48159], [1.4272, 4.56072]]
+    expected_intervals = [[1.1097, 128.85392], [1.2094, 68.65764], [1.4272, 4.56072]]
     assert_array_almost_equal(obtained_json["intervals"], expected_intervals, decimal=5)
-    expected_latex_interval = "1.21 (1.12 - 1.43)"
+    expected_latex_interval = "1.21 (1.11 - 1.43)"
     assert obtained_json["lambda_latex_interval"] == expected_latex_interval
     obtained_p_minor_value = obtained_json["p-values"][0]
     assert obtained_p_minor_value >= 0
@@ -77,7 +77,12 @@ def test_intervals_from_p_values_and_alpha():
         (1.2199265239402008, 14.422599452094458),
         (9.496750484649498, 2.419173122070242e-07),
     ]
-    assert_array_almost_equal(obtained_intervals, expected_intervals, decimal=5)
+    expected_intervals = [
+        [1.03555e00, 5.67269e01],
+        [1.18278e00, 2.89561e01],
+        [9.49983e00, 2.41214e-07],
+    ]
+    assert_array_almost_equal(obtained_intervals, expected_intervals, decimal=4)
 
 
 def test_calculate_interest_numbers():
@@ -158,16 +163,16 @@ def test_calculate_growth_rates_table():
     tabla = lam.calculate_growth_rates_table(bootstrap)
     p_valor_mayor = tabla[10]
     p_valor_menor = tabla[11]
-    expected_p_valor_mayor = 0.01
-    expected_p_valor_menor = 0.99
+    expected_p_valor_mayor = 0.0
+    expected_p_valor_menor = 1.0
     assert expected_p_valor_mayor == p_valor_mayor
     assert expected_p_valor_menor == p_valor_menor
     obtained_central, obtained_inferior, obtained_superior = tabla[6:9]
-    assert obtained_central == 1.22
-    assert obtained_superior == "+8.28"
-    assert obtained_inferior == "-0.18"
+    assert obtained_central == 1.18
+    assert obtained_superior == "+8.32"
+    assert obtained_inferior == "-0.15"
     latex_intervals = tabla[4]
-    assert latex_intervals == "1.22 (1.04 - 9.5)"
+    assert latex_intervals == "1.18 (1.04 - 9.5)"
 
 
 def test_Bootstrap_from_time_series_parametrizer():

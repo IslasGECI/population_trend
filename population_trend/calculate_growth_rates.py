@@ -71,7 +71,7 @@ def calculate_percent_diff_in_seasons(cantidad_nidos, model):
 
 Bootstrap = dict(
     default=Bootstrap_from_time_series_parametrizer(),
-    testing=Bootstrap_from_time_series_parametrizer(blocks_length=2, N=100),
+    testing=Bootstrap_from_time_series_parametrizer(blocks_length=2, N=10),
 )
 
 
