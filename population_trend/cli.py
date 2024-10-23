@@ -15,7 +15,7 @@ from population_trend.regional_lambdas import (
     Calculator_Regional_Lambdas_Intervals,
 )
 
-from population_trend.plotter_growth_rate import Plotter_Growth_Rate, xxPlotter_Growth_Rate
+from population_trend.plotter_growth_rate import xxPlotter_Growth_Rate
 
 import pandas as pd
 from typing_extensions import Annotated
