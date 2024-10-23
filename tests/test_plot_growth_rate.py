@@ -1,4 +1,4 @@
-from population_trend import Plotter_Growth_Rate
+from population_trend import Plotter_Growth_Rate, xxPlotter_Growth_Rate
 import pytest
 import matplotlib as plt
 import numpy as np
@@ -7,7 +7,8 @@ import numpy as np
 def test_plotter_growth_rate():
     lambdas_california = {"intervals": [1, 2, 3.5]}
     lambdas_pacific = {"intervals": [1.9, 3, 7.5]}
-    plotter = Plotter_Growth_Rate(lambdas_california, lambdas_pacific)
+    regional_names = ["Gulf of California", "Pacific"]
+    plotter = xxPlotter_Growth_Rate(lambdas_california, lambdas_pacific, regional_names)
     obtained = plotter.plot_error_bars()
     assert isinstance(obtained, plt.axes._axes.Axes)
 
