@@ -209,11 +209,11 @@ class LambdasBootstrapper(AbstractSeriesBootstrapper):
 
 
 def calculate_growth_rates_table(bootstrap: Bootstrap_from_time_series_parametrizer):
-    bootstraper = Bootstrap_from_time_series(bootstrap)
+    bootstraper = LambdasBootstrapper(bootstrap)
     df = bootstrap.parameters["dataframe"]
     model = bootstraper.fit_population_model()
     inferior_limit, central, superior_limit = bootstraper.get_inferior_central_and_superior_limit()
-    lambda_latex_string = bootstraper.get_lambda_interval_latex_string()
+    lambda_latex_string = bootstraper.lambda_latex_interval
     bootstrap_distribution = bootstraper.get_distribution()
     lambdas_distribution = [interval[0] for interval in bootstrap_distribution]
     p_value_mayor, p_value_menor = calculate_p_values(lambdas_distribution)

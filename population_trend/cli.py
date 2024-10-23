@@ -7,7 +7,7 @@ from population_trend.plotter_population_trend_from_cpue import (
     Plotter_Population_Trend_Model_From_CPUE,
 )
 from population_trend.calculate_growth_rates import (
-    Bootstrap_from_time_series,
+    LambdasBootstrapper,
 )
 from population_trend.regional_lambdas import (
     Island_Bootstrap_Distribution_Concatenator,
@@ -46,7 +46,7 @@ def write_bootstrap_intervals_json(
         alpha=alpha,
     )
     parametrizer.set_data(data)
-    bootstrap = Bootstrap_from_time_series(parametrizer)
+    bootstrap = LambdasBootstrapper(parametrizer)
     bootstrap.save_intervals(output_path)
 
 

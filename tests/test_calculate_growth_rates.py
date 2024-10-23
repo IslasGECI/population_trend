@@ -31,7 +31,7 @@ laal = df[df["Nombre_en_ingles"] == "Laysan Albatross"]
 bootstrap_number = 100
 parametrizer = Bootstrap_from_time_series_parametrizer(blocks_length=2, N=bootstrap_number)
 parametrizer.set_data(laal)
-bootstraper = lam.Bootstrap_from_time_series(parametrizer)
+bootstraper = lam.LambdasBootstrapper(parametrizer)
 
 
 def test_save_intervals():
@@ -67,19 +67,17 @@ def test_intervals_from_p_values_and_alpha():
     parametrizer = lam.Bootstrap["testing"]
     parametrizer.set_data(dcco)
     assert parametrizer.parameters["alpha"] == 0.05
-    bootstraper = lam.Bootstrap_from_time_series(parametrizer)
-    obtained_intervals = bootstraper.intervals_from_p_values_and_alpha()
-    print(obtained_intervals)
+    bootstraper = lam.LambdasBootstrapper(parametrizer)
+    obtained_intervals = bootstraper.intervals
     obtained_len_intervals = len(obtained_intervals)
     expected_len_intervals = 3
     assert obtained_len_intervals == expected_len_intervals
-    obtained_intervals_property = bootstraper.intervals
     expected_intervals = [
         (1.03555254967221, 56.72689275689199),
         (1.2199265239402008, 14.422599452094458),
         (9.496750484649498, 2.419173122070242e-07),
     ]
-    assert_array_almost_equal(obtained_intervals_property, expected_intervals, decimal=5)
+    assert_array_almost_equal(obtained_intervals, expected_intervals, decimal=5)
 
 
 def test_calculate_interest_numbers():
@@ -108,7 +106,7 @@ def test_generate_season_interval():
     df = pd.DataFrame(datos_di)
     parametrizer = lam.Bootstrap["testing"]
     parametrizer.set_data(df)
-    bootstraper = lam.Bootstrap_from_time_series(parametrizer)
+    bootstraper = lam.LambdasBootstrapper(parametrizer)
     expected_interval = "(1-5)"
     obtained_interval = bootstraper.generate_season_interval()
     assert expected_interval == obtained_interval
@@ -148,7 +146,7 @@ def test_get_monitored_seasons(path, expected_seasons):
     burrows_data_dataframe = get_df(path)
     parametrizer = lam.Bootstrap["testing"]
     parametrizer.set_data(burrows_data_dataframe)
-    bootstraper = lam.Bootstrap_from_time_series(parametrizer)
+    bootstraper = lam.LambdasBootstrapper(parametrizer)
     obtained_seasons = bootstraper.get_monitored_seasons()
     assert expected_seasons == obtained_seasons
 
