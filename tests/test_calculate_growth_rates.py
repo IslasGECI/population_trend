@@ -4,6 +4,7 @@ import pytest
 import json
 import os
 import population_trend as lam
+from bootstrapping_tools import Bootstrap_from_time_series_parametrizer
 import geci_plots as gp
 
 import matplotlib.pyplot as plt
@@ -27,7 +28,8 @@ def get_df(file_path):
 
 df = get_df("tests/data/dcco_laal_gumu_burrows_data.csv")
 laal = df[df["Nombre_en_ingles"] == "Laysan Albatross"]
-parametrizer = lam.Bootstrap["testing"]
+bootstrap_number = 100
+parametrizer = Bootstrap_from_time_series_parametrizer(blocks_length=2, N=bootstrap_number)
 parametrizer.set_data(laal)
 bootstraper = lam.Bootstrap_from_time_series(parametrizer)
 
@@ -172,7 +174,7 @@ def test_calculate_growth_rates_table():
 
 def test_Bootstrap_from_time_series_parametrizer():
     expected_alpha = 0.067
-    parameters = lam.Bootstrap_from_time_series_parametrizer(
+    parameters = Bootstrap_from_time_series_parametrizer(
         blocks_length=3, N=2000, column_name="Maxima_cantidad_nidos", alpha=expected_alpha
     )
     assert parameters.parameters["alpha"] == expected_alpha

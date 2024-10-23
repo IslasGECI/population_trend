@@ -7,7 +7,6 @@ from population_trend.plotter_population_trend_from_cpue import (
     Plotter_Population_Trend_Model_From_CPUE,
 )
 from population_trend.calculate_growth_rates import (
-    Bootstrap_from_time_series_parametrizer,
     Bootstrap_from_time_series,
 )
 from population_trend.regional_lambdas import (
@@ -16,6 +15,8 @@ from population_trend.regional_lambdas import (
 )
 
 from population_trend.plotter_growth_rate import Plotter_Growth_Rate
+from bootstrapping_tools import Bootstrap_from_time_series_parametrizer
+
 
 import pandas as pd
 from typing_extensions import Annotated
