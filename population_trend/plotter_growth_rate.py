@@ -2,11 +2,6 @@ import geci_plots as gp
 import matplotlib.pyplot as plt
 
 
-def Plotter_Growth_Rate(lambdas_dict, lambdas_dict_2):
-    regional_names = ["Gulf of California", "Pacific"]
-    return xxPlotter_Growth_Rate(lambdas_dict, lambdas_dict_2, regional_names)
-
-
 class xxPlotter_Growth_Rate:
     def __init__(self, lambdas_dict, lambdas_dict_2, regional_names):
         self.interval = [lambdas_dict["intervals"], lambdas_dict_2["intervals"]]
