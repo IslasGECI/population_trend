@@ -2,7 +2,7 @@ import geci_plots as gp
 import matplotlib.pyplot as plt
 
 
-class xxPlotter_Growth_Rate:
+class Plotter_Growth_Rate:
     def __init__(self, lambdas_dict, lambdas_dict_2, regional_names):
         self.interval = [lambdas_dict["intervals"], lambdas_dict_2["intervals"]]
         self.regional_names = regional_names

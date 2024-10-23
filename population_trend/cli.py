@@ -15,7 +15,7 @@ from population_trend.regional_lambdas import (
     Calculator_Regional_Lambdas_Intervals,
 )
 
-from population_trend.plotter_growth_rate import xxPlotter_Growth_Rate
+from population_trend.plotter_growth_rate import Plotter_Growth_Rate
 
 import pandas as pd
 from typing_extensions import Annotated
@@ -130,7 +130,7 @@ def plot_growth_rate(
     lambdas_intervals_california = read_json(intervals_california)
     lambdas_intervals_pacific = read_json(intervals_pacific)
     regional_names = ["Gulf of California", "Pacific"]
-    plotter = xxPlotter_Growth_Rate(
+    plotter = Plotter_Growth_Rate(
         lambdas_intervals_california, lambdas_intervals_pacific, regional_names
     )
     plotter.plot_error_bars()
