@@ -3,6 +3,7 @@ from typer.testing import CliRunner
 from population_trend import (
     app,
     write_burrows_by_species_and_island,
+    obtain_name_from_regional_names,
 )
 import geci_test_tools as gtt
 
@@ -221,3 +222,8 @@ def test_write_burrows_by_species_and_island():
     obtained_columns = len(obtained_csv.columns)
     expected_columns = 12
     assert obtained_columns == expected_columns
+
+def test_obtain_name_from_regional_names():
+    obtained=obtain_name_from_regional_names(None)
+    expected=["Gulf of California", "Pacific"]
+    assert obtained==expected
