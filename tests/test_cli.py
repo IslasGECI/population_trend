@@ -27,6 +27,7 @@ def test_app_plot_growth_rate():
     trend_california_json_path = "tests/data/california_trend_test.json"
     trend_pacific_json_path = "tests/data/pacific_trend_test.json"
     output_figure = "tests/data/regional_figure.png"
+    regional_names = "Sur, Norte"
     gtt.if_exist_remove(output_figure)
     result = runner.invoke(
         app,
@@ -38,6 +39,8 @@ def test_app_plot_growth_rate():
             trend_pacific_json_path,
             "--output-path",
             output_figure,
+            "--regional-names",
+            regional_names,
         ],
     )
     assert result.exit_code == 0
