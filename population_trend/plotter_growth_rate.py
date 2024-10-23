@@ -3,8 +3,9 @@ import matplotlib.pyplot as plt
 
 
 class Plotter_Growth_Rate:
-    def __init__(self, lambdas_dict, lambdas_dict_2):
+    def __init__(self, lambdas_dict, lambdas_dict_2, regional_names):
         self.interval = [lambdas_dict["intervals"], lambdas_dict_2["intervals"]]
+        self.regional_names = regional_names
 
     def plot_error_bars(self):
         _, ax = gp.geci_plot()
@@ -29,6 +30,6 @@ class Plotter_Growth_Rate:
             1, xmin=xlimits[0], xmax=xlimits[1], linestyles="dashed", colors="green"
         )
         plt.ylabel("Growth Rate", fontsize=20)
-        plt.xticks(xticks_position, ["Gulf of California", "Pacific"], fontsize=20)
+        plt.xticks(xticks_position, self.regional_names, fontsize=20)
         plt.xlim(xlimits)
         return ax

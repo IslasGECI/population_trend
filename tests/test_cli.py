@@ -3,6 +3,7 @@ from typer.testing import CliRunner
 from population_trend import (
     app,
     write_burrows_by_species_and_island,
+    obtain_name_from_regional_names,
 )
 import geci_test_tools as gtt
 
@@ -27,6 +28,7 @@ def test_app_plot_growth_rate():
     trend_california_json_path = "tests/data/california_trend_test.json"
     trend_pacific_json_path = "tests/data/pacific_trend_test.json"
     output_figure = "tests/data/regional_figure.png"
+    regional_names = "Sur, Norte"
     gtt.if_exist_remove(output_figure)
     result = runner.invoke(
         app,
@@ -38,6 +40,8 @@ def test_app_plot_growth_rate():
             trend_pacific_json_path,
             "--output-path",
             output_figure,
+            "--regional-names",
+            regional_names,
         ],
     )
     assert result.exit_code == 0
@@ -218,3 +222,8 @@ def test_write_burrows_by_species_and_island():
     obtained_columns = len(obtained_csv.columns)
     expected_columns = 12
     assert obtained_columns == expected_columns
+
+def test_obtain_name_from_regional_names():
+    obtained=obtain_name_from_regional_names(None)
+    expected=["Gulf of California", "Pacific"]
+    assert obtained==expected

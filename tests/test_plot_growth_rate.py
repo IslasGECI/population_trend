@@ -7,7 +7,8 @@ import numpy as np
 def test_plotter_growth_rate():
     lambdas_california = {"intervals": [1, 2, 3.5]}
     lambdas_pacific = {"intervals": [1.9, 3, 7.5]}
-    plotter = Plotter_Growth_Rate(lambdas_california, lambdas_pacific)
+    regional_names = ["Gulf of California", "North"]
+    plotter = Plotter_Growth_Rate(lambdas_california, lambdas_pacific, regional_names)
     obtained = plotter.plot_error_bars()
     assert isinstance(obtained, plt.axes._axes.Axes)
 
@@ -26,7 +27,7 @@ def test_plotter_growth_rate():
     expected_y_label = "Growth Rate"
     assert obtained_y_label == expected_y_label
     assert obtained.get_xticklabels()[0].get_text() == "Gulf of California"
-    assert obtained.get_xticklabels()[1].get_text() == "Pacific"
+    assert obtained.get_xticklabels()[1].get_text() == "North"
     assert obtained.get_xticklabels()[1].get_fontsize() == 20.0
 
     obtained_xlim = plt.pyplot.xlim()
