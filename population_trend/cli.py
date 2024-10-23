@@ -20,6 +20,7 @@ from population_trend.plotter_growth_rate import Plotter_Growth_Rate
 import pandas as pd
 from typing_extensions import Annotated
 import typer
+from typing import Optional
 import json
 import matplotlib.pyplot as plt
 
@@ -126,13 +127,16 @@ def plot_growth_rate(
     intervals_california: Annotated[str, typer.Option()],
     intervals_pacific: Annotated[str, typer.Option()],
     output_path: Annotated[str, typer.Option()],
+    regional_names: Annotated[Optional[str], typer.Argument()] = None,
 ):
     lambdas_intervals_california = read_json(intervals_california)
     lambdas_intervals_pacific = read_json(intervals_pacific)
-    regional_names = ["Gulf of California", "Pacific"]
-    plotter = Plotter_Growth_Rate(
-        lambdas_intervals_california, lambdas_intervals_pacific, regional_names
-    )
+    if regional_names is None:
+        names = ["Gulf of California", "Pacific"]
+    else:
+        names = regional_names.split(", ")
+
+    plotter = Plotter_Growth_Rate(lambdas_intervals_california, lambdas_intervals_pacific, names)
     plotter.plot_error_bars()
     plt.savefig(output_path, transparent=True)
 
