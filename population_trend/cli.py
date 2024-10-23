@@ -131,10 +131,7 @@ def plot_growth_rate(
 ):
     lambdas_intervals_california = read_json(intervals_california)
     lambdas_intervals_pacific = read_json(intervals_pacific)
-    if regional_names is None:
-        names = ["Gulf of California", "Pacific"]
-    else:
-        names = regional_names.split(", ")
+    names=obtain_name_from_regional_names(regional_names)    
 
     plotter = Plotter_Growth_Rate(lambdas_intervals_california, lambdas_intervals_pacific, names)
     plotter.plot_error_bars()
@@ -145,3 +142,10 @@ def read_json(intervals_json):
     with open(intervals_json, "r") as read_file:
         lambdas_intervals = json.load(read_file)
     return lambdas_intervals
+
+
+def obtain_name_from_regional_names(regional_names):
+    if regional_names is None:
+        return ["Gulf of California", "Pacific"]
+    else:
+        return regional_names.split(", ")
