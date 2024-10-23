@@ -127,7 +127,7 @@ def plot_growth_rate(
     intervals_california: Annotated[str, typer.Option()],
     intervals_pacific: Annotated[str, typer.Option()],
     output_path: Annotated[str, typer.Option()],
-    regional_names: Annotated[Optional[str], typer.Argument()] = None,
+    regional_names: Annotated[Optional[str], typer.Option()] = None,
 ):
     lambdas_intervals_california = read_json(intervals_california)
     lambdas_intervals_pacific = read_json(intervals_pacific)
