@@ -69,12 +69,6 @@ def calculate_percent_diff_in_seasons(cantidad_nidos, model):
     return porcentaje_cambio
 
 
-Bootstrap = dict(
-    default=Bootstrap_from_time_series_parametrizer(),
-    testing=Bootstrap_from_time_series_parametrizer(blocks_length=2, N=10),
-)
-
-
 def fit_population_model(seasons_series, data_series):
     parameters = lambda_calculator(seasons_series, data_series)
     model = power_law(

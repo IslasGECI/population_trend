@@ -64,7 +64,9 @@ def test_save_intervals():
 
 def test_intervals_from_p_values_and_alpha():
     dcco = df[df["Nombre_en_ingles"] == "Double-crested Cormorant"]
-    parametrizer = lam.Bootstrap["testing"]
+    parametrizer = parametrizer = Bootstrap_from_time_series_parametrizer(
+        blocks_length=2, N=bootstrap_number
+    )
     parametrizer.set_data(dcco)
     assert parametrizer.parameters["alpha"] == 0.05
     bootstraper = lam.LambdasBootstrapper(parametrizer)
@@ -109,7 +111,9 @@ def test_calculate_interest_numbers():
 def test_generate_season_interval():
     datos_di = {"Temporada": [1, 2, 3, 4, 5], "Maxima_cantidad_nidos": [1, 1, 1, 1, 1]}
     df = pd.DataFrame(datos_di)
-    parametrizer = lam.Bootstrap["testing"]
+    parametrizer = parametrizer = Bootstrap_from_time_series_parametrizer(
+        blocks_length=2, N=bootstrap_number
+    )
     parametrizer.set_data(df)
     bootstraper = lam.LambdasBootstrapper(parametrizer)
     expected_interval = "(1-5)"
@@ -149,7 +153,9 @@ testdata = [
 @pytest.mark.parametrize("path,expected_seasons", testdata)
 def test_get_monitored_seasons(path, expected_seasons):
     burrows_data_dataframe = get_df(path)
-    parametrizer = lam.Bootstrap["testing"]
+    parametrizer = parametrizer = Bootstrap_from_time_series_parametrizer(
+        blocks_length=2, N=bootstrap_number
+    )
     parametrizer.set_data(burrows_data_dataframe)
     bootstraper = lam.LambdasBootstrapper(parametrizer)
     obtained_seasons = bootstraper.get_monitored_seasons()
@@ -158,9 +164,9 @@ def test_get_monitored_seasons(path, expected_seasons):
 
 def test_calculate_growth_rates_table():
     data = pd.read_csv("tests/data/subset_burrows_data.csv")
-    bootstrap = lam.Bootstrap["testing"]
-    bootstrap.set_data(data)
-    tabla = lam.calculate_growth_rates_table(bootstrap)
+    parametrizer = Bootstrap_from_time_series_parametrizer(blocks_length=2, N=bootstrap_number)
+    parametrizer.set_data(data)
+    tabla = lam.calculate_growth_rates_table(parametrizer)
     p_valor_mayor = tabla[10]
     p_valor_menor = tabla[11]
     expected_p_valor_mayor = 0.0
