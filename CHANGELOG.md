@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [6.0.0] - 2024-10-23
+### Changed
+- Added command option `regional_names` to `plot_growth_rate` 
+- Added argument `regional_names` to class `Plotter_groth_rate`
+
 ## [5.9.0] - 2024-10-17
 ### Added
 - Added extract function `fit_population_model()`
