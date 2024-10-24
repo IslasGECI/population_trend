@@ -1,4 +1,4 @@
-from population_trend import _Plotter_Growth_Rate
+from population_trend.plotter_growth_rate import _Plotter_Growth_Rate
 import pytest
 import matplotlib as plt
 import numpy as np

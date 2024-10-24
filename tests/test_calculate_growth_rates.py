@@ -59,7 +59,7 @@ def test_save_intervals():
     assert obtained_min_lambda[0] >= expected_intervals[0][0]
     obtained_max_lambda = max(obtained_json["bootstrap_intermediate_distribution"])
     assert obtained_max_lambda[0] <= expected_intervals[2][0]
-    # os.remove(output_path)
+    os.remove(output_path)
 
 
 def test_intervals_from_p_values_and_alpha():
