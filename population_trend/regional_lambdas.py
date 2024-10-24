@@ -1,7 +1,7 @@
 import numpy as np
 import json
 
-from bootstrapping_tools import calculate_intervals_from_p_values_and_alpha
+from bootstrapping_tools import calculate_intervals_from_p_values_and_alpha, calculate_p_values
 
 from population_trend.calculate_growth_rates import Bootstrap_from_time_series, LambdasBootstrapper
 
@@ -54,22 +54,29 @@ class Island_Bootstrap_Distribution_Concatenator:
         return lambdas_distribution
 
 
-class Calculator_Regional_Lambdas_Intervals(Bootstrap_from_time_series):
+class Calculator_Regional_Lambdas_Intervals(LambdasBootstrapper):
     def __init__(self, regional_lambdas, alpha):
         self.lambdas = regional_lambdas
-        self.p_values = self.get_p_values()
         self.alpha = alpha
-        self.intervals = self.intervals_from_p_values_and_alpha()
-        self.interval_lambdas = [interval for interval in self.intervals]
-        self.lambda_latex_interval = self.get_lambda_interval_latex_string()
         self.hypothesis_test_statement_latex = self.get_hypotesis_statement()
         self.hypothesis_test_statement_latex_en = self.get_hypotesis_statement_en()
 
-    def intervals_from_p_values_and_alpha(self):
+    @property
+    def p_values(self):
+        p_value_mayor, p_value_menor = calculate_p_values(self.lambdas)
+        p_values = (p_value_mayor, p_value_menor)
+        return p_values
+
+    @property
+    def intervals(self):
         intervals = calculate_intervals_from_p_values_and_alpha(
             self.lambdas, self.p_values, self.alpha
         )
         return intervals
+
+    @property
+    def interval_lambdas(self):
+        return [interval for interval in self.intervals]
 
     def get_intermediate_lambdas(self):
         return [
