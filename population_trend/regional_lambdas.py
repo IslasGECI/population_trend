@@ -78,19 +78,11 @@ class Calculator_Regional_Lambdas_Intervals(LambdasBootstrapper):
     def interval_lambdas(self):
         return [interval for interval in self.intervals]
 
-    def get_intermediate_lambdas(self):
+    def get_lambdas_inside_confidence_interval(self):
         return [
             lambdas
             for lambdas in self.lambdas
             if (lambdas > self.intervals[0]) and (lambdas < self.intervals[2])
-        ]
-
-    def get_parameters_inside_confidence_interval(self):
-        return [
-            parameters_tuple
-            for parameters_tuple in self.parameters_distribution
-            if (parameters_tuple[0] > self.intervals[0][0])
-            and (parameters_tuple[0] < self.intervals[2][0])
         ]
 
     def get_hypotesis_statement(self):
@@ -121,7 +113,7 @@ class Calculator_Regional_Lambdas_Intervals(LambdasBootstrapper):
             "intervals": list(self.intervals),
             "lambda_latex_interval": self.lambda_latex_interval,
             "p-values": self.p_values,
-            "bootstrap_intermediate_distribution": self.get_intermediate_lambdas(),
+            "bootstrap_intermediate_distribution": self.get_lambdas_inside_confidence_interval(),
             "hypothesis_test_statement_latex_sp": self.hypothesis_test_statement_latex,
             "hypothesis_test_statement_latex_en": self.hypothesis_test_statement_latex_en,
         }
