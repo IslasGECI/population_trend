@@ -85,6 +85,14 @@ class Calculator_Regional_Lambdas_Intervals(LambdasBootstrapper):
             if (lambdas > self.intervals[0]) and (lambdas < self.intervals[2])
         ]
 
+    def get_parameters_inside_confidence_interval(self):
+        return [
+            parameters_tuple
+            for parameters_tuple in self.parameters_distribution
+            if (parameters_tuple[0] > self.intervals[0][0])
+            and (parameters_tuple[0] < self.intervals[2][0])
+        ]
+
     def get_hypotesis_statement(self):
         rounded_p_values = self._round_p_values()
         if self.p_values[1] < self.alpha:
