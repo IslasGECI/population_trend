@@ -3,7 +3,7 @@ import json
 
 from bootstrapping_tools import calculate_intervals_from_p_values_and_alpha, calculate_p_values
 
-from population_trend.calculate_growth_rates import Bootstrap_from_time_series, LambdasBootstrapper
+from population_trend.calculate_growth_rates import LambdasBootstrapper
 
 
 class Island_Bootstrap_Distribution_Concatenator:
