@@ -6,10 +6,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-## [6.0.0] - 2024-10-23
+### Added
+
+### Fixed
+
 ### Changed
+
+### Removed
+
+## [6.0.0] - 2024-10-23
+
+### Changed
+
 - Added command option `regional_names` to `plot_growth_rate` 
 - Added argument `regional_names` to class `Plotter_groth_rate`
+
+## [5.9.1] - 2024-10-24
+
+### Changed
+
+- Use internal class `LambdasBootstrapper` instead `Bootstrap_from_time_series`
+
+### Removed
+
+- Internal class `Bootstrap_from_time_series` is deprecated
+- Move internal class `Bootstrapp_from_time_series_parametrizer` to `boostrapping_tools` repository
+
 
 ## [5.9.0] - 2024-10-17
 ### Added
