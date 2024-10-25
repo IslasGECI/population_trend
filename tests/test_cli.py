@@ -223,7 +223,11 @@ def test_write_burrows_by_species_and_island():
     expected_columns = 12
     assert obtained_columns == expected_columns
 
+
 def test_obtain_name_from_regional_names():
-    obtained=obtain_name_from_regional_names(None)
-    expected=["Gulf of California", "Pacific"]
-    assert obtained==expected
+    obtained = obtain_name_from_regional_names(None)
+    expected = ["Gulf of California", "Pacific"]
+    assert obtained == expected
+    obtained = obtain_name_from_regional_names("Sur, Norte")
+    expected = ["Sur", "Norte"]
+    assert obtained == expected

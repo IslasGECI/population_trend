@@ -131,7 +131,7 @@ def plot_growth_rate(
 ):
     lambdas_intervals_california = read_json(intervals_california)
     lambdas_intervals_pacific = read_json(intervals_pacific)
-    names=obtain_name_from_regional_names(regional_names)    
+    names = obtain_name_from_regional_names(regional_names)
 
     plotter = Plotter_Growth_Rate(lambdas_intervals_california, lambdas_intervals_pacific, names)
     plotter.plot_error_bars()
