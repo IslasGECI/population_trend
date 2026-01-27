@@ -4,10 +4,14 @@ from bootstrapping_tools import power_law, lambda_calculator
 import matplotlib.pyplot as plt
 
 
-def normalize_seasons(df):
+def normalize_seasons(df, tick_mode="full"):
     first_season = int(df.Temporada.min())
     last_season = int(df.Temporada.max())
-    return np.linspace(first_season, last_season, last_season - first_season + 1).astype(int)
+    tick_modes = {
+        "sparse": (last_season - first_season) // 2 + 1,
+        "full": last_season - first_season + 1,
+    }
+    return np.linspace(first_season, last_season, tick_modes[tick_mode]).astype(int)
 
 
 def calculate_model_domain(data):
