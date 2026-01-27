@@ -85,6 +85,8 @@ class Tests_Plotter_Population_Trend_Model:
         assert Plotter.data is not None
         expected_number_of_ticks = 3
         assert len(Sparse_Plotter.ticks_text) == expected_number_of_ticks
+        assert Sparse_Plotter.plot_seasons[0] == Sparse_Plotter.ticks_positions[0]
+        assert Sparse_Plotter.plot_seasons[-1] == Sparse_Plotter.ticks_positions[-1]
 
     def tests_time_to_model(self):
         obtained = Plotter.plot_domain

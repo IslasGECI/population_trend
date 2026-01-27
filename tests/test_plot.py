@@ -19,8 +19,12 @@ def test_plot_population_trend():
     output_path = "tests/data/gumu_guadalupe_population_trend.png"
     if os.path.exists(output_path):
         os.remove(output_path)
+    tick_mode = "sparse"
     plot_population_trend(
-        data_path=data_path, intervals_path=intervals_path, output_path=output_path
+        data_path=data_path,
+        intervals_path=intervals_path,
+        output_path=output_path,
+        tick_mode=tick_mode,
     )
     assert os.path.exists(output_path)
     obtained_hash = gtt.calculate_hash(output_path)
