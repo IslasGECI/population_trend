@@ -4,12 +4,6 @@ from bootstrapping_tools import power_law, lambda_calculator
 import matplotlib.pyplot as plt
 
 
-def normalize_seasons(df, tick_step):
-    first_season = int(df.Temporada.min())
-    last_season = int(df.Temporada.max())
-    return np.arange(first_season, last_season + 0.05, tick_step).astype(int)
-
-
 def calculate_model_domain(data):
     last_value = data.Temporada.max() - data.Temporada.min()
     return np.linspace(0, last_value, 100)

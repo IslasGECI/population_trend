@@ -1,7 +1,6 @@
 from population_trend.population_growth_model import (
     calculate_model_domain,
     calculate_upper_limit,
-    normalize_seasons,
     Population_Trend_Model,
     Plotter_Population_Trend_Model,
 )
@@ -14,7 +13,6 @@ import os
 import pandas as pd
 import numpy as np
 from pandas._testing import assert_frame_equal
-import pytest
 
 
 cormorant_data = pd.DataFrame({"Isla": ["a", "a", "b"], "Temporada": [2020, 2021, 2020]})
@@ -24,21 +22,6 @@ expected_data = pd.DataFrame({"Isla": ["a", "a"], "Temporada": [2020, 2021]})
 def test_filter_data_by_islet():
     obtained_data = filter_data_by_islet(cormorant_data, "a")
     assert_frame_equal(expected_data, obtained_data)
-
-
-def test_normalize_seasons():
-    expected_date = np.array([2020, 2021])
-    tick_step = 1
-    obtained_date = normalize_seasons(cormorant_data, tick_step)
-    np.testing.assert_array_equal(expected_date, obtained_date)
-
-    more_cormorant_data = pd.DataFrame(
-        {"Isla": ["a", "a", "b", "c", "d", "e"], "Temporada": [2020, 2021, 2020, 2022, 2023, 2024]}
-    )
-    expected_date = np.array([2020, 2022, 2024])
-    tick_step = 2
-    obtained_date = normalize_seasons(more_cormorant_data, tick_step)
-    np.testing.assert_array_equal(expected_date, obtained_date)
 
 
 def test_calculate_model_domain():
