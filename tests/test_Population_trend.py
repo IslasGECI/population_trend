@@ -31,9 +31,9 @@ def test_normalize_seasons():
     np.testing.assert_array_equal(expected_date, obtained_date)
 
     more_cormorant_data = pd.DataFrame(
-        {"Isla": ["a", "a", "b", "c", "d"], "Temporada": [2020, 2021, 2020, 2022, 2023]}
+        {"Isla": ["a", "a", "b", "c", "d", "e"], "Temporada": [2020, 2021, 2020, 2022, 2023, 2024]}
     )
-    expected_date = np.array([2020, 2022, 2023])
+    expected_date = np.array([2020, 2022, 2024])
     obtained_date = normalize_seasons(more_cormorant_data, "sparse")
     np.testing.assert_array_equal(expected_date, obtained_date)
 
