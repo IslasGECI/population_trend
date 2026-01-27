@@ -4,11 +4,7 @@ from bootstrapping_tools import power_law, lambda_calculator
 import matplotlib.pyplot as plt
 
 
-def normalize_seasons(df, tick_mode="full"):
-    return xxnormalize_seasons(df, tick_mode)
-
-
-def xxnormalize_seasons(df, tick_mode):
+def normalize_seasons(df, tick_mode):
     first_season = int(df.Temporada.min())
     last_season = int(df.Temporada.max())
     tick_modes = {
@@ -64,7 +60,7 @@ class Plotter_Population_Trend_Model:
         self.fig, self.ax = geci_plot()
         self.data = data
         self.plot_seasons = self.data["Temporada"][:] - self.data["Temporada"].iloc[0] + 1
-        self.ticks_text = xxnormalize_seasons(self.data, tick_mode=tick_mode)
+        self.ticks_text = normalize_seasons(self.data, tick_mode=tick_mode)
         self.ticks_positions = ticks_positions_array(self.ticks_text)
         self.plot_domain = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
         self.population_model = population_model

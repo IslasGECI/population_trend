@@ -1,11 +1,11 @@
-from population_trend import (
+from population_trend.population_growth_model import (
     calculate_model_domain,
     calculate_upper_limit,
-    filter_data_by_islet,
-    xxnormalize_seasons,
+    normalize_seasons,
     Population_Trend_Model,
     Plotter_Population_Trend_Model,
 )
+from population_trend.filter_data import filter_data_by_islet
 from geci_plots import geci_plot
 
 import geci_test_tools as gtt
@@ -28,7 +28,7 @@ def test_filter_data_by_islet():
 def test_normalize_seasons():
     expected_date = np.array([2020, 2021])
     tick_mode = "full"
-    obtained_date = xxnormalize_seasons(cormorant_data, tick_mode)
+    obtained_date = normalize_seasons(cormorant_data, tick_mode)
     np.testing.assert_array_equal(expected_date, obtained_date)
 
     more_cormorant_data = pd.DataFrame(
@@ -36,7 +36,7 @@ def test_normalize_seasons():
     )
     expected_date = np.array([2020, 2022, 2024])
     tick_mode = "sparse"
-    obtained_date = xxnormalize_seasons(more_cormorant_data, tick_mode)
+    obtained_date = normalize_seasons(more_cormorant_data, tick_mode)
     np.testing.assert_array_equal(expected_date, obtained_date)
 
 
