@@ -30,6 +30,13 @@ def test_normalize_seasons():
     obtained_date = normalize_seasons(cormorant_data)
     np.testing.assert_array_equal(expected_date, obtained_date)
 
+    more_cormorant_data = pd.DataFrame(
+        {"Isla": ["a", "a", "b", "c", "d"], "Temporada": [2020, 2021, 2020, 2022, 2023]}
+    )
+    expected_date = np.array([2020, 2022, 2023])
+    obtained_date = normalize_seasons(more_cormorant_data, "sparse")
+    np.testing.assert_array_equal(expected_date, obtained_date)
+
 
 def test_calculate_model_domain():
     obtained = calculate_model_domain(cormorant_data)
