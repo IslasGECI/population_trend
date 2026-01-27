@@ -4,6 +4,7 @@ from population_trend.population_growth_model import (
     normalize_seasons,
     Population_Trend_Model,
     Plotter_Population_Trend_Model,
+    xxPlotter_Population_Trend_Model,
 )
 from population_trend.filter_data import filter_data_by_islet
 from geci_plots import geci_plot
@@ -75,7 +76,9 @@ Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model)
 more_cormorant_data = pd.DataFrame(
     {"Isla": ["a", "a", "b", "c", "d", "e"], "Temporada": [2020, 2021, 2020, 2022, 2023, 2024]}
 )
-Sparse_Plotter = Plotter_Population_Trend_Model(more_cormorant_data, pop_model, tick_mode="sparse")
+Sparse_Plotter = xxPlotter_Population_Trend_Model(
+    more_cormorant_data, pop_model, tick_mode="sparse"
+)
 
 
 class Tests_Plotter_Population_Trend_Model:
