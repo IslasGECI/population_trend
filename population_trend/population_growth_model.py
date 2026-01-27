@@ -55,8 +55,7 @@ class Plotter_Population_Trend_Model:
     def __init__(self, data, population_model, tick_mode):
         self.fig, self.ax = geci_plot()
         self.data = data
-        tick_modes = {"sparse": 2, "full": 1}
-        self.tick_step = tick_modes[tick_mode]
+        self.tick_mode = tick_mode
         self.ticks_text = normalize_seasons(self.data, tick_step=1)
         self.ticks_positions = ticks_positions_array(self.data)
         self.plot_seasons = self.data.index.values + 1
@@ -150,6 +149,8 @@ class Plotter_Population_Trend_Model:
         plt.xlabel("Seasons", size=20)
 
     def set_ticks(self):
+        tick_modes = {"sparse": 2, "full": 1}
+        self.tick_step = tick_modes[self.tick_mode]
         plt.xticks(
             self.ticks_positions[:: self.tick_step],
             self.ticks_text[:: self.tick_step],
