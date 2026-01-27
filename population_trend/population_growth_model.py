@@ -5,6 +5,10 @@ import matplotlib.pyplot as plt
 
 
 def normalize_seasons(df, tick_mode="full"):
+    return xxnormalize_seasons(df, tick_mode)
+
+
+def xxnormalize_seasons(df, tick_mode):
     first_season = int(df.Temporada.min())
     last_season = int(df.Temporada.max())
     tick_modes = {
