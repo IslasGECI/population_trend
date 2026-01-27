@@ -55,8 +55,8 @@ class Population_Trend_Model:
         return power_law(self.model_domain, self.intervals[2][0], self.intervals[2][1])
 
 
-class Plotter_Population_Trend_Model:
-    def __init__(self, data, population_model, tick_mode="full"):
+class xxPlotter_Population_Trend_Model:
+    def __init__(self, data, population_model, tick_mode):
         self.fig, self.ax = geci_plot()
         self.data = data
         self.plot_seasons = self.data["Temporada"][:] - self.data["Temporada"].iloc[0] + 1
@@ -182,3 +182,8 @@ class Plotter_Population_Trend_Model:
         if islet == "Natividad":
             legend_mpl_object = plt.legend(loc="upper left")
         return legend_mpl_object
+
+
+class Plotter_Population_Trend_Model(xxPlotter_Population_Trend_Model):
+    def __init__(self, data, population_model, tick_mode="full"):
+        super().__init__(data, population_model, tick_mode=tick_mode)
