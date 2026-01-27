@@ -80,7 +80,6 @@ Sparse_Plotter = Plotter_Population_Trend_Model(more_cormorant_data, pop_model, 
 
 
 class Tests_Plotter_Population_Trend_Model:
-    @pytest.mark.skip(reason="not yet")
     def tests_init_(self):
         fig, ax = geci_plot()
         assert type(fig) == type(Plotter.fig)  # noqa
