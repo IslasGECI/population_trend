@@ -143,8 +143,7 @@ class Plotter_Population_Trend_Model:
         plt.xlabel("Seasons", size=20)
 
     def set_ticks(self):
-        tick_modes = {"sparse": 2, "full": 1}
-        self.tick_step = tick_modes[self.tick_mode]
+        self.get_tick_step()
         plt.xticks(
             self.ticks_positions[:: self.tick_step],
             self.ticks_text[:: self.tick_step],
@@ -152,6 +151,10 @@ class Plotter_Population_Trend_Model:
             size=20,
         )
         plt.yticks(size=20)
+
+    def get_tick_step(self):
+        tick_modes = {"sparse": 2, "full": 1}
+        self.tick_step = tick_modes[self.tick_mode]
 
     def draw(self):
         plt.gcf().subplots_adjust(bottom=0.2)
