@@ -2,7 +2,6 @@ from population_trend import (
     calculate_model_domain,
     calculate_upper_limit,
     filter_data_by_islet,
-    normalize_seasons,
     xxnormalize_seasons,
     Population_Trend_Model,
     Plotter_Population_Trend_Model,
