@@ -5,7 +5,7 @@ from population_trend import Population_Trend_Model, Plotter_Population_Trend_Mo
 
 variable_of_interest = "max_CPUE"
 assp_cpue_data_for_plotter = pd.DataFrame(
-    {variable_of_interest: [1, 1, 2], "Temporada": [2020, 2021, 2020]}
+    {variable_of_interest: [1, 1, 2], "Temporada": [2020, 2021, 2022]}
 )
 pop_model = Population_Trend_Model(
     assp_cpue_data_for_plotter,

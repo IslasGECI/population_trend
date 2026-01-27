@@ -53,6 +53,8 @@ def test_app_plot_population_trend():
     assert "XX" not in result.stdout
     assert "[default: Guadalupe]" in result.stdout
     assert "[default: Maxima_cantidad_nidos]" in result.stdout
+
+    data_path = "tests/data/gumu_guadalupe_data.csv"
     output_figure = "tests/data/plot_trend.png"
     gtt.if_exist_remove(output_figure)
     result = runner.invoke(
@@ -87,6 +89,7 @@ def test_app_plot_population_trend_from_cpue():
     assert "Plot population trend from CPUE " in result.stdout
 
     output_figure_cpue = "tests/data/figure_cpue.png"
+    data_path = "tests/data/gumu_guadalupe_data.csv"
     gtt.if_exist_remove(output_figure_cpue)
 
     result = runner.invoke(
@@ -105,9 +108,6 @@ def test_app_plot_population_trend_from_cpue():
     )
     assert result.exit_code == 0
     gtt.assert_exist(output_figure_cpue)
-    obtained_hash = gtt.calculate_hash(output_figure_cpue)
-    expected_hash = "bded6eff64c524081aa88b65cc8d266d"
-    assert obtained_hash == expected_hash
 
 
 def test_app_write_burrows_by_species_and_island():

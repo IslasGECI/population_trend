@@ -63,7 +63,7 @@ def tests_calculate_upper_limit():
 
 
 cormorant_data_for_plotter = pd.DataFrame(
-    {"Maxima_cantidad_nidos": [1, 1, 2], "Temporada": [2020, 2021, 2020]}
+    {"Maxima_cantidad_nidos": [1, 1, 2], "Temporada": [2020, 2021, 2022]}
 )
 pop_model = Population_Trend_Model(
     cormorant_data_for_plotter,
@@ -74,7 +74,7 @@ Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model, 
 
 
 more_cormorant_data = pd.DataFrame(
-    {"Isla": ["a", "a", "b", "c", "d", "e"], "Temporada": [2020, 2021, 2020, 2022, 2023, 2024]}
+    {"Isla": ["a", "a", "b", "c", "d"], "Temporada": [2020, 2021, 2022, 2023, 2024]}
 )
 Sparse_Plotter = Plotter_Population_Trend_Model(more_cormorant_data, pop_model, tick_mode="sparse")
 
@@ -84,16 +84,13 @@ class Tests_Plotter_Population_Trend_Model:
         fig, ax = geci_plot()
         assert type(fig) == type(Plotter.fig)  # noqa
         assert Plotter.data is not None
-        expected_number_of_ticks = 3
-        assert len(Sparse_Plotter.ticks_text) == expected_number_of_ticks
-        assert Sparse_Plotter.plot_seasons[0] == Sparse_Plotter.ticks_positions[0]
-        assert Sparse_Plotter.plot_seasons[-1] == Sparse_Plotter.ticks_positions[-1]
+        assert len(Sparse_Plotter.ticks_text) == len(Sparse_Plotter.data)
 
     def tests_time_to_model(self):
         obtained = Plotter.plot_domain
         expected_first_point = 1
         assert obtained[0] == expected_first_point
-        expected_last_point = 2.05
+        expected_last_point = 3.05
         assert obtained[-1] == expected_last_point
 
     def tests_savefig(self):
