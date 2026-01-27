@@ -6,7 +6,6 @@ from population_trend import (
 )
 import geci_test_tools as gtt
 
-
 runner = CliRunner()
 
 data_path = "tests/data/dcco_laal_gumu_burrows_data.csv"

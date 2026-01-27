@@ -9,7 +9,6 @@ import geci_plots as gp
 
 import matplotlib.pyplot as plt
 
-
 nidos_array = [
     {"Temporada": 2014, "Maxima_cantidad_nidos": 283},
     {"Temporada": 2015, "Maxima_cantidad_nidos": 126},
