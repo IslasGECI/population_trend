@@ -68,7 +68,8 @@ def plot_population_trend(
     intervals_path: Annotated[str, typer.Option()],
     island: Annotated[str, typer.Option()] = "Guadalupe",
     variable_of_interest: Annotated[str, typer.Option()] = "Maxima_cantidad_nidos",
-    output_path=None,
+    tick_mode: Annotated[str, typer.Option()] = "auto",
+    output_path: Annotated[str, typer.Option()] = None,
 ):
     fit_data = pd.read_csv(data_path)
     intervals_json = read_json(intervals_path)
