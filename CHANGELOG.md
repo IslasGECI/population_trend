@@ -14,6 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [5.10.0] - 2026-01-27
+### Added
+- New option `--tick-mode` in the `plot-population-trend` CLI command. This option controls how many season labels are shown on the figure. The `full` mode displays all seasons, while `sparse` displays approximately half of the labels.
+
+
 ## [5.9.1] - 2024-10-24
 
 ### Changed
