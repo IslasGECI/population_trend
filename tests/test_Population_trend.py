@@ -70,11 +70,19 @@ pop_model = Population_Trend_Model(
 Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model)
 
 
+more_cormorant_data = pd.DataFrame(
+    {"Isla": ["a", "a", "b", "c", "d", "e"], "Temporada": [2020, 2021, 2020, 2022, 2023, 2024]}
+)
+Sparse_Plotter = Plotter_Population_Trend_Model(more_cormorant_data, pop_model, tick_mode="sparse")
+
+
 class Tests_Plotter_Population_Trend_Model:
     def tests_init_(self):
         fig, ax = geci_plot()
         assert type(fig) == type(Plotter.fig)  # noqa
         assert Plotter.data is not None
+        expected_number_of_ticks = 3
+        assert len(Sparse_Plotter.ticks_text) == expected_number_of_ticks
 
     def tests_time_to_model(self):
         obtained = Plotter.plot_domain
