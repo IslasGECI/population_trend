@@ -66,6 +66,8 @@ def test_app_plot_population_trend():
             "Guadalupe",
             "--variable-of-interest",
             "Maxima_cantidad_nidos",
+            "--tick-mode",
+            "sparse",
             "--output-path",
             output_figure,
         ],
