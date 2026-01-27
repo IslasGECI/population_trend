@@ -36,7 +36,8 @@ def test_normalize_seasons():
         {"Isla": ["a", "a", "b", "c", "d", "e"], "Temporada": [2020, 2021, 2020, 2022, 2023, 2024]}
     )
     expected_date = np.array([2020, 2022, 2024])
-    obtained_date = normalize_seasons(more_cormorant_data, "sparse")
+    tick_mode = "sparse"
+    obtained_date = xxnormalize_seasons(more_cormorant_data, tick_mode)
     np.testing.assert_array_equal(expected_date, obtained_date)
 
 
