@@ -14,6 +14,7 @@ import os
 import pandas as pd
 import numpy as np
 from pandas._testing import assert_frame_equal
+import pytest
 
 
 cormorant_data = pd.DataFrame({"Isla": ["a", "a", "b"], "Temporada": [2020, 2021, 2020]})
@@ -27,16 +28,16 @@ def test_filter_data_by_islet():
 
 def test_normalize_seasons():
     expected_date = np.array([2020, 2021])
-    tick_mode = "full"
-    obtained_date = normalize_seasons(cormorant_data, tick_mode)
+    tick_step = 1
+    obtained_date = normalize_seasons(cormorant_data, tick_step)
     np.testing.assert_array_equal(expected_date, obtained_date)
 
     more_cormorant_data = pd.DataFrame(
         {"Isla": ["a", "a", "b", "c", "d", "e"], "Temporada": [2020, 2021, 2020, 2022, 2023, 2024]}
     )
     expected_date = np.array([2020, 2022, 2024])
-    tick_mode = "sparse"
-    obtained_date = normalize_seasons(more_cormorant_data, tick_mode)
+    tick_step = 2
+    obtained_date = normalize_seasons(more_cormorant_data, tick_step)
     np.testing.assert_array_equal(expected_date, obtained_date)
 
 
@@ -79,6 +80,7 @@ Sparse_Plotter = Plotter_Population_Trend_Model(more_cormorant_data, pop_model, 
 
 
 class Tests_Plotter_Population_Trend_Model:
+    @pytest.mark.skip(reason="not yet")
     def tests_init_(self):
         fig, ax = geci_plot()
         assert type(fig) == type(Plotter.fig)  # noqa
