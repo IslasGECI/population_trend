@@ -7,9 +7,7 @@ import matplotlib.pyplot as plt
 def normalize_seasons(df, tick_step):
     first_season = int(df.Temporada.min())
     last_season = int(df.Temporada.max())
-    return np.linspace(
-        first_season, last_season, (last_season - first_season) // tick_step + 1
-    ).astype(int)
+    return np.arange(first_season, last_season + 0.05, tick_step).astype(int)
 
 
 def calculate_model_domain(data):
@@ -57,10 +55,11 @@ class Plotter_Population_Trend_Model:
     def __init__(self, data, population_model, tick_mode):
         self.fig, self.ax = geci_plot()
         self.data = data
-        self.plot_seasons = self.data["Temporada"][:] - self.data["Temporada"].iloc[0] + 1
         tick_modes = {"sparse": 2, "full": 1}
-        self.ticks_text = normalize_seasons(self.data, tick_step=tick_modes[tick_mode])
-        self.ticks_positions = ticks_positions_array(self.ticks_text)
+        self.tick_step = tick_modes[tick_mode]
+        self.ticks_text = normalize_seasons(self.data, tick_step=1)
+        self.ticks_positions = ticks_positions_array(self.data)
+        self.plot_seasons = self.data.index.values + 1
         self.plot_domain = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
         self.population_model = population_model
         self.interest_variable = population_model.interest_variable
@@ -152,8 +151,8 @@ class Plotter_Population_Trend_Model:
 
     def set_ticks(self):
         plt.xticks(
-            self.ticks_positions,
-            self.ticks_text,
+            self.ticks_positions[:: self.tick_step],
+            self.ticks_text[:: self.tick_step],
             rotation=90,
             size=20,
         )
