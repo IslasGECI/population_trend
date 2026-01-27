@@ -7,7 +7,7 @@ import os
 
 from population_trend.population_growth_model import (
     Population_Trend_Model,
-    xxPlotter_Population_Trend_Model,
+    Plotter_Population_Trend_Model,
 )
 from population_trend.cli import plot_population_trend
 
@@ -35,6 +35,6 @@ def tests_Plotter_Population_Trend_Model():
     model.med_model = np.linspace(1, 3, 100)
     model.interest_variable = "Maxima_cantidad_nidos"
     dataframe = pd.DataFrame({"Isla": [1, 3], "Temporada": [2020, 2021]})
-    Plotter = xxPlotter_Population_Trend_Model(dataframe, model, tick_mode="full")
+    Plotter = Plotter_Population_Trend_Model(dataframe, model, tick_mode="full")
     Plotter.set_labels()
     return Plotter.plot_model()

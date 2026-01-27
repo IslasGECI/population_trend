@@ -1,7 +1,7 @@
 from population_trend.filter_data import filter_by_species_and_island
 from population_trend.population_growth_model import (
     Population_Trend_Model,
-    xxPlotter_Population_Trend_Model,
+    Plotter_Population_Trend_Model,
 )
 from population_trend.plotter_population_trend_from_cpue import (
     Plotter_Population_Trend_Model_From_CPUE,
@@ -78,7 +78,7 @@ def plot_population_trend(
     Modelo_Tendencia_Poblacional = Population_Trend_Model(
         fit_data, intervals_json, variable_of_interest
     )
-    Graficador = xxPlotter_Population_Trend_Model(fit_data, Modelo_Tendencia_Poblacional, tick_mode)
+    Graficador = Plotter_Population_Trend_Model(fit_data, Modelo_Tendencia_Poblacional, tick_mode)
     Graficador.plot_smooth()
     Graficador.plot_model()
     Graficador.plot_data()

@@ -1,9 +1,9 @@
-from population_trend.population_growth_model import xxPlotter_Population_Trend_Model
+from population_trend.population_growth_model import Plotter_Population_Trend_Model
 
 import matplotlib.pyplot as plt
 
 
-class Plotter_Population_Trend_Model_From_CPUE(xxPlotter_Population_Trend_Model):
+class Plotter_Population_Trend_Model_From_CPUE(Plotter_Population_Trend_Model):
     def __init__(self, data, population_model, tick_mode="full"):
         super().__init__(data, population_model, tick_mode)
 
