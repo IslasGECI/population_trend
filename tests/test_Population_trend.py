@@ -3,6 +3,7 @@ from population_trend import (
     calculate_upper_limit,
     filter_data_by_islet,
     normalize_seasons,
+    xxnormalize_seasons,
     Population_Trend_Model,
     Plotter_Population_Trend_Model,
 )
@@ -27,7 +28,8 @@ def test_filter_data_by_islet():
 
 def test_normalize_seasons():
     expected_date = np.array([2020, 2021])
-    obtained_date = normalize_seasons(cormorant_data)
+    tick_mode = "full"
+    obtained_date = xxnormalize_seasons(cormorant_data, tick_mode)
     np.testing.assert_array_equal(expected_date, obtained_date)
 
     more_cormorant_data = pd.DataFrame(
