@@ -67,10 +67,14 @@ class Tests_Plotter_Population_Trend_Model:
         assert type(fig) == type(Plotter.fig)  # noqa
         assert Plotter.data is not None
         assert len(Plotter.filled_data) == len(Plotter.data) + 1
-        Plotter.plot_data()
 
         Sparse_Plotter.set_ticks()
         assert len(Sparse_Plotter.ticks_text) == len(Sparse_Plotter.data)
+
+    def test_Plotter_plot_data(self):
+        Plotter.plot_data()
+        expected_one_line = 1
+        assert len(Plotter.ax.get_lines()) == expected_one_line
 
     def tests_time_to_model(self):
         obtained = Plotter.plot_domain
