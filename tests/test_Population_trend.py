@@ -45,7 +45,7 @@ def tests_calculate_upper_limit():
 
 
 cormorant_data_for_plotter = pd.DataFrame(
-    {"Maxima_cantidad_nidos": [1, 1, 2], "Temporada": [2020, 2021, 2022]}
+    {"Maxima_cantidad_nidos": [1, 1, 2], "Temporada": [1999, 2021, 2022]}
 )
 pop_model = Population_Trend_Model(
     cormorant_data_for_plotter,
@@ -66,6 +66,8 @@ class Tests_Plotter_Population_Trend_Model:
         fig, ax = geci_plot()
         assert type(fig) == type(Plotter.fig)  # noqa
         assert Plotter.data is not None
+        assert len(Plotter.filled_data) == len(Plotter.data) + 1
+
         assert len(Sparse_Plotter.ticks_text) == len(Sparse_Plotter.data)
 
     def tests_time_to_model(self):
