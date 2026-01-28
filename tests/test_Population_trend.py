@@ -67,6 +67,7 @@ class Tests_Plotter_Population_Trend_Model:
         assert type(fig) == type(Plotter.fig)  # noqa
         assert Plotter.data is not None
         assert len(Plotter.filled_data) == len(Plotter.data) + 1
+        Plotter.plot_data()
 
         Sparse_Plotter.set_ticks()
         assert len(Sparse_Plotter.ticks_text) == len(Sparse_Plotter.data)
