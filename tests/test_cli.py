@@ -76,7 +76,7 @@ def test_app_plot_population_trend():
     )
     assert result.exit_code == 0
     gtt.assert_exist(output_figure)
-    # gtt.if_exist_remove(output_figure)
+    gtt.if_exist_remove(output_figure)
 
 
 def test_app_plot_population_trend_from_cpue():
