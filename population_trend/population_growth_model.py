@@ -57,8 +57,9 @@ class Plotter_Population_Trend_Model:
 
     def fill_missing_seasons(self, data):
         self.data = data
+        self.data.Temporada = self.data.Temporada.astype(int)
         self.data = self.data.set_index("Temporada")
-        full_seasons = range(self.data.index.min(), self.data.index.max() + 1)
+        full_seasons = range((self.data.index.min()), self.data.index.max() + 1)
         self.filled_data = (
             self.data.reindex(full_seasons).reset_index().rename(columns={"index": "Temporada"})
         )
