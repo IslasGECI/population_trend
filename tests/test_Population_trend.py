@@ -68,6 +68,7 @@ class Tests_Plotter_Population_Trend_Model:
         assert Plotter.data is not None
         assert len(Plotter.filled_data) == len(Plotter.data) + 1
 
+        Sparse_Plotter.set_ticks()
         assert len(Sparse_Plotter.ticks_text) == len(Sparse_Plotter.data)
 
     def tests_time_to_model(self):

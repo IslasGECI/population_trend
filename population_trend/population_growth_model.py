@@ -50,7 +50,6 @@ class Plotter_Population_Trend_Model:
         self.fig, self.ax = geci_plot()
         self.fill_missing_seasons(data)
         self.tick_mode = tick_mode
-        self.ticks_text = self.filled_data.Temporada.values.astype(int)
         self.ticks_positions = ticks_positions_array(self.filled_data)
         self.plot_seasons = self.filled_data.index.values + 1
         self.plot_domain = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
@@ -152,6 +151,7 @@ class Plotter_Population_Trend_Model:
 
     def set_ticks(self):
         self.get_tick_step()
+        self.ticks_text = self.filled_data.Temporada.values.astype(int)
         plt.xticks(
             self.ticks_positions[:: self.tick_step],
             self.ticks_text[:: self.tick_step],
