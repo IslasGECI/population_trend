@@ -49,10 +49,15 @@ class Plotter_Population_Trend_Model:
     def __init__(self, data, population_model, tick_mode):
         self.fig, self.ax = geci_plot()
         self.data = data
+        self.data = self.data.set_index("Temporada")
+        full_seasons = range(self.data.index.min(), self.data.index.max() + 1)
+        self.filled_data = (
+            self.data.reindex(full_seasons).reset_index().rename(columns={"index": "Temporada"})
+        )
         self.tick_mode = tick_mode
-        self.ticks_text = self.data.Temporada.values.astype(int)
-        self.ticks_positions = ticks_positions_array(self.data)
-        self.plot_seasons = self.data.index.values + 1
+        self.ticks_text = self.filled_data.Temporada.values.astype(int)
+        self.ticks_positions = ticks_positions_array(self.filled_data)
+        self.plot_seasons = self.filled_data.index.values + 1
         self.plot_domain = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
         self.population_model = population_model
         self.interest_variable = population_model.interest_variable
