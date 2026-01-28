@@ -116,7 +116,7 @@ class Plotter_Population_Trend_Model:
         return self.fig
 
     def plot_data(self):
-        plt.plot(
+        self.ax.plot(
             self.seasons_to_plot,
             self.filled_data[self.interest_variable],
             "-Dk",
