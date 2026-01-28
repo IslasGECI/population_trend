@@ -45,7 +45,7 @@ def tests_calculate_upper_limit():
 
 
 cormorant_data_for_plotter = pd.DataFrame(
-    {"Maxima_cantidad_nidos": [1, 1, 2], "Temporada": [1999, 2021, 2022]}
+    {"Maxima_cantidad_nidos": [1, 1, 2], "Temporada": [2019, 2021, 2022]}
 )
 pop_model = Population_Trend_Model(
     cormorant_data_for_plotter,
@@ -74,7 +74,7 @@ class Tests_Plotter_Population_Trend_Model:
         obtained = Plotter.plot_domain
         expected_first_point = 1
         assert obtained[0] == expected_first_point
-        expected_last_point = 3.05
+        expected_last_point = 4.05
         assert obtained[-1] == expected_last_point
 
     def tests_savefig(self):
