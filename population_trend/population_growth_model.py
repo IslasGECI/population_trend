@@ -51,7 +51,6 @@ class Plotter_Population_Trend_Model:
         self.fill_missing_seasons(data)
         self.tick_mode = tick_mode
         self.ticks_positions = ticks_positions_array(self.filled_data)
-        self.plot_seasons = self.filled_data.index.values + 1
         self.plot_domain = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
         self.population_model = population_model
         self.interest_variable = population_model.interest_variable
@@ -115,8 +114,9 @@ class Plotter_Population_Trend_Model:
         return self.fig
 
     def plot_data(self):
+        self.seasons_to_plot = self.filled_data.index.values + 1
         plt.plot(
-            self.plot_seasons,
+            self.seasons_to_plot,
             self.data[self.interest_variable],
             "-Dk",
             label="Active Nests",

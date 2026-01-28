@@ -13,7 +13,7 @@ class Plotter_Population_Trend_Model_From_CPUE(Plotter_Population_Trend_Model):
 
     def plot_data(self):
         plt.plot(
-            self.plot_seasons,
+            self.seasons_to_plot,
             self.data[self.interest_variable],
             "-Dk",
             label="Maximum CPUE",
