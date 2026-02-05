@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [5.10.2] - 2026-02-05
+### Fixed
+- CLI command `plot-population-trend-from-cpue` can plot data with missing seasons.
+
 ## [5.10.1] - 2026-01-28
 ### Fixed
 - CLI command `plot-population-trend` displays missing season.
