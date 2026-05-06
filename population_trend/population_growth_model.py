@@ -146,10 +146,13 @@ class Plotter_Population_Trend_Model:
             self.ticks_positions.max(),
         )
 
-    def set_labels(self):
-        labels = {"english": {"ylabel": "Number of breeding pairs", "xlabel": "Seasons"}}
-        self.ax.set_ylabel(labels["english"]["ylabel"], size=20)
-        self.ax.set_xlabel(labels["english"]["xlabel"], size=20)
+    def set_labels(self, language="english"):
+        labels = {
+            "english": {"ylabel": "Number of breeding pairs", "xlabel": "Seasons"},
+            "spanish": {"ylabel": "Número de parejas reproductivas", "xlabel": "Temporadas"},
+        }
+        self.ax.set_ylabel(labels[language]["ylabel"], size=20)
+        self.ax.set_xlabel(labels[language]["xlabel"], size=20)
 
     def set_ticks(self):
         self.get_tick_step()
