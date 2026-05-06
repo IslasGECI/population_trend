@@ -1,4 +1,3 @@
-import warnings
 import pandas as pd
 from typer.testing import CliRunner
 from population_trend import (
@@ -234,26 +233,24 @@ def test_render_population_trend_new_command_works():
     output_figure_render = "tests/data/render_trend.png"
     gtt.if_exist_remove(output_figure_render)
 
-    with warnings.catch_warnings(record=True) as w:
-        warnings.simplefilter("always")
-        result = runner.invoke(
-            app,
-            [
-                "render-population-trend",
-                "--data-path",
-                data_path_for_trend,
-                "--intervals-path",
-                intervals_path,
-                "--island",
-                "Guadalupe",
-                "--variable-of-interest",
-                "Maxima_cantidad_nidos",
-                "--tick-mode",
-                "sparse",
-                "--output-path",
-                output_figure_render,
-            ],
-        )
+    result = runner.invoke(
+        app,
+        [
+            "render-population-trend",
+            "--data-path",
+            data_path_for_trend,
+            "--intervals-path",
+            intervals_path,
+            "--island",
+            "Guadalupe",
+            "--variable-of-interest",
+            "Maxima_cantidad_nidos",
+            "--tick-mode",
+            "sparse",
+            "--output-path",
+            output_figure_render,
+        ],
+    )
 
     assert result.exit_code == 0
     gtt.assert_exist(output_figure_render)
