@@ -1,3 +1,4 @@
+import warnings
 import pandas as pd
 from typer.testing import CliRunner
 from population_trend import (
@@ -14,7 +15,7 @@ species = "Laysan Albatross"
 island = "Guadalupe"
 output_path = "tests/data/laal_guadalupe.csv"
 intervals_path = "tests/data/gumu_guadalupe_boostrap_intervals.json"
-output_figure = "tests/data/figure.png"
+data_path_for_trend = "tests/data/gumu_guadalupe_data.csv"
 
 
 def test_app_plot_growth_rate():
@@ -52,6 +53,13 @@ def test_app_plot_population_trend():
     assert "XX" not in result.stdout
     assert "[default: Guadalupe]" in result.stdout
     assert "[default: Maxima_cantidad_nidos]" in result.stdout
+    assert result.exit_code == 0
+    assert (
+        "DEPRECATED" in result.stdout
+    ), f"Expected 'DEPRECATED' in help text. Got: {result.stdout}"
+    assert (
+        "render-population-trend" in result.stdout
+    ), f"Expected new command name in help text. Got: {result.stdout}"
 
     data_path = "tests/data/gumu_guadalupe_data.csv"
     output_figure = "tests/data/plot_trend.png"
@@ -220,3 +228,33 @@ def test_write_burrows_by_species_and_island():
     obtained_columns = len(obtained_csv.columns)
     expected_columns = 12
     assert obtained_columns == expected_columns
+
+
+def test_render_population_trend_new_command_works():
+    output_figure_render = "tests/data/render_trend.png"
+    gtt.if_exist_remove(output_figure_render)
+
+    with warnings.catch_warnings(record=True) as w:
+        warnings.simplefilter("always")
+        result = runner.invoke(
+            app,
+            [
+                "render-population-trend",
+                "--data-path",
+                data_path_for_trend,
+                "--intervals-path",
+                intervals_path,
+                "--island",
+                "Guadalupe",
+                "--variable-of-interest",
+                "Maxima_cantidad_nidos",
+                "--tick-mode",
+                "sparse",
+                "--output-path",
+                output_figure_render,
+            ],
+        )
+
+    assert result.exit_code == 0
+    gtt.assert_exist(output_figure_render)
+    gtt.if_exist_remove(output_figure_render)
