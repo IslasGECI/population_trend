@@ -7,10 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- New CLI command `render-population-trend` with identical behavior to `plot-population-trend`.
 
 ### Fixed
 
 ### Changed
+
+### Deprecated
+- CLI command `plot-population-trend` is deprecated in favor of `render-population-trend`. The old command will remain functional and will be removed in v6.0.0. Users should update their scripts and automation to use `render-population-trend` instead.
 
 ### Removed
 
