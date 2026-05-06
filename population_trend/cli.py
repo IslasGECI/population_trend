@@ -102,7 +102,10 @@ def render_population_trend(
     )
 
 
-@app.command(help="(DEPRECATED) Plot population trend. Use 'render-population-trend' instead.")
+@app.command(
+    help="(DEPRECATED) Plot population trend. Use 'render-population-trend' instead.",
+    deprecated=True,
+)
 def plot_population_trend(
     data_path: Annotated[str, typer.Option()],
     intervals_path: Annotated[str, typer.Option()],
