@@ -113,7 +113,7 @@ def plot_population_trend(
 ):
     """(DEPRECATED) Plot population trend. Use 'render-population-trend' instead."""
     typer.secho(
-        "WARNING: 'plot-population-trend' is deprecated and will be removed in v2.0.0. "
+        "WARNING: 'plot-population-trend' is deprecated and will be removed in v6.0.0. "
         "Use 'render-population-trend' instead.",
         fg=typer.colors.YELLOW,
         err=True,
@@ -121,7 +121,7 @@ def plot_population_trend(
 
     warnings.warn(
         "'plot-population-trend' is deprecated, use 'render-population-trend' instead. "
-        "This command will be removed in v2.0.0.",
+        "This command will be removed in v6.0.0.",
         DeprecationWarning,
         stacklevel=2,
     )
