@@ -147,8 +147,9 @@ class Plotter_Population_Trend_Model:
         )
 
     def set_labels(self):
-        plt.ylabel("Number of breeding pairs", size=20)
-        plt.xlabel("Seasons", size=20)
+        labels = {"english": {"ylabel": "Number of breeding pairs", "xlabel": "Seasons"}}
+        plt.ylabel(labels["english"]["ylabel"], size=20)
+        plt.xlabel(labels["english"]["xlabel"], size=20)
 
     def set_ticks(self):
         self.get_tick_step()
