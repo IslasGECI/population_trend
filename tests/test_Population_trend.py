@@ -91,6 +91,10 @@ class Tests_Plotter_Population_Trend_Model:
         obtained_labels = [Plotter.ax.get_xlabel(), Plotter.ax.get_ylabel()]
         expected_labels = ["Seasons", "Number of breeding pairs"]
         assert obtained_labels == expected_labels
+        Plotter.set_labels("spanish")
+        obtained_labels = [Plotter.ax.get_xlabel(), Plotter.ax.get_ylabel()]
+        expected_labels = ["Temporadas", "Número de parejas reproductivas"]
+        assert obtained_labels == expected_labels
 
     def tests_savefig(self):
         islet = "morro"
