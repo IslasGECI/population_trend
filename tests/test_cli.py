@@ -1,4 +1,3 @@
-import warnings
 import pandas as pd
 from typer.testing import CliRunner
 from population_trend import (
@@ -252,7 +251,6 @@ def test_render_population_trend_new_command_works():
             output_figure_render,
         ],
     )
-
 
     assert result.exit_code == 0
     gtt.assert_exist(output_figure_render)
