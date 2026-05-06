@@ -23,6 +23,7 @@ from typing_extensions import Annotated
 import typer
 import json
 import matplotlib.pyplot as plt
+import warnings
 
 app = typer.Typer(help="Write filtered burrows data by species and island")
 
@@ -62,15 +63,15 @@ def write_burrows_by_species_and_island(
     filtered.to_csv(output_path, index=False)
 
 
-@app.command(help="Plot population trend")
-def plot_population_trend(
-    data_path: Annotated[str, typer.Option()],
-    intervals_path: Annotated[str, typer.Option()],
-    island: Annotated[str, typer.Option()] = "Guadalupe",
-    variable_of_interest: Annotated[str, typer.Option()] = "Maxima_cantidad_nidos",
-    tick_mode: Annotated[str, typer.Option()] = "full",
-    output_path: Annotated[str, typer.Option()] = "",
+def _render_population_trend(
+    data_path: str,
+    intervals_path: str,
+    island: str = "Guadalupe",
+    variable_of_interest: str = "Maxima_cantidad_nidos",
+    tick_mode: str = "full",
+    output_path: str = "",
 ):
+    """Shared implementation for rendering population trend plots."""
     fit_data = pd.read_csv(data_path)
     intervals_json = read_json(intervals_path)
     lambda_latex = intervals_json["lambda_latex_interval"]
@@ -85,6 +86,49 @@ def plot_population_trend(
     legend_mpl_object = Graficador.set_legend_location(island)
     Graficador.plot_growth_rate_interval(legend_mpl_object, lambda_latex)
     Graficador.savefig(island, output_path)
+
+
+@app.command(name="render-population-trend", help="Plot population trend")
+def render_population_trend(
+    data_path: Annotated[str, typer.Option()],
+    intervals_path: Annotated[str, typer.Option()],
+    island: Annotated[str, typer.Option()] = "Guadalupe",
+    variable_of_interest: Annotated[str, typer.Option()] = "Maxima_cantidad_nidos",
+    tick_mode: Annotated[str, typer.Option()] = "full",
+    output_path: Annotated[str, typer.Option()] = "",
+):
+    _render_population_trend(
+        data_path, intervals_path, island, variable_of_interest, tick_mode, output_path
+    )
+
+
+@app.command(help="(DEPRECATED) Plot population trend. Use 'render-population-trend' instead.")
+def plot_population_trend(
+    data_path: Annotated[str, typer.Option()],
+    intervals_path: Annotated[str, typer.Option()],
+    island: Annotated[str, typer.Option()] = "Guadalupe",
+    variable_of_interest: Annotated[str, typer.Option()] = "Maxima_cantidad_nidos",
+    tick_mode: Annotated[str, typer.Option()] = "full",
+    output_path: Annotated[str, typer.Option()] = "",
+):
+    """(DEPRECATED) Plot population trend. Use 'render-population-trend' instead."""
+    typer.secho(
+        "WARNING: 'plot-population-trend' is deprecated and will be removed in v2.0.0. "
+        "Use 'render-population-trend' instead.",
+        fg=typer.colors.YELLOW,
+        err=True,
+    )
+
+    warnings.warn(
+        "'plot-population-trend' is deprecated, use 'render-population-trend' instead. "
+        "This command will be removed in v2.0.0.",
+        DeprecationWarning,
+        stacklevel=2,
+    )
+
+    _render_population_trend(
+        data_path, intervals_path, island, variable_of_interest, tick_mode, output_path
+    )
 
 
 @app.command(help="Plot population trend from CPUE")
