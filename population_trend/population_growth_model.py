@@ -46,10 +46,11 @@ class Population_Trend_Model:
 
 
 class Plotter_Population_Trend_Model:
-    def __init__(self, data, population_model, tick_mode):
+    def __init__(self, data, population_model, tick_mode, language="english"):
         self.fig, self.ax = geci_plot()
         self.fill_missing_seasons(data)
         self.tick_mode = tick_mode
+        self.language = language
         self.seasons_to_plot = self.filled_data.index.values + 1
         self.ticks_positions = ticks_positions_array(self.filled_data)
         self.plot_domain = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
@@ -146,13 +147,13 @@ class Plotter_Population_Trend_Model:
             self.ticks_positions.max(),
         )
 
-    def set_labels(self, language="english"):
+    def set_labels(self):
         labels = {
             "english": {"ylabel": "Number of breeding pairs", "xlabel": "Seasons"},
             "spanish": {"ylabel": "Número de parejas reproductivas", "xlabel": "Temporadas"},
         }
-        self.ax.set_ylabel(labels[language]["ylabel"], size=20)
-        self.ax.set_xlabel(labels[language]["xlabel"], size=20)
+        self.ax.set_ylabel(labels[self.language]["ylabel"], size=20)
+        self.ax.set_xlabel(labels[self.language]["xlabel"], size=20)
 
     def set_ticks(self):
         self.get_tick_step()
