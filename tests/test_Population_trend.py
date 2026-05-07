@@ -96,6 +96,12 @@ class Tests_Plotter_Population_Trend_Model:
         expected_labels = ["Temporadas", "Número de parejas reproductivas"]
         assert obtained_labels == expected_labels
 
+    def tests_hide_legend(self):
+        Plotter.plot_data()
+        assert Plotter.ax.get_legend() is not None
+        Plotter.hide_legend()
+        assert Plotter.ax.get_legend() is None
+
     def tests_savefig(self):
         islet = "morro"
         default_path = f"reports/figures/cormorant_population_trend_{islet}.png"
