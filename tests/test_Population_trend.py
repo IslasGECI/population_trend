@@ -104,6 +104,7 @@ class Tests_Plotter_Population_Trend_Model:
     def tests_hide_legend(self):
         Plotter.ax.legend()
         assert Plotter.ax.get_legend() is not None
+        Plotter.show_legend = False
         Plotter.hide_legend()
         assert Plotter.ax.get_legend() is None
 
