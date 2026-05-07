@@ -46,7 +46,7 @@ class Population_Trend_Model:
 
 
 class Plotter_Population_Trend_Model:
-    def __init__(self, data, population_model, tick_mode, language="english"):
+    def __init__(self, data, population_model, tick_mode, language="english", show_legend=True):
         self.fig, self.ax = geci_plot()
         self.ax.legend()
         self.fill_missing_seasons(data)
