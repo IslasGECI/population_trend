@@ -79,7 +79,7 @@ class Tests_Plotter_Population_Trend_Model:
         assert len(Plotter.ax.get_lines()) == expected_one_line
 
     def tests_time_to_model(self):
-        obtained = Plotter.plot_domain
+        obtained = Plotter.domain_plot
         expected_first_point = 1
         assert obtained[0] == expected_first_point
         expected_last_point = 4.05
