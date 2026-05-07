@@ -126,7 +126,8 @@ class Plotter_Population_Trend_Model:
         )
 
     def hide_legend(self):
-        self.ax.get_legend().remove()
+        if not self.show_legend:
+            self.ax.get_legend().remove()
 
     def plot_growth_rate_interval(self, legend_mpl_object, lambda_latex):
         legend_box_positions = legend_mpl_object.get_window_extent()
