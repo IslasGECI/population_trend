@@ -72,7 +72,7 @@ setup: clean install
 tests:
 	pytest --verbose
 
-tdd_current_test_file = tests/test_Population_trend.py
+tdd_current_test_file = tests/test_cli.py
 red: format
 	pytest --verbose $(tdd_current_test_file) \
 	&& git restore tests/*.py \
@@ -81,7 +81,7 @@ red: format
 
 green: format
 	pytest --verbose $(tdd_current_test_file) \
-	&& (git add ${module}/*.py tests/*.py && git commit -m "✅ Pass tests") \
+	&& (git add ${module}/*.py tests/*.py && git commit -m "✅ Pass tests ${m}") \
 	|| git restore ${module}/*.py
 	chmod g+w -R .
 
