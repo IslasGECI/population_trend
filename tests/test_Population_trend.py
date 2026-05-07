@@ -58,7 +58,9 @@ more_cormorant_data = pd.DataFrame(
     {"Isla": ["a", "a", "b", "c", "d"], "Temporada": [2020.0, 2021.0, 2022.0, 2023.0, 2024.0]}
 )
 
-Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model, tick_mode="full")
+Plotter = Plotter_Population_Trend_Model(
+    cormorant_data_for_plotter, pop_model, tick_mode="full", show_legend=False
+)
 
 
 class Tests_Plotter_Population_Trend_Model:
@@ -71,6 +73,7 @@ class Tests_Plotter_Population_Trend_Model:
 
 
 Sparse_Plotter = Plotter_Population_Trend_Model(more_cormorant_data, pop_model, tick_mode="sparse")
+Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model, tick_mode="full")
 
 
 class Tests_Plotter_Population_Trend_Model:
