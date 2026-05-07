@@ -64,16 +64,13 @@ def write_burrows_by_species_and_island(
 
 
 def _render_population_trend(
-    data_path: str,
-    intervals_path: str,
+    fit_data: pd.DataFrame,
+    intervals_json: dict,
     island: str = "Guadalupe",
     variable_of_interest: str = "Maxima_cantidad_nidos",
     tick_mode: str = "full",
-    output_path: str = "",
 ):
     """Shared implementation for rendering population trend plots."""
-    fit_data = pd.read_csv(data_path)
-    intervals_json = read_json(intervals_path)
     lambda_latex = intervals_json["lambda_latex_interval"]
 
     Modelo_Tendencia_Poblacional = Population_Trend_Model(
@@ -85,7 +82,7 @@ def _render_population_trend(
     Graficador.plot_data()
     legend_mpl_object = Graficador.set_legend_location(island)
     Graficador.plot_growth_rate_interval(legend_mpl_object, lambda_latex)
-    Graficador.savefig(island, output_path)
+    return Graficador
 
 
 @app.command(name="render-population-trend", help="Plot population trend")
@@ -98,9 +95,12 @@ def render_population_trend(
     show_legend: Annotated[bool, typer.Option()] = True,
     output_path: Annotated[str, typer.Option()] = "",
 ):
-    _render_population_trend(
-        data_path, intervals_path, island, variable_of_interest, tick_mode, output_path
+    fit_data = pd.read_csv(data_path)
+    intervals_json = read_json(intervals_path)
+    Graficador = _render_population_trend(
+        fit_data, intervals_json, island, variable_of_interest, tick_mode
     )
+    Graficador.savefig(island, output_path)
 
 
 @app.command(
@@ -130,9 +130,12 @@ def plot_population_trend(
         stacklevel=2,
     )
 
-    _render_population_trend(
-        data_path, intervals_path, island, variable_of_interest, tick_mode, output_path
+    fit_data = pd.read_csv(data_path)
+    intervals_json = read_json(intervals_path)
+    Graficador = _render_population_trend(
+        fit_data, intervals_json, island, variable_of_interest, tick_mode
     )
+    Graficador.savefig(island, output_path)
 
 
 @app.command(help="Plot population trend from CPUE")
