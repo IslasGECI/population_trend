@@ -247,6 +247,7 @@ def test_render_population_trend_new_command_works():
             "Maxima_cantidad_nidos",
             "--tick-mode",
             "sparse",
+            "--no-show-legend",
             "--output-path",
             output_figure_render,
         ],
