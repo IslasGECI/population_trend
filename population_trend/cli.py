@@ -95,6 +95,7 @@ def render_population_trend(
     island: Annotated[str, typer.Option()] = "Guadalupe",
     variable_of_interest: Annotated[str, typer.Option()] = "Maxima_cantidad_nidos",
     tick_mode: Annotated[str, typer.Option()] = "full",
+    show_legend: Annotated[bool, typer.Option()] = True,
     output_path: Annotated[str, typer.Option()] = "",
 ):
     _render_population_trend(
