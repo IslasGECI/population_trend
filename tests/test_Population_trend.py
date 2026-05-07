@@ -58,18 +58,18 @@ more_cormorant_data = pd.DataFrame(
     {"Isla": ["a", "a", "b", "c", "d"], "Temporada": [2020.0, 2021.0, 2022.0, 2023.0, 2024.0]}
 )
 
-Plotter = Plotter_Population_Trend_Model(
+Plotter_without_legend = Plotter_Population_Trend_Model(
     cormorant_data_for_plotter, pop_model, tick_mode="full", show_legend=False
 )
 
 
 class Tests_Plotter_Population_Trend_Model:
     def tests_hide_legend(self):
-        Plotter.ax.legend()
-        assert Plotter.ax.get_legend() is not None
-        Plotter.show_legend = False
-        Plotter.hide_legend()
-        assert Plotter.ax.get_legend() is None
+        Plotter_without_legend.ax.legend()
+        assert Plotter_without_legend.ax.get_legend() is not None
+        Plotter_without_legend.show_legend = False
+        Plotter_without_legend.hide_legend()
+        assert Plotter_without_legend.ax.get_legend() is None
 
 
 Sparse_Plotter = Plotter_Population_Trend_Model(more_cormorant_data, pop_model, tick_mode="sparse")
