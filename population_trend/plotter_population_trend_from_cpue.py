@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 
 class Plotter_Population_Trend_Model_From_CPUE(Plotter_Population_Trend_Model):
-    def __init__(self, data, population_model, tick_mode="full"):
-        super().__init__(data, population_model, tick_mode)
+    def __init__(self, data, population_model, tick_mode="full", language="english"):
+        super().__init__(data, population_model, tick_mode, language)
 
     def set_labels(self):
         plt.ylabel("CPUE", size=20)
