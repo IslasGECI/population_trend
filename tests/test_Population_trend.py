@@ -63,7 +63,7 @@ Plotter_without_legend = Plotter_Population_Trend_Model(
 )
 
 
-class Tests_Plotter_Population_Trend_Model:
+class Tests_Plotter_Population_Trend_Model_without_legend:
     def tests_hide_legend(self):
         Plotter_without_legend.ax.legend()
         assert Plotter_without_legend.ax.get_legend() is not None
