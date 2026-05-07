@@ -53,7 +53,7 @@ class Plotter_Population_Trend_Model:
         self.language = language
         self.seasons_to_plot = self.filled_data.index.values + 1
         self.ticks_positions = ticks_positions_array(self.filled_data)
-        self.plot_domain = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
+        self.domain_plot = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
         self.population_model = population_model
         self.interest_variable = population_model.interest_variable
 
@@ -68,20 +68,20 @@ class Plotter_Population_Trend_Model:
 
     def plot_smooth(self):
         self.ax.fill_between(
-            self.plot_domain,
+            self.domain_plot,
             self.population_model.min_model,
             self.population_model.med_model,
             label="Confidence zone",
             color="powderblue",
         )
         self.ax.fill_between(
-            self.plot_domain,
+            self.domain_plot,
             self.population_model.med_model,
             self.population_model.max_model,
             color="powderblue",
         )
         self.ax.fill_between(
-            self.plot_domain,
+            self.domain_plot,
             self.population_model.min_model,
             self.population_model.max_model,
             color="powderblue",
@@ -89,19 +89,19 @@ class Plotter_Population_Trend_Model:
         number_of_samples = len(self.population_model.bootstrap_distribution)
         for i in range(0, number_of_samples - 1, 10):
             self.ax.fill_between(
-                self.plot_domain,
+                self.domain_plot,
                 self.population_model.intern_model(i),
                 self.population_model.med_model,
                 color="powderblue",
             )
             self.ax.fill_between(
-                self.plot_domain,
+                self.domain_plot,
                 self.population_model.intern_model(i),
                 self.population_model.intern_model(i + 1),
                 color="powderblue",
             )
         self.ax.fill_between(
-            self.plot_domain,
+            self.domain_plot,
             self.population_model.intern_model(i + 1),
             self.population_model.med_model,
             color="powderblue",
@@ -109,7 +109,7 @@ class Plotter_Population_Trend_Model:
 
     def plot_model(self):
         plt.plot(
-            self.plot_domain,
+            self.domain_plot,
             self.population_model.med_model,
             label="Population growth model",
             color="b",
