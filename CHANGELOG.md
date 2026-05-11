@@ -12,8 +12,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+### Deprecated
+
 ### Removed
 
+## [5.11.0] - 2026-05-11
+### Added
+- New CLI command `render-population-trend` with identical behavior to `plot-population-trend`.
+### Deprecated
+- CLI command `plot-population-trend` is deprecated in favor of `render-population-trend`. The old command will remain functional and will be removed in v6.0.0. Users should update their scripts and automation to use `render-population-trend` instead.
 ## [5.10.2] - 2026-02-05
 ### Fixed
 - CLI command `plot-population-trend-from-cpue` can plot data with missing seasons.
@@ -131,6 +138,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
-[unreleased]: https://github.com/IslasGECI/population_trend/compare/v5.5.0...HEAD
+[unreleased]: https://github.com/IslasGECI/population_trend/compare/v5.11.0...HEAD
+[5.11.0]: https://github.com/IslasGECI/population_trend/compare/v5.10.2...v5.11.0
+[5.10.2]: https://github.com/IslasGECI/population_trend/compare/v5.10.1...v5.10.2
+[5.10.1]: https://github.com/IslasGECI/population_trend/compare/v5.10.0...v5.10.1
+[5.10.0]: https://github.com/IslasGECI/population_trend/compare/v5.9.1...v5.10.0
+[5.9.1]: https://github.com/IslasGECI/population_trend/compare/v5.9.0...v5.9.1
+[5.9.0]: https://github.com/IslasGECI/population_trend/compare/v5.8.0...v5.9.0
+[5.8.0]: https://github.com/IslasGECI/population_trend/compare/v5.7.2...v5.8.0
+[5.7.2]: https://github.com/IslasGECI/population_trend/compare/v5.7.1...v5.7.2
+[5.7.1]: https://github.com/IslasGECI/population_trend/compare/v5.7.0...v5.7.1
+[5.7.0]: https://github.com/IslasGECI/population_trend/compare/v5.6.1...v5.7.0
+[5.6.1]: https://github.com/IslasGECI/population_trend/compare/v5.6.0...v5.6.1
+[5.6.0]: https://github.com/IslasGECI/population_trend/compare/v5.5.0...v5.6.0
 [5.5.0]: https://github.com/IslasGECI/population_trend/compare/v5.4.0...v5.5.0
 [0.0.1]: https://github.com/IslasGECI/population_trend/releases/tag/v0.0.1
