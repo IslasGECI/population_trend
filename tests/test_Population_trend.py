@@ -73,8 +73,6 @@ class Tests_Plotter_Population_Trend_Model_without_legend:
 
 
 Sparse_Plotter = Plotter_Population_Trend_Model(more_cormorant_data, pop_model, tick_mode="sparse")
-Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model, tick_mode="full")
-
 
 Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model, tick_mode="full")
 
