@@ -160,6 +160,7 @@ class Plotter_Population_Trend_Model:
         self.ax.set_ylabel(labels[self.language]["ylabel"], size=20)
         self.ax.set_xlabel(labels[self.language]["xlabel"], size=20)
 
+
     def set_ticks(self):
         self.get_tick_step()
         self.ticks_text = self.filled_data.Temporada.values.astype(int)
