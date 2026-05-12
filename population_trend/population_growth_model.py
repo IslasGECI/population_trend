@@ -125,7 +125,7 @@ class Plotter_Population_Trend_Model:
             label="Active Nests",
         )
 
-    def hide_legend(self, show_legend):
+    def show_legend(self, show_legend):
         if not show_legend:
             self.ax.get_legend().remove()
 

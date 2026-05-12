@@ -68,7 +68,7 @@ class Tests_Plotter_Population_Trend_Model_without_legend:
         Plotter_without_legend.ax.legend()
         assert Plotter_without_legend.ax.get_legend() is not None
         show_legend = False
-        Plotter_without_legend.hide_legend(show_legend)
+        Plotter_without_legend.show_legend(show_legend)
         assert Plotter_without_legend.ax.get_legend() is None
 
 
@@ -112,7 +112,7 @@ class Tests_Plotter_Population_Trend_Model:
 
     def tests_no_hide_legend(self):
         show_legend = True
-        Plotter.hide_legend(show_legend)
+        Plotter.show_legend(show_legend)
         assert Plotter.ax.get_legend() is not None
 
     def tests_savefig(self):
