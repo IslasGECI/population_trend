@@ -9,10 +9,10 @@ import pandas as pd
 def _plot_population_trend(
     fit_data: pd.DataFrame,
     intervals_json: dict,
+    show_legend: bool,
     island: str = "Guadalupe",
     variable_of_interest: str = "Maxima_cantidad_nidos",
     tick_mode: str = "full",
-    show_legend: bool = True,
 ):
     """Shared implementation for rendering population trend plots."""
     lambda_latex = intervals_json["lambda_latex_interval"]

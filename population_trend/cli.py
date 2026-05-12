@@ -78,6 +78,7 @@ def render_population_trend(
     Graficador = _plot_population_trend(
         fit_data,
         intervals_json,
+        show_legend,
         island,
         variable_of_interest,
         tick_mode,
@@ -114,8 +115,9 @@ def plot_population_trend(
 
     fit_data = pd.read_csv(data_path)
     intervals_json = read_json(intervals_path)
+    show_legend = True
     Graficador = _plot_population_trend(
-        fit_data, intervals_json, island, variable_of_interest, tick_mode
+        fit_data, intervals_json, show_legend, island, variable_of_interest, tick_mode
     )
     Graficador.savefig(island, output_path)
 
