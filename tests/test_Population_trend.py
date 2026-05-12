@@ -64,7 +64,6 @@ Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model, 
 
 
 class Tests_Plotter_Population_Trend_Model:
-
     def tests_init_(self):
         fig, ax = geci_plot()
         assert type(fig) == type(Plotter.fig)  # noqa
@@ -80,11 +79,22 @@ class Tests_Plotter_Population_Trend_Model:
         assert len(Plotter.ax.get_lines()) == expected_one_line
 
     def tests_time_to_model(self):
-        obtained = Plotter.plot_domain
+        obtained = Plotter.domain_plot
         expected_first_point = 1
         assert obtained[0] == expected_first_point
         expected_last_point = 4.05
         assert obtained[-1] == expected_last_point
+
+    def tests_set_labels(self):
+        Plotter.set_labels()
+        obtained_labels = [Plotter.ax.get_xlabel(), Plotter.ax.get_ylabel()]
+        expected_labels = ["Seasons", "Number of breeding pairs"]
+        assert obtained_labels == expected_labels
+        Plotter.language = "spanish"
+        Plotter.set_labels()
+        obtained_labels = [Plotter.ax.get_xlabel(), Plotter.ax.get_ylabel()]
+        expected_labels = ["Temporadas", "Número de parejas reproductivas"]
+        assert obtained_labels == expected_labels
 
     def tests_savefig(self):
         islet = "morro"

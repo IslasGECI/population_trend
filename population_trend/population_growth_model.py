@@ -46,13 +46,14 @@ class Population_Trend_Model:
 
 
 class Plotter_Population_Trend_Model:
-    def __init__(self, data, population_model, tick_mode):
+    def __init__(self, data, population_model, tick_mode, language="english"):
         self.fig, self.ax = geci_plot()
         self.fill_missing_seasons(data)
         self.tick_mode = tick_mode
+        self.language = language
         self.seasons_to_plot = self.filled_data.index.values + 1
         self.ticks_positions = ticks_positions_array(self.filled_data)
-        self.plot_domain = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
+        self.domain_plot = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
         self.population_model = population_model
         self.interest_variable = population_model.interest_variable
 
@@ -67,20 +68,20 @@ class Plotter_Population_Trend_Model:
 
     def plot_smooth(self):
         self.ax.fill_between(
-            self.plot_domain,
+            self.domain_plot,
             self.population_model.min_model,
             self.population_model.med_model,
             label="Confidence zone",
             color="powderblue",
         )
         self.ax.fill_between(
-            self.plot_domain,
+            self.domain_plot,
             self.population_model.med_model,
             self.population_model.max_model,
             color="powderblue",
         )
         self.ax.fill_between(
-            self.plot_domain,
+            self.domain_plot,
             self.population_model.min_model,
             self.population_model.max_model,
             color="powderblue",
@@ -88,19 +89,19 @@ class Plotter_Population_Trend_Model:
         number_of_samples = len(self.population_model.bootstrap_distribution)
         for i in range(0, number_of_samples - 1, 10):
             self.ax.fill_between(
-                self.plot_domain,
+                self.domain_plot,
                 self.population_model.intern_model(i),
                 self.population_model.med_model,
                 color="powderblue",
             )
             self.ax.fill_between(
-                self.plot_domain,
+                self.domain_plot,
                 self.population_model.intern_model(i),
                 self.population_model.intern_model(i + 1),
                 color="powderblue",
             )
         self.ax.fill_between(
-            self.plot_domain,
+            self.domain_plot,
             self.population_model.intern_model(i + 1),
             self.population_model.med_model,
             color="powderblue",
@@ -108,7 +109,7 @@ class Plotter_Population_Trend_Model:
 
     def plot_model(self):
         plt.plot(
-            self.plot_domain,
+            self.domain_plot,
             self.population_model.med_model,
             label="Population growth model",
             color="b",
@@ -147,9 +148,12 @@ class Plotter_Population_Trend_Model:
         )
 
     def set_labels(self):
-        labels = {"english": {"ylabel": "Number of breeding pairs", "xlabel": "Seasons"}}
-        plt.ylabel(labels["english"]["ylabel"], size=20)
-        plt.xlabel(labels["english"]["xlabel"], size=20)
+        labels = {
+            "english": {"ylabel": "Number of breeding pairs", "xlabel": "Seasons"},
+            "spanish": {"ylabel": "Número de parejas reproductivas", "xlabel": "Temporadas"},
+        }
+        self.ax.set_ylabel(labels[self.language]["ylabel"], size=20)
+        self.ax.set_xlabel(labels[self.language]["xlabel"], size=20)
 
     def set_ticks(self):
         self.get_tick_step()
