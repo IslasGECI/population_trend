@@ -261,7 +261,7 @@ def test_render_population_trend_new_command_works():
 
 
 def test_app_version():
-    result = runner.invoke(app, ["help"])
+    result = runner.invoke(app, ["version"])
     assert result.exit_code == 0
     expected_version = "5.12.0"
     assert expected_version in result.stdout
