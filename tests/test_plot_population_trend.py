@@ -19,3 +19,12 @@ class TestPlotPopulationTrendShowLegend:
             show_legend=True,
         )
         assert graficador.ax.get_legend() is not None
+
+    def test_show_legend_false_hides_legend(self):
+        """When show_legend=False, legend should be removed from the axes."""
+        graficador = _plot_population_trend(
+            fit_data,
+            intervals_json,
+            show_legend=False,
+        )
+        assert graficador.ax.get_legend() is None
