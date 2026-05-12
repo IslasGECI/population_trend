@@ -78,7 +78,6 @@ Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model, 
 
 
 class Tests_Plotter_Population_Trend_Model:
-
     def tests_init_(self):
         fig, ax = geci_plot()
         assert type(fig) == type(Plotter.fig)  # noqa
@@ -115,6 +114,7 @@ class Tests_Plotter_Population_Trend_Model:
         Plotter.show_legend = True
         Plotter.hide_legend()
         assert Plotter.ax.get_legend() is not None
+
 
     def tests_savefig(self):
         islet = "morro"

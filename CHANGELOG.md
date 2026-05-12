@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Spanish language support — `Plotter_Population_Trend_Model` and `Plotter_Population_Trend_Model_From_CPUE` now accept a language parameter "english" / "spanish") controlling axis label language.
 
 ### Fixed
 

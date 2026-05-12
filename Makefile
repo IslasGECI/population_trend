@@ -72,7 +72,7 @@ setup: clean install
 tests:
 	pytest --verbose
 
-tdd_current_test_file = tests/test_cli.py
+tdd_current_test_file = tests/test_Population_trend.py
 red: format
 	pytest --verbose $(tdd_current_test_file) \
 	&& git restore tests/*.py \
