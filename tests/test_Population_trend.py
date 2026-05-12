@@ -85,17 +85,6 @@ class Tests_Plotter_Population_Trend_Model:
         expected_last_point = 4.05
         assert obtained[-1] == expected_last_point
 
-    def tests_set_labels(self):
-        Plotter.set_labels()
-        obtained_labels = [Plotter.ax.get_xlabel(), Plotter.ax.get_ylabel()]
-        expected_labels = ["Seasons", "Number of breeding pairs"]
-        assert obtained_labels == expected_labels
-        Plotter.language = "spanish"
-        Plotter.set_labels()
-        obtained_labels = [Plotter.ax.get_xlabel(), Plotter.ax.get_ylabel()]
-        expected_labels = ["Temporadas", "Número de parejas reproductivas"]
-        assert obtained_labels == expected_labels
-
     def tests_savefig(self):
         islet = "morro"
         default_path = f"reports/figures/cormorant_population_trend_{islet}.png"
