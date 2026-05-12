@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "population-trend"
+type: software
+abstract: "A population growth model package for ecological modeling and decision-making in conservation."
+authors:
+  - family-names: Olvera-Guerrero
+    given-names: Guillermo
+    orcid: "https://orcid.org/0000-0002-6900-5315"
+  - family-names: Villasante-Barahona
+    given-names: Mario
+    orcid: "https://orcid.org/0009-0001-7867-8570"
+  - family-names: Rojas-Mayoral
+    given-names: Evaristo
+    orcid: "https://orcid.org/0000-0001-6812-9562"
+contact:
+  - family-names: Rojas-Mayoral
+    given-names: Evaristo
+    orcid: "https://orcid.org/0000-0001-6812-9562"
+identifiers:
+  - type: url
+    value: "https://github.com/IslasGECI/population_trend"
+repository-code: "https://github.com/IslasGECI/population_trend"
+url: "https://github.com/IslasGECI/api_caller"
+license: "AGPL-3.0"
+version: "5.11.0"
+date-released: "2026-05-11"
+keywords:
+  - "population dynamics"
+  - "ecological modeling"
+  - "bootstrap"
+  - "population trend"
+  - "conservation"
+  - "growth rates"
+  - "time series analysis"
+  - "data visualization"
