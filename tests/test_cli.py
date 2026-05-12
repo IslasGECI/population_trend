@@ -248,6 +248,8 @@ def test_render_population_trend_new_command_works():
             "--tick-mode",
             "sparse",
             "--no-show-legend",
+            "--language",
+            "spanish",
             "--output-path",
             output_figure_render,
         ],
