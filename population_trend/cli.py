@@ -71,6 +71,7 @@ def render_population_trend(
     variable_of_interest: Annotated[str, typer.Option()] = "Maxima_cantidad_nidos",
     tick_mode: Annotated[str, typer.Option()] = "full",
     show_legend: Annotated[bool, typer.Option()] = True,
+    language: Annotated[str, typer.Option()] = "english",
     output_path: Annotated[str, typer.Option()] = "",
 ):
     fit_data = pd.read_csv(data_path)
@@ -82,6 +83,7 @@ def render_population_trend(
         island,
         variable_of_interest,
         tick_mode,
+        language=language,
     )
     Graficador.savefig(island, output_path)
 
