@@ -16,6 +16,7 @@ from population_trend.plot_population_trend import _plot_population_trend
 
 from population_trend.plotter_growth_rate import _Plotter_Growth_Rate
 from bootstrapping_tools import Bootstrap_from_time_series_parametrizer
+from population_trend import __version__
 
 
 import pandas as pd
@@ -173,6 +174,11 @@ def plot_growth_rate(
     plotter = _Plotter_Growth_Rate(lambdas_intervals_california, lambdas_intervals_pacific)
     plotter.plot_error_bars()
     plt.savefig(output_path, transparent=True)
+
+
+@app.command()
+def version():
+    print(__version__)
 
 
 def read_json(intervals_json):
