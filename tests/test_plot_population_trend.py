@@ -14,18 +14,14 @@ class TestPlotPopulationTrendShowLegend:
     def test_show_legend_true_keeps_legend(self):
         """When show_legend=True (default), legend should be present on the axes."""
         graficador = _plot_population_trend(
-            fit_data,
-            intervals_json,
-            show_legend=True,
+            fit_data, intervals_json, show_legend=True, language="english"
         )
         assert graficador.ax.get_legend() is not None
 
     def test_show_legend_false_hides_legend(self):
         """When show_legend=False, legend should be removed from the axes."""
         graficador = _plot_population_trend(
-            fit_data,
-            intervals_json,
-            show_legend=False,
+            fit_data, intervals_json, show_legend=False, language="english"
         )
         assert graficador.ax.get_legend() is None
 
