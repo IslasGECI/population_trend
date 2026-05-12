@@ -46,13 +46,12 @@ class Population_Trend_Model:
 
 
 class Plotter_Population_Trend_Model:
-    def __init__(self, data, population_model, tick_mode, language="english", show_legend=True):
+    def __init__(self, data, population_model, tick_mode, language="english"):
         self.fig, self.ax = geci_plot()
         self.ax.legend()
         self.fill_missing_seasons(data)
         self.tick_mode = tick_mode
         self.language = language
-        self.show_legend = show_legend
         self.seasons_to_plot = self.filled_data.index.values + 1
         self.ticks_positions = ticks_positions_array(self.filled_data)
         self.domain_plot = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
@@ -126,8 +125,8 @@ class Plotter_Population_Trend_Model:
             label="Active Nests",
         )
 
-    def hide_legend(self):
-        if not self.show_legend:
+    def hide_legend(self, show_legend):
+        if not show_legend:
             self.ax.get_legend().remove()
 
     def plot_growth_rate_interval(self, legend_mpl_object, lambda_latex):

@@ -59,7 +59,7 @@ more_cormorant_data = pd.DataFrame(
 )
 
 Plotter_without_legend = Plotter_Population_Trend_Model(
-    cormorant_data_for_plotter, pop_model, tick_mode="full", show_legend=False
+    cormorant_data_for_plotter, pop_model, tick_mode="full"
 )
 
 
@@ -67,8 +67,8 @@ class Tests_Plotter_Population_Trend_Model_without_legend:
     def tests_hide_legend(self):
         Plotter_without_legend.ax.legend()
         assert Plotter_without_legend.ax.get_legend() is not None
-        Plotter_without_legend.show_legend = False
-        Plotter_without_legend.hide_legend()
+        show_legend = False
+        Plotter_without_legend.hide_legend(show_legend)
         assert Plotter_without_legend.ax.get_legend() is None
 
 
@@ -111,8 +111,8 @@ class Tests_Plotter_Population_Trend_Model:
         assert obtained_labels == expected_labels
 
     def tests_no_hide_legend(self):
-        Plotter.show_legend = True
-        Plotter.hide_legend()
+        show_legend = True
+        Plotter.hide_legend(show_legend)
         assert Plotter.ax.get_legend() is not None
 
     def tests_savefig(self):
