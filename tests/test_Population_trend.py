@@ -115,7 +115,6 @@ class Tests_Plotter_Population_Trend_Model:
         Plotter.hide_legend()
         assert Plotter.ax.get_legend() is not None
 
-
     def tests_savefig(self):
         islet = "morro"
         default_path = f"reports/figures/cormorant_population_trend_{islet}.png"

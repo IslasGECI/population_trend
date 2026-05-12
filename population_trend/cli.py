@@ -138,52 +138,6 @@ def plot_population_trend(
     Graficador.savefig(island, output_path)
 
 
-@app.command(name="render-population-trend", help="Plot population trend")
-def render_population_trend(
-    data_path: Annotated[str, typer.Option()],
-    intervals_path: Annotated[str, typer.Option()],
-    island: Annotated[str, typer.Option()] = "Guadalupe",
-    variable_of_interest: Annotated[str, typer.Option()] = "Maxima_cantidad_nidos",
-    tick_mode: Annotated[str, typer.Option()] = "full",
-    output_path: Annotated[str, typer.Option()] = "",
-):
-    _render_population_trend(
-        data_path, intervals_path, island, variable_of_interest, tick_mode, output_path
-    )
-
-
-@app.command(
-    help="(DEPRECATED) Plot population trend. Use 'render-population-trend' instead.",
-    deprecated=True,
-)
-def plot_population_trend(
-    data_path: Annotated[str, typer.Option()],
-    intervals_path: Annotated[str, typer.Option()],
-    island: Annotated[str, typer.Option()] = "Guadalupe",
-    variable_of_interest: Annotated[str, typer.Option()] = "Maxima_cantidad_nidos",
-    tick_mode: Annotated[str, typer.Option()] = "full",
-    output_path: Annotated[str, typer.Option()] = "",
-):
-    """(DEPRECATED) Plot population trend. Use 'render-population-trend' instead."""
-    typer.secho(
-        "WARNING: 'plot-population-trend' is deprecated and will be removed in v6.0.0. "
-        "Use 'render-population-trend' instead.",
-        fg=typer.colors.YELLOW,
-        err=True,
-    )
-
-    warnings.warn(
-        "'plot-population-trend' is deprecated, use 'render-population-trend' instead. "
-        "This command will be removed in v6.0.0.",
-        DeprecationWarning,
-        stacklevel=2,
-    )
-
-    _render_population_trend(
-        data_path, intervals_path, island, variable_of_interest, tick_mode, output_path
-    )
-
-
 @app.command(help="Plot population trend from CPUE")
 def plot_population_trend_from_cpue(
     data_path: Annotated[str, typer.Option()],
