@@ -1,0 +1,7 @@
+FROM islasgeci/population_trend:latest
+COPY . /workdir
+
+# Instala opencode
+# RUN apt install -y lsof
+RUN curl -fsSL https://opencode.ai/install | bash
+RUN export PATH=$PATH:$HOME/.opencode/bin
