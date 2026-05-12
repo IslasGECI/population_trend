@@ -6,9 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
 ### Added
-- Spanish language support — `Plotter_Population_Trend_Model` and `Plotter_Population_Trend_Model_From_CPUE` now accept a language parameter "english" / "spanish" controlling axis label language.
-- `--show-legend`/`--no-show-legend` option to `render-population-trend` CLI command to control legend visibility.
 
 ### Fixed
 
@@ -17,6 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Deprecated
 
 ### Removed
+
+## [5.12.0] - 2026-05-12
+
+### Added
+- Spanish language support — `render-population-trend` now accept a language parameter "english" / "spanish" controlling axis label language.
+- `--show-legend`/`--no-show-legend` option to `render-population-trend` CLI command to control legend visibility.
 
 ## [5.11.0] - 2026-05-11
 ### Added
