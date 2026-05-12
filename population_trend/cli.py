@@ -1,7 +1,6 @@
 from population_trend.filter_data import filter_by_species_and_island
 from population_trend.population_growth_model import (
     Population_Trend_Model,
-    Plotter_Population_Trend_Model,
 )
 from population_trend.plotter_population_trend_from_cpue import (
     Plotter_Population_Trend_Model_From_CPUE,
@@ -13,6 +12,7 @@ from population_trend.regional_lambdas import (
     Island_Bootstrap_Distribution_Concatenator,
     Calculator_Regional_Lambdas_Intervals,
 )
+from population_trend.plot_population_trend import _plot_population_trend
 
 from population_trend.plotter_growth_rate import _Plotter_Growth_Rate
 from bootstrapping_tools import Bootstrap_from_time_series_parametrizer
@@ -63,28 +63,6 @@ def write_burrows_by_species_and_island(
     filtered.to_csv(output_path, index=False)
 
 
-def _render_population_trend(
-    fit_data: pd.DataFrame,
-    intervals_json: dict,
-    island: str = "Guadalupe",
-    variable_of_interest: str = "Maxima_cantidad_nidos",
-    tick_mode: str = "full",
-):
-    """Shared implementation for rendering population trend plots."""
-    lambda_latex = intervals_json["lambda_latex_interval"]
-
-    Modelo_Tendencia_Poblacional = Population_Trend_Model(
-        fit_data, intervals_json, variable_of_interest
-    )
-    Graficador = Plotter_Population_Trend_Model(fit_data, Modelo_Tendencia_Poblacional, tick_mode)
-    Graficador.plot_smooth()
-    Graficador.plot_model()
-    Graficador.plot_data()
-    legend_mpl_object = Graficador.set_legend_location(island)
-    Graficador.plot_growth_rate_interval(legend_mpl_object, lambda_latex)
-    return Graficador
-
-
 @app.command(name="render-population-trend", help="Plot population trend")
 def render_population_trend(
     data_path: Annotated[str, typer.Option()],
@@ -97,8 +75,12 @@ def render_population_trend(
 ):
     fit_data = pd.read_csv(data_path)
     intervals_json = read_json(intervals_path)
-    Graficador = _render_population_trend(
-        fit_data, intervals_json, island, variable_of_interest, tick_mode
+    Graficador = _plot_population_trend(
+        fit_data,
+        intervals_json,
+        island,
+        variable_of_interest,
+        tick_mode,
     )
     Graficador.savefig(island, output_path)
 
@@ -132,7 +114,7 @@ def plot_population_trend(
 
     fit_data = pd.read_csv(data_path)
     intervals_json = read_json(intervals_path)
-    Graficador = _render_population_trend(
+    Graficador = _plot_population_trend(
         fit_data, intervals_json, island, variable_of_interest, tick_mode
     )
     Graficador.savefig(island, output_path)

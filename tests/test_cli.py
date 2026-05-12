@@ -255,4 +255,4 @@ def test_render_population_trend_new_command_works():
 
     assert result.exit_code == 0
     gtt.assert_exist(output_figure_render)
-    gtt.if_exist_remove(output_figure_render)
+    # gtt.if_exist_remove(output_figure_render)
