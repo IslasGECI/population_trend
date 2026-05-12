@@ -80,10 +80,10 @@ def render_population_trend(
         fit_data,
         intervals_json,
         show_legend,
+        language,
         island,
         variable_of_interest,
         tick_mode,
-        language=language,
     )
     Graficador.savefig(island, output_path)
 
@@ -118,8 +118,9 @@ def plot_population_trend(
     fit_data = pd.read_csv(data_path)
     intervals_json = read_json(intervals_path)
     show_legend = True
+    language = "english"
     Graficador = _plot_population_trend(
-        fit_data, intervals_json, show_legend, island, variable_of_interest, tick_mode
+        fit_data, intervals_json, show_legend, language, island, variable_of_interest, tick_mode
     )
     Graficador.savefig(island, output_path)
 
