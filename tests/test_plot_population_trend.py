@@ -41,7 +41,6 @@ class TestPlotPopulationTrendLabelLanguage:
             True,
             language="english",
         )
-        graficador.set_labels()
         obtained_labels = [graficador.ax.get_xlabel(), graficador.ax.get_ylabel()]
         expected_labels = ["Seasons", "Number of breeding pairs"]
         assert obtained_labels == expected_labels

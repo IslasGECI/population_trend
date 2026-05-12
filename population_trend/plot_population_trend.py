@@ -27,7 +27,6 @@ def _plot_population_trend(
     Graficador.plot_smooth()
     Graficador.plot_model()
     Graficador.plot_data()
-    Graficador.set_labels()
     legend_mpl_object = Graficador.set_legend_location(island)
     Graficador.plot_growth_rate_interval(legend_mpl_object, lambda_latex)
     Graficador.show_legend(show_legend)

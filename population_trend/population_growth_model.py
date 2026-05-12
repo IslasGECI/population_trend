@@ -51,6 +51,7 @@ class Plotter_Population_Trend_Model:
         self.fill_missing_seasons(data)
         self.tick_mode = tick_mode
         self.language = language
+        self.set_labels()
         self.seasons_to_plot = self.filled_data.index.values + 1
         self.ticks_positions = ticks_positions_array(self.filled_data)
         self.domain_plot = np.linspace(self.ticks_positions.min(), self.ticks_positions.max(), 100)
@@ -181,7 +182,6 @@ class Plotter_Population_Trend_Model:
     def savefig(self, islet, output_path=None):
         self.set_x_lim()
         self.set_y_lim()
-        self.set_labels()
         self.set_ticks()
         self.draw()
         transparent_background = True

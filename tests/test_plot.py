@@ -16,5 +16,4 @@ def tests_Plotter_Population_Trend_Model():
     model.interest_variable = "Maxima_cantidad_nidos"
     dataframe = pd.DataFrame({"Isla": [1, 3], "Temporada": [2020, 2021]})
     Plotter = Plotter_Population_Trend_Model(dataframe, model, tick_mode="full")
-    Plotter.set_labels()
     return Plotter.plot_model()
