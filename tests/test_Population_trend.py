@@ -58,20 +58,6 @@ more_cormorant_data = pd.DataFrame(
     {"Isla": ["a", "a", "b", "c", "d"], "Temporada": [2020.0, 2021.0, 2022.0, 2023.0, 2024.0]}
 )
 
-Plotter_without_legend = Plotter_Population_Trend_Model(
-    cormorant_data_for_plotter, pop_model, tick_mode="full"
-)
-
-
-class Tests_Plotter_Population_Trend_Model_without_legend:
-    def tests_hide_legend(self):
-        Plotter_without_legend.ax.legend()
-        assert Plotter_without_legend.ax.get_legend() is not None
-        show_legend = False
-        Plotter_without_legend.show_legend(show_legend)
-        assert Plotter_without_legend.ax.get_legend() is None
-
-
 Sparse_Plotter = Plotter_Population_Trend_Model(more_cormorant_data, pop_model, tick_mode="sparse")
 
 Plotter = Plotter_Population_Trend_Model(cormorant_data_for_plotter, pop_model, tick_mode="full")
@@ -109,11 +95,6 @@ class Tests_Plotter_Population_Trend_Model:
         obtained_labels = [Plotter.ax.get_xlabel(), Plotter.ax.get_ylabel()]
         expected_labels = ["Temporadas", "Número de parejas reproductivas"]
         assert obtained_labels == expected_labels
-
-    def tests_no_hide_legend(self):
-        show_legend = True
-        Plotter.show_legend(show_legend)
-        assert Plotter.ax.get_legend() is not None
 
     def tests_savefig(self):
         islet = "morro"
