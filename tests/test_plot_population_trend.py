@@ -54,7 +54,6 @@ class TestPlotPopulationTrendLabelLanguage:
             True,
             language="spanish",
         )
-        graficador.set_labels()
         obtained_labels = [graficador.ax.get_xlabel(), graficador.ax.get_ylabel()]
         expected_labels = ["Temporadas", "Número de parejas reproductivas"]
         assert obtained_labels == expected_labels
