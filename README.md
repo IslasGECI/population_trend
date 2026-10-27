@@ -8,8 +8,6 @@ parameter](https://github.com/IslasGECI/population_trend/actions/workflows/actio
 ![commits](https://img.shields.io/github/commit-activity/y/IslasGECI/population_trend)
 ![GitHub contributors](https://img.shields.io/github/contributors/IslasGECI/population_trend)
 
-Este repo lo usamos en lambdas y cormorant.
-
 ## Descripción breve
 Este repositorio calcula y visualiza tendencias poblacionales a partir de datos de conteos y series de tiempo, y genera intervalos de crecimiento para evaluar cambios poblacionales en islas y regiones.
 
@@ -24,5 +22,3 @@ El paquete expone las siguientes funciones de línea de comandos desde `populati
 - `write_regional_trends`: escribe un JSON con tendencias regionales.
 - `plot_growth_rate`: genera una gráfica de tasas de crecimiento comparando intervalos regionales.
 - `version`: imprime la versión del paquete.
-
-Tiene la clase para graficas `Plotter_Population_Trend_Model`.
