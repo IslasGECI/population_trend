@@ -1,14 +1,14 @@
-from numpy.testing import assert_array_almost_equal
-import pandas as pd
-import pytest
-import json
-import os
 import population_trend as lam
 from bootstrapping_tools import Bootstrap_from_time_series_parametrizer
 import geci_plots as gp
-import numpy as np
 
+import json
 import matplotlib.pyplot as plt
+import numpy as np
+from numpy.testing import assert_array_almost_equal
+import os
+import pandas as pd
+import pytest
 
 nidos_array = [
     {"Temporada": 2014, "Maxima_cantidad_nidos": 283},
