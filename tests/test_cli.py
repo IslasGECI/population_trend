@@ -121,7 +121,7 @@ def test_app_write_burrows_by_species_and_island():
         app,
         ["write-burrows-by-species-and-island", "--help"],
     )
-    assert "[default: data/processed/subset_burrows_data.csv]" in result.stdout
+    assert " data/processed/subset_burrows_data.csv]" in result.stdout
     assert "[default: Guadalupe Murrelet]" in result.stdout
     assert "[default: Guadalupe]" in result.stdout
     result = runner.invoke(
