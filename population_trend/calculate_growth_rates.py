@@ -1,5 +1,5 @@
 from bootstrapping_tools import (
-    bootstrap_from_time_series,
+    compute_lambda_bootstrapped_intervals_from_time_series,
     calculate_p_values,
     get_bootstrap_deltas,
     lambda_calculator,
@@ -85,7 +85,9 @@ class LambdasBootstrapper(AbstractSeriesBootstrapper):
         self.parameters_distribution, _ = self.get_parameters_distribution()
 
     def get_parameters_distribution(self):
-        lambdas_n0_distribution, intervals = bootstrap_from_time_series(**self.bootstrap_config)
+        lambdas_n0_distribution, intervals = compute_lambda_bootstrapped_intervals_from_time_series(
+            **self.bootstrap_config
+        )
         return lambdas_n0_distribution, intervals
 
     def get_distribution(self):
