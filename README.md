@@ -9,7 +9,36 @@ parameter](https://github.com/IslasGECI/population_trend/actions/workflows/actio
 ![GitHub contributors](https://img.shields.io/github/contributors/IslasGECI/population_trend)
 
 ## Descripción breve
-Este repositorio calcula y visualiza tendencias poblacionales a partir de datos de conteos y series de tiempo, y genera intervalos de crecimiento para evaluar cambios poblacionales en islas y regiones.
+Este paquete calcula y visualiza tendencias poblacionales a partir de datos de conteos y series de tiempo, y genera intervalos de crecimiento para evaluar cambios poblacionales en islas y regiones.
+
+En términos simples: recibe una tabla de conteos de nidos por temporada, calcula si la población crece, se mantiene o disminuye, y produce gráficas y archivos JSON con los intervalos de confianza del crecimiento.
+
+El comando que ejecuta el paquete es `population-trend`.
+
+## Instalación
+Desde la raíz del repositorio:
+
+```bash
+pip install --editable .
+```
+
+## Cómo se usa
+Primero consulta los comandos disponibles:
+
+```bash
+population-trend --help
+```
+
+Después ejecuta el comando que necesites, por ejemplo para generar la gráfica de tendencia poblacional de una isla:
+
+```bash
+population-trend render-population-trend \
+  --data-path tests/data/gumu_guadalupe_data.csv \
+  --intervals-path tests/data/gumu_guadalupe_boostrap_intervals.json \
+  --island Guadalupe
+```
+
+El resultado es una imagen PNG con la tendencia poblacional y su intervalo de crecimiento. Cada comando de la siguiente lista acepta `--help` para mostrar sus opciones.
 
 ## Funciones CLI
 El paquete expone las siguientes funciones de línea de comandos desde `population_trend/cli.py`:
