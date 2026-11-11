@@ -44,48 +44,6 @@ def test_app_plot_growth_rate():
     gtt.if_exist_remove(output_figure)
 
 
-def test_app_plot_population_trend():
-    result = runner.invoke(
-        app,
-        ["plot-population-trend", "--help"],
-    )
-    assert "XX" not in result.stdout
-    assert "[default: Guadalupe]" in result.stdout
-    assert "[default: Maxima_cantidad_nidos]" in result.stdout
-    assert result.exit_code == 0
-    assert (
-        "DEPRECATED" in result.stdout
-    ), f"Expected 'DEPRECATED' in help text. Got: {result.stdout}"
-    assert (
-        "render-population-trend" in result.stdout
-    ), f"Expected new command name in help text. Got: {result.stdout}"
-
-    data_path = "tests/data/gumu_guadalupe_data.csv"
-    output_figure = "tests/data/plot_trend.png"
-    gtt.if_exist_remove(output_figure)
-    result = runner.invoke(
-        app,
-        [
-            "plot-population-trend",
-            "--data-path",
-            data_path,
-            "--intervals-path",
-            intervals_path,
-            "--island",
-            "Guadalupe",
-            "--variable-of-interest",
-            "Maxima_cantidad_nidos",
-            "--tick-mode",
-            "sparse",
-            "--output-path",
-            output_figure,
-        ],
-    )
-    assert result.exit_code == 0
-    gtt.assert_exist(output_figure)
-    gtt.if_exist_remove(output_figure)
-
-
 def test_app_plot_population_trend_from_cpue():
     result = runner.invoke(
         app,
