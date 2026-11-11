@@ -1,7 +1,12 @@
 FROM islasgeci/population_trend:latest
 COPY . /workdir
 
-# Instala opencode
-# RUN apt install -y lsof
-RUN curl -fsSL https://opencode.ai/install | bash
-RUN export PATH=$PATH:$HOME/.opencode/bin
+RUN apt update && apt upgrade --yes
+
+RUN apt install npm --yes
+RUN npm install -g @opencode/cli
+RUN git clone https://github.com/mvillasante/opencode_agents.git /tmp/opencode_agents && \
+	mkdir --parents /root/.config/opencode && \
+	cp -r /tmp/opencode_agents/* /root/.config/opencode/ && \
+	rm -rf /tmp/opencode_agents
+CMD opencode
