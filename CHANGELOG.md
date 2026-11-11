@@ -12,13 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Changed
-- Use `compute_lambda_bootstrapped_intervals_from_time_series` from `bootstrapping-tools` in `LambdasBootstrapper`, replacing the removed `bootstrap_from_time_series`.
-- Development image installs opencode through npm and preloads the shared agent configuration, opening opencode by default.
 
 ### Deprecated
 
 ### Removed
-- CLI command `plot-population-trend`, deprecated in 5.11.0, is removed in favor of `render-population-trend`. This is a breaking change for scripts and automation that still call the old command.
+- CLI command `plot-population-trend`, deprecated in 5.11.0, is removed in 6.0.0 in favor of `render-population-trend`. Scripts and automation that still call the old command must switch to `render-population-trend`.
 
 ## [5.12.0] - 2026-05-12
 
