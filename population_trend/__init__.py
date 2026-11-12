@@ -1,6 +1,6 @@
 """A population growth model package"""
 
-__version__ = "5.12.0"
+__version__ = "6.0.0"
 from .calculate_growth_rates import (  # noqa
     calculate_growth_rates_table,
     set_axis_plot_config,
