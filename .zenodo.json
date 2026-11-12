@@ -1,0 +1,44 @@
+{
+    "title": "Population Trend",
+    "version": "6.0.0",
+    "upload_type": "software",
+    "access_right": "open",
+    "license": "AGPL-3.0-only",
+    "language": "eng",
+    "creators": [
+        {
+            "name": "Grupo de Ecología y Conservación de Islas, A.C."
+        }
+    ],
+    "contributors": [
+        {
+            "name": "Villasante-Barahona, Mario",
+            "affiliation": "Grupo de Ecología y Conservación de Islas, A.C.",
+            "orcid": "0009-0001-7867-8570",
+            "type": "Other"
+        },
+        {
+            "name": "Olvera-Guerrero, Guillermo",
+            "affiliation": "Grupo de Ecología y Conservación de Islas, A.C.",
+            "orcid": "0000-0002-6900-5315",
+            "type": "Other"
+        },
+        {
+            "name": "Rojas-Mayoral, Evaristo",
+            "affiliation": "Grupo de Ecología y Conservación de Islas, A.C.",
+            "orcid": "0000-0001-6812-9562",
+            "type": "Other"
+        }
+    ],
+    "description": "Python tools to calculate and visualize population trends of seabirds from seasonal nest counts.",
+    "keywords": [
+        "bootstrap",
+        "conservation",
+        "data visualization",
+        "ecological modeling",
+        "growth rates",
+        "population dynamics",
+        "population trend",
+        "time series analysis"
+    ]
+}

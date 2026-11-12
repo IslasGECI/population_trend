@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Deprecated
 
 ### Removed
+
+## [6.0.0] - 2026-11-12
+### Removed
 - CLI command `plot-population-trend`, deprecated in 5.11.0, is removed in 6.0.0 in favor of `render-population-trend`. Scripts and automation that still call the old command must switch to `render-population-trend`.
 
 ## [5.12.0] - 2026-05-12
@@ -135,18 +138,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Split `test_app()`
 - Improve cli formating using Rich 
 
-### Removed
-
-
 ## [5.4.0] - 2023-07-14
+## [5.3.0] - 2023-07-13
+## [5.2.0] - 2023-07-07
+## [5.1.0] - 2023-07-07
+## [5.0.1] - 2023-07-07
+## [5.0.0] - 2023-07-06
+## [4.0.0] - 2023-07-06
+## [3.1.0] - 2023-07-04
+## [3.0.0] - 2023-07-03
+## [2.0.2] - 2023-07-03
+## [2.0.1] - 2023-06-28
+## [2.0.0] - 2023-06-28
+## [1.0.0] - 2023-06-27
 
-### Added
-
-
-### Fixed
-
-
-[unreleased]: https://github.com/IslasGECI/population_trend/compare/v5.12.0...HEAD
+[unreleased]: https://github.com/IslasGECI/population_trend/compare/v6.0.0...HEAD
+[6.0.0]: https://github.com/IslasGECI/population_trend/compare/v5.12.0...v6.0.0
 [5.12.0]: https://github.com/IslasGECI/population_trend/compare/v5.11.0...v5.12.0
 [5.11.0]: https://github.com/IslasGECI/population_trend/compare/v5.10.2...v5.11.0
 [5.10.2]: https://github.com/IslasGECI/population_trend/compare/v5.10.1...v5.10.2
@@ -161,4 +168,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [5.6.1]: https://github.com/IslasGECI/population_trend/compare/v5.6.0...v5.6.1
 [5.6.0]: https://github.com/IslasGECI/population_trend/compare/v5.5.0...v5.6.0
 [5.5.0]: https://github.com/IslasGECI/population_trend/compare/v5.4.0...v5.5.0
-[0.0.1]: https://github.com/IslasGECI/population_trend/releases/tag/v0.0.1
+[5.4.0]: https://github.com/IslasGECI/population_trend/compare/v5.3.0...v5.4.0
+[5.3.0]: https://github.com/IslasGECI/population_trend/compare/v5.2.0...v5.3.0
+[5.2.0]: https://github.com/IslasGECI/population_trend/compare/v5.1.0...v5.2.0
+[5.1.0]: https://github.com/IslasGECI/population_trend/compare/v5.0.1...v5.1.0
+[5.0.1]: https://github.com/IslasGECI/population_trend/compare/v5.0.0...v5.0.1
+[5.0.0]: https://github.com/IslasGECI/population_trend/compare/v4.0.0...v5.0.0
+[4.0.0]: https://github.com/IslasGECI/population_trend/compare/v3.1.0...v4.0.0
+[3.1.0]: https://github.com/IslasGECI/population_trend/compare/v3.1.0...v3.1.0
+[3.0.0]: https://github.com/IslasGECI/population_trend/compare/v2.0.2...v3.0.0
+[2.0.2]: https://github.com/IslasGECI/population_trend/compare/v2.0.1...v2.0.2
+[2.0.1]: https://github.com/IslasGECI/population_trend/compare/v2.0.0...v2.0.1
+[2.0.0]: https://github.com/IslasGECI/population_trend/compare/v1.0.0...v2.0.0
+[1.0.0]: https://github.com/IslasGECI/population_trend/releases/tag/v1.0.0
