@@ -6,6 +6,8 @@ from population_trend.cli import (
 )
 import geci_test_tools as gtt
 
+from population_trend import __version__
+
 runner = CliRunner()
 
 data_path = "tests/data/dcco_laal_gumu_burrows_data.csv"
@@ -221,5 +223,5 @@ def test_render_population_trend_new_command_works():
 def test_app_version():
     result = runner.invoke(app, ["version"])
     assert result.exit_code == 0
-    expected_version = "5.12.0"
+    expected_version = __version__
     assert expected_version in result.stdout
