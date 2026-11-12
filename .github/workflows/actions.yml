@@ -7,6 +7,10 @@ on:
 jobs:
   actions:
     runs-on: ubuntu-latest
+    environment: pypi_token
+    permissions:
+      id-token: write
+      contents: write
     steps:
     - name: Copia repositorio
       uses: actions/checkout@main
@@ -38,11 +42,11 @@ jobs:
     - name: Sube sha a Docker Hub
       if: github.ref_name == 'develop'
       run: docker push islasgeci/population_trend:${GITHUB_SHA:0:4}
-    - name: Set up Python 3.9
+    - name: Set up Python 3.X
       if: github.ref_name == 'develop'
-      uses: actions/setup-python@master
+      uses: actions/setup-python@main
       with:
-        python-version: 3.9
+        python-version: "3.x"
     - name: Install pypa/build
       if: github.ref_name == 'develop'
       run: >-
@@ -63,8 +67,7 @@ jobs:
       if: github.ref_name == 'develop'
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        password: ${{ secrets.PYPI_TOKEN }}
-        skip_existing: true
+        skip-existing: true
   mutants:
       runs-on: ubuntu-latest
       steps:
