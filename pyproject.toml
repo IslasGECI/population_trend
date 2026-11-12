@@ -5,14 +5,17 @@ build-backend = "flit_core.buildapi"
 [tool.flit.metadata]
 author = "Ciencia de Datos • GECI"
 author-email = "ciencia.datos@islas.org.mx"
-classifiers = [ "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",]
+classifiers = [ "License :: OSI Approved :: GNU Affero General Public License v3.0",]
 description-file = "README.md"
 home-page = "https://github.com/IslasGECI/population_trend"
 module = "population_trend"
 requires = [
 	"bootstrapping-tools==3.*",
 	"geci-plots",
-	"typer[all]"
+	"matplotlib",
+	"numpy",
+	"pandas",
+	"typer[all]",
 ]
 requires-python=">=3.9"
 
