@@ -2,7 +2,7 @@
 
 ## Public interface
 
-The public interface is the `population-trend` console script declared in `pyproject.toml` (`population_trend.cli:app`). Its elements are listed in DOCS.md; do not enumerate them here. Python symbols re-exported from `population_trend/__init__.py` are internal and not part of the interface.
+The public interface is the CLI commands registred on `population_trend.cli:app` and exposed as `population-trend` through `[tool.flit.scripts]` in `pyproject.toml`, plus the functions re-exported from `population_trend/__init__.py`. Treat other internal helpers as developer-only unless the interface definition changes.
 
 ## Developer commands
 
