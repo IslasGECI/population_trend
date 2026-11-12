@@ -20,7 +20,6 @@ The public interface is the CLI commands registred on `population_trend.cli:app`
 - Build backend is flit; the package version lives in `population_trend/__init__.py` as `__version__`.
 - Requires Python >= 3.9; `Dockerfile` uses 3.10 and the CI PyPI build step uses 3.9.
 - Runtime dependencies are pinned in `pyproject.toml`; `bootstrapping-tools==3.*` supplies `compute_lambda_bootstrapped_intervals_from_time_series`, used by `calculate_growth_rates.py`.
-- `population_trend/__init__.py` re-exports modules with star imports, so import public names from the package root.
 
 ## Tests
 

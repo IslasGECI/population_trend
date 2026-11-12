@@ -171,9 +171,6 @@ Nothing; writes `intervals`, `lambda_latex_interval`, `p-values`, and `bootstrap
 **Errors**
 Raises file and parsing errors when the CSV is missing or malformed, and key errors when `Temporada` or the requested variable is absent.
 
-**Notes**
-Backs the `population-trend write-bootstrap-intervals-json` command.
-
 ### render_population_trend(data_path, intervals_path, island="Guadalupe", variable_of_interest="Maxima_cantidad_nidos", tick_mode="full", show_legend=True, language="english", output_path="")
 Renders a population trend figure with its growth-rate interval.
 
@@ -192,6 +189,3 @@ Nothing; writes a transparent-background PNG.
 
 **Errors**
 Raises file and parsing errors when either input is missing or malformed, key errors when the intervals JSON lacks a required field, and key errors when `tick_mode` or `language` is not one of the documented values.
-
-**Notes**
-Backs the `population-trend render-population-trend` command. Provide `output_path`; the empty default does not name a file.
