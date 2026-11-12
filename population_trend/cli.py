@@ -24,7 +24,6 @@ from typing_extensions import Annotated
 import typer
 import json
 import matplotlib.pyplot as plt
-import warnings
 
 app = typer.Typer(help="Write filtered burrows data by species and island")
 
