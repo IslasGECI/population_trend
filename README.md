@@ -26,7 +26,8 @@ Por ejemplo, para generar la gráfica de tendencia de la isla Guadalupe:
 population-trend render-population-trend \
   --data-path tests/data/gumu_guadalupe_data.csv \
   --intervals-path tests/data/gumu_guadalupe_boostrap_intervals.json \
-  --island Guadalupe
+  --island Guadalupe \
+  --output-path gumu_guadalupe_population_trend.png
 ```
 
 El resultado es una imagen PNG con la tendencia y su intervalo de crecimiento.
