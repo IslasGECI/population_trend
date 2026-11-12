@@ -1,4 +1,10 @@
-import population_trend as lam
+from population_trend.calculate_growth_rates import (
+    calculate_growth_rates_table,
+    calculate_interest_numbers,
+    calculate_percent_diff_in_seasons,
+    LambdasBootstrapper,
+    set_axis_plot_config,
+)
 from bootstrapping_tools import Bootstrap_from_time_series_parametrizer
 import geci_plots as gp
 
@@ -31,7 +37,7 @@ laal = df[df["Nombre_en_ingles"] == "Laysan Albatross"]
 bootstrap_number = 10
 parametrizer = Bootstrap_from_time_series_parametrizer(blocks_length=2, N=bootstrap_number)
 parametrizer.set_data(laal)
-bootstraper = lam.LambdasBootstrapper(parametrizer)
+bootstraper = LambdasBootstrapper(parametrizer)
 
 
 def test_save_intervals():
@@ -64,7 +70,7 @@ def test_intervals_from_p_values_and_alpha():
     )
     parametrizer.set_data(dcco)
     assert parametrizer.parameters["alpha"] == 0.05
-    bootstraper = lam.LambdasBootstrapper(parametrizer)
+    bootstraper = LambdasBootstrapper(parametrizer)
     obtained_intervals = bootstraper.intervals
     obtained_len_intervals = len(obtained_intervals)
     expected_len_intervals = 3
@@ -90,7 +96,7 @@ def test_calculate_interest_numbers():
         obtained_first_number_calculated,
         obtained_last_number,
         obtained_last_number_calculated,
-    ) = lam.calculate_interest_numbers(cantidad_nidos, model)
+    ) = calculate_interest_numbers(cantidad_nidos, model)
 
     expected_first_number = "283 (2014)"
     expected_first_number_calculated = "326.1481866290459 (2014)"
@@ -110,7 +116,7 @@ def test_generate_season_interval():
         blocks_length=2, N=bootstrap_number
     )
     parametrizer.set_data(df)
-    bootstraper = lam.LambdasBootstrapper(parametrizer)
+    bootstraper = LambdasBootstrapper(parametrizer)
     expected_interval = "(1-5)"
     obtained_interval = bootstraper.generate_season_interval()
     assert expected_interval == obtained_interval
@@ -120,12 +126,12 @@ def test_calculate_percent_diff_in_seasons():
     datos_di = {"Maxima_cantidad_nidos": [1, 2, 3, 4, 5]}
     df = pd.DataFrame(datos_di)
     expected_percent = 400
-    obtaibed_percent = lam.calculate_percent_diff_in_seasons(df, df["Maxima_cantidad_nidos"])
+    obtaibed_percent = calculate_percent_diff_in_seasons(df, df["Maxima_cantidad_nidos"])
     assert expected_percent == obtaibed_percent
     datos_d1 = {"Maxima_cantidad_nidos": [0, 2, 3, 4, 5]}
     df_2 = pd.DataFrame(datos_d1)
     expected_percent = 400
-    obtaibed_percent = lam.calculate_percent_diff_in_seasons(df_2, df["Maxima_cantidad_nidos"])
+    obtaibed_percent = calculate_percent_diff_in_seasons(df_2, df["Maxima_cantidad_nidos"])
     assert expected_percent == obtaibed_percent
 
 
@@ -152,7 +158,7 @@ def test_get_monitored_seasons(path, expected_seasons):
         blocks_length=2, N=bootstrap_number
     )
     parametrizer.set_data(burrows_data_dataframe)
-    bootstraper = lam.LambdasBootstrapper(parametrizer)
+    bootstraper = LambdasBootstrapper(parametrizer)
     obtained_seasons = bootstraper.get_monitored_seasons()
     assert expected_seasons == obtained_seasons
 
@@ -161,7 +167,7 @@ def test_calculate_growth_rates_table():
     data = pd.read_csv("tests/data/subset_burrows_data.csv")
     parametrizer = Bootstrap_from_time_series_parametrizer(blocks_length=2, N=bootstrap_number)
     parametrizer.set_data(data)
-    tabla = lam.calculate_growth_rates_table(parametrizer)
+    tabla = calculate_growth_rates_table(parametrizer)
     p_valor_mayor = tabla[10]
     p_valor_menor = tabla[11]
     expected_p_valor_mayor = 0.0
@@ -186,7 +192,7 @@ def test_Bootstrap_from_time_series_parametrizer():
 
 def test_set_axis_plot_config():
     _, ax = gp.geci_plot()
-    lam.set_axis_plot_config(ax)
+    set_axis_plot_config(ax)
     assert plt.xlim() == (0, 1)
     assert plt.ylim() == (0, 1)
     assert ax.get_xlabel() == "Año"

@@ -1,7 +1,10 @@
 import geci_test_tools as gtt
 import pandas as pd
 import matplotlib as plt
-from population_trend import Population_Trend_Model, Plotter_Population_Trend_Model_From_CPUE
+from population_trend.plotter_population_trend_from_cpue import (
+    Plotter_Population_Trend_Model_From_CPUE,
+)
+from population_trend.population_growth_model import Population_Trend_Model
 
 variable_of_interest = "max_CPUE"
 assp_cpue_data_for_plotter = pd.DataFrame(

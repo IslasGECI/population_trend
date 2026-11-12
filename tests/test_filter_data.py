@@ -1,4 +1,4 @@
-from population_trend import (
+from population_trend.filter_data import (
     filter_by_species,
     filter_by_species_and_island,
 )
